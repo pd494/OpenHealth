@@ -7,6 +7,7 @@ struct TileGrid: View {
     @ScaledMetric(relativeTo: .title) private var gridHeight = Layout.gridTileHeight
     @ScaledMetric(relativeTo: .body) private var listHeight = Layout.listTileHeight
 
+    let isEditing: Bool
     let onSelect: (MetricID) -> Void
 
     private var tileLayout: TileLayout { typeSize.isAccessibilitySize ? .list : store.layout.tileLayout }
@@ -22,6 +23,9 @@ struct TileGrid: View {
                 MetricTile(value: health.value(item.metric), layout: tileLayout)
             }
             .buttonStyle(.plain)
+            .overlay(alignment: .topLeading) {
+                if isEditing { HideBadge(metric: item.metric) }
+            }
             .contextMenu { TileContextMenu(metric: item.metric) }
         }
     }

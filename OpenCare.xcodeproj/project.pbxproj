@@ -51,6 +51,7 @@
 		3EA8D38697A698BFCDC992B1 /* GoogleTokenEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DF57853D7D34F9A87831CC /* GoogleTokenEndpoint.swift */; };
 		3F6DB0DF061940B765AE873C /* ViewStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F375DB896378A28F8B5AC83 /* ViewStyles.swift */; };
 		41312510E9CAFB12F67C2B70 /* GoogleHealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD3CC020B21278CFA4FC1EE /* GoogleHealthManager.swift */; };
+		423D32AD6AB237517D89B666 /* HideBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BE6406E510B8EB707F0CEC /* HideBadge.swift */; };
 		438274AC4DAB101CC1E9532F /* SharedSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CA5D62558EF2C9BFAB372C /* SharedSnapshot.swift */; };
 		4A6F8F2F628A956CD4401253 /* DailyRollUpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4120ECC3B4F673D3B01523 /* DailyRollUpRequest.swift */; };
 		50EF9EF27C548D0D575E454C /* DemoMetricSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D1906DFB50EF8D718B477A /* DemoMetricSource.swift */; };
@@ -103,6 +104,7 @@
 		AEF63A5EAD277DF9CCB078E3 /* MetricTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33264159FB0C09FDD6AECF92 /* MetricTile.swift */; };
 		B06BD9A1CA95015B0C99F75D /* SnapshotStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9580DEEB631F493DE00056D3 /* SnapshotStore.swift */; };
 		B1EB613C3979785DAB7B319D /* AskCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C40B1D25139ADF7D00B9AF1 /* AskCard.swift */; };
+		B30DBBF2270305EA5A7DF41E /* EditTray.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1FA19FD144224637F0E448 /* EditTray.swift */; };
 		B321968BA7B793AD07BB7700 /* SheetContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68BEC447262C3FC244E7E1C /* SheetContainer.swift */; };
 		B356D7901243246577614063 /* GoogleConnectionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05BE4585478A722F5BD549F /* GoogleConnectionSheet.swift */; };
 		B3934AC2F864C8CC9380120C /* ConnectionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE623A4D3E19384CC29005D9 /* ConnectionCard.swift */; };
@@ -289,12 +291,14 @@
 		EF23CD709B4D0EFACF9C734C /* GoogleOAuthConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleOAuthConfig.swift; sourceTree = "<group>"; };
 		EFCA5601C68FA1959A3271E5 /* GoogleMetricSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMetricSource.swift; sourceTree = "<group>"; };
 		F0D1074CE0B1C2700DD93C50 /* MetricID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricID.swift; sourceTree = "<group>"; };
+		F1BE6406E510B8EB707F0CEC /* HideBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideBadge.swift; sourceTree = "<group>"; };
 		F1CED4800AFCFF9481076B8B /* CaloriePreference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaloriePreference.swift; sourceTree = "<group>"; };
 		F5357285C42678591AAEA07B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F6200048D48C2C964EA0DE6C /* HealthManager+Google.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HealthManager+Google.swift"; sourceTree = "<group>"; };
 		F6C524B2B26C33F3DDB5465D /* TodaySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaySheet.swift; sourceTree = "<group>"; };
 		FA107FB4741719B386C390B1 /* HydrationWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HydrationWidget.swift; sourceTree = "<group>"; };
 		FC21068E4B65957193710C19 /* DemoBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoBanner.swift; sourceTree = "<group>"; };
+		FE1FA19FD144224637F0E448 /* EditTray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTray.swift; sourceTree = "<group>"; };
 		FE3A35E519524D99E840E755 /* GoogleSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSession.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -419,6 +423,8 @@
 		480FAB17A6E79DC38C34A2C8 /* Today */ = {
 			isa = PBXGroup;
 			children = (
+				FE1FA19FD144224637F0E448 /* EditTray.swift */,
+				F1BE6406E510B8EB707F0CEC /* HideBadge.swift */,
 				33264159FB0C09FDD6AECF92 /* MetricTile.swift */,
 				8113588AF5078808386DA65F /* ReorderableGrid.swift */,
 				5084DA02133CF3836A4CEB10 /* ReorderActions.swift */,
@@ -797,6 +803,7 @@
 				BE9BED64E184D4B81B8ECA0F /* DemoBanner.swift in Sources */,
 				50EF9EF27C548D0D575E454C /* DemoMetricSource.swift in Sources */,
 				CC0B3DCFFB309996049DC621 /* DisplayStyle.swift in Sources */,
+				B30DBBF2270305EA5A7DF41E /* EditTray.swift in Sources */,
 				19F8EBFBF2F27C1E33765CDB /* FasterStepsSection.swift in Sources */,
 				D5D5C4256B192690E95A9298 /* FlexibleDouble.swift in Sources */,
 				180E11568702A8EDD81FA444 /* Font+Rounded.swift in Sources */,
@@ -824,6 +831,7 @@
 				2B9DCBEF27255724750769C1 /* HealthManager+Preview.swift in Sources */,
 				F7D52D3D4DE6246B07FC6D06 /* HealthManager.swift in Sources */,
 				0E986F69C2084E416BEFEDC6 /* HealthTypes.swift in Sources */,
+				423D32AD6AB237517D89B666 /* HideBadge.swift in Sources */,
 				BB10C7504A53CCBA04D5362F /* InsightsSheet.swift in Sources */,
 				602E17BB4BA88E0A83FE2B5E /* JSONDecoder+GoogleHealth.swift in Sources */,
 				6D0FD619F9BA36F153B211B5 /* Layout.swift in Sources */,

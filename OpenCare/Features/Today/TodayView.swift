@@ -5,6 +5,7 @@ struct TodayView: View {
     @Environment(HealthManager.self) private var health
     @Environment(GoogleHealthManager.self) private var google
     @State private var sheet: TodaySheet?
+    @State private var isEditing = DebugLaunch.flag("editMode")
 
     private static let stepPollInterval = Duration.seconds(30)
 
@@ -13,14 +14,15 @@ struct TodayView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: Layout.sectionSpacing) {
-                TodayHeader(sheet: $sheet)
+                TodayHeader(sheet: $sheet, isEditing: $isEditing)
                 if google.isConnected {
                     GoogleStatusCard(sheet: $sheet)
                 } else if !health.isConnected && !health.isDemo {
                     ConnectionCard(sheet: $sheet)
                 }
                 RingsCard()
-                TileGrid(onSelect: select)
+                TileGrid(isEditing: isEditing, onSelect: select)
+                if isEditing { EditTray() }
                 AskCard(sheet: $sheet)
                 if health.isDemo { DemoBanner(sheet: $sheet) }
                 TodayFooter()
