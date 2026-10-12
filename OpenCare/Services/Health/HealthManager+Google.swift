@@ -18,6 +18,10 @@ extension HealthManager {
         hrv = newHRV
         rhr = newRHR
         self.deviceSyncedAt = deviceSyncedAt
+        let google = GoogleMetricSource(
+            steps: newSteps, sleepHours: sleep, recovery: recovery, hrv: newHRV.today, restingHR: newRHR.today
+        )
+        readings.merge(google.snapshot) { $1 }
         lastUpdated = .now
         publishWidget()
     }
@@ -29,6 +33,7 @@ extension HealthManager {
         isDemo = false
         use(.google)
         steps = newSteps
+        readings[.steps] = Double(newSteps)
         stepsCheckedAt = .now
         if let deviceSyncedAt { self.deviceSyncedAt = deviceSyncedAt }
         lastUpdated = .now
@@ -41,6 +46,7 @@ extension HealthManager {
             await refresh()
             return
         }
+        readings = [:]
         steps = 0
         sleepHours = 0
         recoveryScore = nil

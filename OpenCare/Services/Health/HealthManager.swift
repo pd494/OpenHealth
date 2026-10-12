@@ -13,6 +13,7 @@ final class HealthManager {
     var recoveryScore: Int?
     var hrv = Vital()
     var rhr = Vital()
+    var readings: [MetricID: Double] = [:]
 
     var lastUpdated: Date?
     var stepsCheckedAt: Date?
@@ -140,6 +141,9 @@ final class HealthManager {
             rhr = appleRHR
             recoveryScore = Recovery.score(sleep: appleSleep, goal: sleepGoal, hrv: appleHRV, rhr: appleRHR)
         }
+        let apple = try? await HealthKitMetricSource(reader: reader).values(for: Set(MetricID.allCases), on: now)
+        if stepSource == .apple { readings = apple ?? [:] }
+        readings[.recovery] = recoveryScore.map(Double.init)
         lastUpdated = now
         publishWidget()
     }
@@ -189,6 +193,9 @@ final class HealthManager {
         stepsCheckedAt = .now
         waterCheckedAt = .now
         recoveryScore = 71
+        hrv = Vital(today: 52, baseline: 48)
+        rhr = Vital(today: 58, baseline: 60)
+        readings = DemoMetricSource.values
         lastUpdated = .now
         publishWidget()
     }

@@ -13,6 +13,16 @@ struct HealthKitReader {
         return await statistics(type, predicate, .discreteAverage)?.averageQuantity()?.doubleValue(for: unit)
     }
 
+    func latest(_ type: HKQuantityType, unit: HKUnit) async -> Double? {
+        await withCheckedContinuation { continuation in
+            let newestFirst = NSSortDescriptor(key: HKSampleSortIdentifierEndDate, ascending: false)
+            store.execute(HKSampleQuery(sampleType: type, predicate: nil, limit: 1, sortDescriptors: [newestFirst]) { _, samples, _ in
+                let sample = samples?.first as? HKQuantitySample
+                continuation.resume(returning: sample?.quantity.doubleValue(for: unit))
+            })
+        }
+    }
+
     /// Detection only: Google's API stays the source of truth for the step total.
     func googleSharedStepsToday() async -> Double? {
         let sources: Set<HKSource> = await withCheckedContinuation { continuation in
