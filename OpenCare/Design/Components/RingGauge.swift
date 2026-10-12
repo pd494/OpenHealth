@@ -2,10 +2,11 @@ import SwiftUI
 
 struct RingGauge: View {
     let value: MetricValue
-    var size = Layout.ringSize
+    /// Fixed diameter, or nil to fill the available width up to `Layout.ringSize`.
+    var size: Double?
 
     private var descriptor: MetricDescriptor { value.id.descriptor }
-    private var isLarge: Bool { size > 80 }
+    private var isLarge: Bool { (size ?? Layout.ringSize) > 80 }
 
     var text: String { descriptor.format == .percent && value.value != nil ? value.number + "%" : value.number }
 
@@ -20,12 +21,13 @@ struct RingGauge: View {
                         .accessibilityHidden(true)
                 }
                 Text(text)
-                    .metricNumber(isLarge ? (text.count > 5 ? .subheadline : .title3) : .caption, weight: .bold)
+                    .metricNumber(isLarge ? (text.count > 5 ? .headline : .title2) : .caption, weight: .bold)
                     .minimumScaleFactor(0.6)
                     .lineLimit(1)
             }
             .padding(.horizontal, isLarge ? 10 : 6)
         }
-        .frame(width: size, height: size)
+        .frame(maxWidth: size ?? Layout.ringSize, maxHeight: size ?? Layout.ringSize)
+        .aspectRatio(1, contentMode: .fit)
     }
 }

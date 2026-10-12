@@ -5,16 +5,12 @@ struct TodayHeader: View {
     @Binding var isEditing: Bool
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
+        VStack(alignment: .leading, spacing: 6) {
             HStack {
-                HStack(spacing: 8) {
-                    Image(systemName: "circle.hexagongrid.fill")
-                        .foregroundStyle(Palette.green)
-                        .accessibilityHidden(true)
-                    Text("OPENCARE")
-                        .tracking(2.4)
-                        .font(.rounded(.footnote, weight: .bold))
-                }
+                Image(systemName: "circle.hexagongrid.fill")
+                    .font(.footnote)
+                    .foregroundStyle(Palette.green)
+                    .accessibilityHidden(true)
                 Spacer()
                 Button(isEditing ? "Done" : "Edit") { withAnimation(.snappy) { isEditing.toggle() } }
                     .font(.rounded(.subheadline, weight: .semibold))
@@ -28,11 +24,22 @@ struct TodayHeader: View {
                     .font(.title3)
                     .background(Palette.card, in: .circle)
             }
-            Text("Today, in motion.")
-                .font(.rounded(.title))
-            Text(Date.now, format: .dateTime.weekday(.wide).month(.wide).day())
+            Text(Date.now, format: .dateTime.weekday(.wide).month(.abbreviated).day())
+                .font(.rounded(.largeTitle, weight: .bold))
+                .tracking(-0.8)
+                .minimumScaleFactor(0.7)
+                .lineLimit(1)
+            Text(greeting)
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
+        }
+    }
+
+    private var greeting: String {
+        switch Calendar.current.component(.hour, from: .now) {
+        case 5..<12: "Good morning"
+        case 12..<18: "Good afternoon"
+        default: "Good evening"
         }
     }
 }

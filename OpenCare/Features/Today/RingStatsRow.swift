@@ -1,26 +1,32 @@
 import SwiftUI
 
-struct RingsExpandedRow: View {
+/// A ring with its supporting figures listed beside it as label/value lines.
+struct RingStatsRow: View {
     @Environment(HealthManager.self) private var health
 
     let metric: MetricID
     let isEditing: Bool
+    let ringSize: Double
 
     var body: some View {
         let value = health.value(metric)
-        HStack(alignment: .center, spacing: 18) {
-            VStack(spacing: 6) {
-                RingGauge(value: value, size: 104)
-                Text(metric.descriptor.title).font(.subheadline.weight(.medium))
-            }
-            VStack(spacing: 0) {
+        HStack(alignment: .center, spacing: 20) {
+            RingGauge(value: value, size: ringSize)
+            VStack(alignment: .leading, spacing: 0) {
+                HStack(alignment: .firstTextBaseline) {
+                    Text(metric.descriptor.title).font(.rounded(.headline))
+                    Spacer()
+                    Text(value.goalText ?? "").font(.footnote).foregroundStyle(.secondary)
+                }
+                .padding(.bottom, 6)
                 ForEach(Array(health.stats(for: metric).enumerated()), id: \.element.id) { index, stat in
-                    if index > 0 { Hairline() }
+                    Hairline()
                     HStack {
-                        Text(stat.label).font(.subheadline).foregroundStyle(.secondary)
+                        Text(stat.label).foregroundStyle(.secondary)
                         Spacer()
                         Text(stat.value).metricNumber(.subheadline)
                     }
+                    .font(.subheadline)
                     .padding(.vertical, 9)
                 }
             }

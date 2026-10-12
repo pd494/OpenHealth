@@ -7,7 +7,7 @@ struct MetricRingView: View {
     private var caption: String { value.goalText ?? value.subtitle ?? "No data" }
 
     var body: some View {
-        VStack(spacing: 10) {
+        VStack(spacing: 12) {
             RingGauge(value: value)
             VStack(spacing: 2) {
                 Text(descriptor.title)

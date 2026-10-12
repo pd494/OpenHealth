@@ -72,7 +72,6 @@
 		438274AC4DAB101CC1E9532F /* SharedSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CA5D62558EF2C9BFAB372C /* SharedSnapshot.swift */; };
 		479D052D679DDD5F32E928CA /* MetricStatsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCE091C12A6237BA7CC574B /* MetricStatsTests.swift */; };
 		4834C14F745F0AA3A1AB9441 /* JournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E5588F03D69547CE634273 /* JournalView.swift */; };
-		4914B1BCC89D9AAB2FDEC86A /* RingsBesideCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43573D76DF13AEDB30307D9 /* RingsBesideCell.swift */; };
 		4A6F8F2F628A956CD4401253 /* DailyRollUpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4120ECC3B4F673D3B01523 /* DailyRollUpRequest.swift */; };
 		50EF9EF27C548D0D575E454C /* DemoMetricSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D1906DFB50EF8D718B477A /* DemoMetricSource.swift */; };
 		532F0275DA00C60FAD4B88DC /* SnapshotEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490E1D5A365B12C95474AE97 /* SnapshotEntry.swift */; };
@@ -114,7 +113,6 @@
 		7DBC3F276383942D61EC1FF0 /* GoogleHealthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34149B94813673EDDD5E21D /* GoogleHealthAPI.swift */; };
 		7E0E8D57DADD1A668868C580 /* PairedAir.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F31D255A951A9C0A572CD9 /* PairedAir.swift */; };
 		7F5DD4E12EDC2C8BB3D73E12 /* WaterSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E18CE2F9B0B18074E122F2 /* WaterSheet.swift */; };
-		7FC15FE35FF961675DF907E6 /* RingsExpandedRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052687E4CC9288BCA73E2988 /* RingsExpandedRow.swift */; };
 		81088168708E5F11C34D9670 /* GoogleSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3A35E519524D99E840E755 /* GoogleSession.swift */; };
 		84FAE8D3482A174C2FF38243 /* GoogleOAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF7269BFB6BDB6E78C74F2D /* GoogleOAuth.swift */; };
 		87BA4C650B920353A6300FF3 /* DashboardLayoutStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8105FF38DE3C99BA0AED94 /* DashboardLayoutStore.swift */; };
@@ -126,6 +124,7 @@
 		95523221B5DBBD5522ED68B5 /* GoogleAccountSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59D656C6D83676904C9DA0B /* GoogleAccountSection.swift */; };
 		991ECC4CE542612CC0AA33DF /* DebugLaunch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0A3D552A0FAFF445796C7F /* DebugLaunch.swift */; };
 		9A84EE1F08AB59736AD679B9 /* StressBandRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69B2B30A44C46597304AA1E /* StressBandRow.swift */; };
+		9CDC326B58E3CCF29240BFA2 /* RingStatsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E950DFF1AA500D6939573757 /* RingStatsRow.swift */; };
 		9D704ED1CE4C8D2DBDFB140D /* HealthManager+Fitness.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67FF498985D4C162433D80D /* HealthManager+Fitness.swift */; };
 		A2450BE1F8D3B512BE95BD2A /* OpenCareWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA7DEEAD0B76267AF866CD3 /* OpenCareWidgets.swift */; };
 		A2D1EB962312C41799865C73 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F7BB7AB41AFCE1390C427D /* Defaults.swift */; };
@@ -205,6 +204,7 @@
 		F89E81A63C753E818C0E6D4F /* ReorderableGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8113588AF5078808386DA65F /* ReorderableGrid.swift */; };
 		FA599D7C0ADDD8C8D2A0C62F /* GoogleSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3A35E519524D99E840E755 /* GoogleSession.swift */; };
 		FBF5FC5AAF59F7D4E94DE8F4 /* TileLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CAD4A069A94E2FA2A7E4FD /* TileLayout.swift */; };
+		FD0F121236C0D2EDB5935D17 /* RingFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD08CE4B08C29BBE6D270CC /* RingFlowLayout.swift */; };
 		FE56B8C6B97E752CD51D28D8 /* GoogleHealthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34149B94813673EDDD5E21D /* GoogleHealthAPI.swift */; };
 /* End PBXBuildFile section */
 
@@ -245,7 +245,6 @@
 		01905461933B84BA57AB8D3F /* HealthManager+Metrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HealthManager+Metrics.swift"; sourceTree = "<group>"; };
 		02F50A541012EB0AAB6A4D39 /* OpenCare.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = OpenCare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03538852FF7170961D2F8283 /* AppRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRefresh.swift; sourceTree = "<group>"; };
-		052687E4CC9288BCA73E2988 /* RingsExpandedRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingsExpandedRow.swift; sourceTree = "<group>"; };
 		05633406CA3FBBADA71553D3 /* Palette+Domains.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Palette+Domains.swift"; sourceTree = "<group>"; };
 		06F39A5B315C5795EF8F8A02 /* DashboardLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardLayout.swift; sourceTree = "<group>"; };
 		07A95B149A940C40AF31A97F /* GoogleTokens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleTokens.swift; sourceTree = "<group>"; };
@@ -335,6 +334,7 @@
 		88744B3E17EAE0ED656C9E2F /* CivilDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CivilDate.swift; sourceTree = "<group>"; };
 		89D9356638D52D97702D4695 /* RingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingCell.swift; sourceTree = "<group>"; };
 		8C3A7B612DFDAA97F93F8CC6 /* ProgressRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressRing.swift; sourceTree = "<group>"; };
+		8CD08CE4B08C29BBE6D270CC /* RingFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingFlowLayout.swift; sourceTree = "<group>"; };
 		8D22936449A1615E6D990FBC /* JournalTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalTag.swift; sourceTree = "<group>"; };
 		8F7AD0B54667E025E8523737 /* StepSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepSource.swift; sourceTree = "<group>"; };
 		8FEDF67E502F06271A5B358F /* WorkoutRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutRow.swift; sourceTree = "<group>"; };
@@ -399,6 +399,7 @@
 		E4E18CE2F9B0B18074E122F2 /* WaterSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterSheet.swift; sourceTree = "<group>"; };
 		E58D95930C24CC66A80B0A56 /* RingsRows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingsRows.swift; sourceTree = "<group>"; };
 		E5A3861E11829B9296D75146 /* MetricRegistry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricRegistry.swift; sourceTree = "<group>"; };
+		E950DFF1AA500D6939573757 /* RingStatsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingStatsRow.swift; sourceTree = "<group>"; };
 		EA3489BEC31C20FC6C02D21F /* JournalEntryEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalEntryEditor.swift; sourceTree = "<group>"; };
 		EB9E442DBE54274435D3255D /* MoodPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodPicker.swift; sourceTree = "<group>"; };
 		EE153EE65217F4F629851F8A /* DailyMetricKind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyMetricKind.swift; sourceTree = "<group>"; };
@@ -407,7 +408,6 @@
 		F0D1074CE0B1C2700DD93C50 /* MetricID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricID.swift; sourceTree = "<group>"; };
 		F1BE6406E510B8EB707F0CEC /* HideBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideBadge.swift; sourceTree = "<group>"; };
 		F1CED4800AFCFF9481076B8B /* CaloriePreference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaloriePreference.swift; sourceTree = "<group>"; };
-		F43573D76DF13AEDB30307D9 /* RingsBesideCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingsBesideCell.swift; sourceTree = "<group>"; };
 		F4560B3770320776BBE9FF36 /* StressBand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StressBand.swift; sourceTree = "<group>"; };
 		F5357285C42678591AAEA07B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F6200048D48C2C964EA0DE6C /* HealthManager+Google.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HealthManager+Google.swift"; sourceTree = "<group>"; };
@@ -587,10 +587,10 @@
 				5084DA02133CF3836A4CEB10 /* ReorderActions.swift */,
 				9BC1E050DA788AB1E7B1F788 /* ReorderHandle.swift */,
 				89D9356638D52D97702D4695 /* RingCell.swift */,
-				F43573D76DF13AEDB30307D9 /* RingsBesideCell.swift */,
-				052687E4CC9288BCA73E2988 /* RingsExpandedRow.swift */,
+				8CD08CE4B08C29BBE6D270CC /* RingFlowLayout.swift */,
 				E58D95930C24CC66A80B0A56 /* RingsRows.swift */,
 				9819D9D515710E690CBFDFCB /* RingsSection.swift */,
+				E950DFF1AA500D6939573757 /* RingStatsRow.swift */,
 				59E07FD659BC35C857B06317 /* StyleBadge.swift */,
 				516A4EE65A9853DD043DD91A /* TileContextMenu.swift */,
 				870D105D3C3EA3E3DF10D6F1 /* TileGrid.swift */,
@@ -1098,9 +1098,9 @@
 				C7EBC3504E380226D221A75D /* ReorderHandle.swift in Sources */,
 				F89E81A63C753E818C0E6D4F /* ReorderableGrid.swift in Sources */,
 				E1C829540B0C5485292F369F /* RingCell.swift in Sources */,
+				FD0F121236C0D2EDB5935D17 /* RingFlowLayout.swift in Sources */,
 				AD6662E7C5FDC69190302411 /* RingGauge.swift in Sources */,
-				4914B1BCC89D9AAB2FDEC86A /* RingsBesideCell.swift in Sources */,
-				7FC15FE35FF961675DF907E6 /* RingsExpandedRow.swift in Sources */,
+				9CDC326B58E3CCF29240BFA2 /* RingStatsRow.swift in Sources */,
 				5ABF3655797EC8DEFE845C8E /* RingsMode.swift in Sources */,
 				CE36BEA0D541BBAB14BA79BE /* RingsRows.swift in Sources */,
 				1D97C83EBA3017D81CFB83E2 /* RingsSection.swift in Sources */,

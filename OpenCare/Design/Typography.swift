@@ -9,6 +9,13 @@ extension View {
             .contentTransition(.numericText())
     }
 
+    func metricFigure(_ size: Double) -> some View {
+        font(.system(size: size, weight: .semibold, design: .rounded))
+            .monospacedDigit()
+            .tracking(-0.5)
+            .contentTransition(.numericText())
+    }
+
     func eyebrow() -> some View {
         font(.caption2.weight(.semibold))
             .textCase(.uppercase)

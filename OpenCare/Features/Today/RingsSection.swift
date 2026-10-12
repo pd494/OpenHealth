@@ -11,7 +11,7 @@ struct RingsSection: View {
 
     var body: some View {
         if !layout.rings.isEmpty || isEditing {
-            VStack(alignment: .leading, spacing: 20) {
+            VStack(alignment: .leading, spacing: 24) {
                 SectionHeader(title: "Goals") {
                     if layout.ringsMode != .standard || !layout.rings.isEmpty { chevron }
                 }
@@ -29,8 +29,8 @@ struct RingsSection: View {
         .font(.body.weight(.bold))
         .foregroundStyle(Palette.red)
         .rotationEffect(.degrees(showsDetails ? 0 : -90))
-        .frame(width: Layout.minTapTarget, height: Layout.minTapTarget)
-        .padding(.trailing, -12)
+        .frame(width: Layout.minTapTarget, height: Layout.minTapTarget, alignment: .trailing)
+        .contentShape(.rect)
         .sensoryFeedback(.selection, trigger: layout.ringDetailsCollapsed)
     }
 
@@ -41,16 +41,17 @@ struct RingsSection: View {
                 .foregroundStyle(.secondary)
         } else if layout.ringsMode == .standard || !showsDetails {
             RingsRows(rings: layout.rings, isEditing: isEditing, showsDetails: showsDetails && layout.ringsMode == .standard)
-        } else if layout.ringsMode == .expanded {
-            VStack(spacing: 14) {
+        } else {
+            let isExpanded = layout.ringsMode == .expanded
+            VStack(spacing: 16) {
                 ForEach(layout.rings) { item in
                     if item.id != layout.rings.first?.id { Hairline() }
-                    RingsExpandedRow(metric: item.metric, isEditing: isEditing)
+                    RingStatsRow(
+                        metric: item.metric,
+                        isEditing: isEditing,
+                        ringSize: isExpanded ? Layout.ringSize : 76
+                    )
                 }
-            }
-        } else {
-            LazyVGrid(columns: Array(repeating: GridItem(.flexible(), alignment: .topLeading), count: 2), spacing: 18) {
-                ForEach(layout.rings) { RingsBesideCell(metric: $0.metric, isEditing: isEditing) }
             }
         }
     }

@@ -4,6 +4,7 @@ struct MetricTile: View {
     let value: MetricValue
     let layout: TileLayout
     var showsHandle = true
+    @ScaledMetric(relativeTo: .title) private var figureSize = 28.0
 
     private var descriptor: MetricDescriptor { value.id.descriptor }
     private var caption: String { value.goalText ?? value.subtitle ?? (value.value == nil ? "No data" : "") }
@@ -15,7 +16,7 @@ struct MetricTile: View {
             case .list: listContent
             }
         }
-        .padding(Layout.cardPadding - 4)
+        .padding(Layout.tilePadding)
         .background(Palette.card, in: .rect(cornerRadius: Layout.cardRadius))
         .overlay { RoundedRectangle(cornerRadius: Layout.cardRadius).strokeBorder(Palette.hairline) }
         .accessibilityElement(children: .ignore)
@@ -26,7 +27,7 @@ struct MetricTile: View {
     private var figure: some View {
         HStack(alignment: .firstTextBaseline, spacing: 3) {
             Text(value.number)
-                .metricNumber(layout == .grid ? .title : .title2)
+                .metricFigure(layout == .grid ? figureSize : figureSize * 0.82)
                 .minimumScaleFactor(0.6)
                 .lineLimit(1)
             if !value.unit.isEmpty {
@@ -39,7 +40,9 @@ struct MetricTile: View {
         VStack(alignment: .leading, spacing: 6) {
             HStack {
                 Label(descriptor.title, systemImage: descriptor.symbol)
-                    .font(.caption.weight(.medium))
+                    .font(.caption2.weight(.semibold))
+                    .textCase(.uppercase)
+                    .tracking(0.6)
                     .foregroundStyle(.secondary)
                     .labelStyle(TintedIconLabelStyle(tint: descriptor.tint))
                     .lineLimit(1)
@@ -52,6 +55,7 @@ struct MetricTile: View {
                 ProgressBar(ratio: progress, tint: descriptor.tint)
             }
             Text(caption).font(.caption2).foregroundStyle(.secondary).lineLimit(1)
+                .frame(minHeight: 14, alignment: .leading)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
     }
