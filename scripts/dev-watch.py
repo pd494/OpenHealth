@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Rebuild and relaunch OpenCare when project sources change."""
+"""Rebuild and relaunch OpenHealth when project sources change."""
 
 import argparse
 import json
@@ -10,9 +10,9 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE_DIRS = (ROOT / "OpenCare", ROOT / "StepsWidget", ROOT / "Shared")
+SOURCE_DIRS = (ROOT / "OpenHealth", ROOT / "StepsWidget", ROOT / "Shared")
 WATCH_SUFFIXES = {".swift", ".plist", ".entitlements"}
-BUNDLE_ID = "com.prasanthdendukuri.opencare"
+BUNDLE_ID = "com.prasanthdendukuri.openhealth"
 
 
 def changed_files() -> dict[Path, int]:
@@ -45,24 +45,24 @@ def run(command: list[str], *, required: bool = True) -> bool:
 
 
 def rebuild(simulator: str) -> bool:
-    print("\nRebuilding OpenCare…", flush=True)
+    print("\nRebuilding OpenHealth…", flush=True)
     if not run(["xcodegen", "generate", "-q"]):
         return False
     if not run([
-        "xcodebuild", "-quiet", "-project", "OpenCare.xcodeproj",
-        "-scheme", "OpenCare", "-configuration", "Debug",
+        "xcodebuild", "-quiet", "-project", "OpenHealth.xcodeproj",
+        "-scheme", "OpenHealth", "-configuration", "Debug",
         "-sdk", "iphonesimulator",
         "-destination", f"platform=iOS Simulator,id={simulator}",
         "-derivedDataPath", ".build", "CODE_SIGNING_ALLOWED=NO", "build",
     ]):
         return False
     run(["xcrun", "simctl", "terminate", simulator, BUNDLE_ID], required=False)
-    app = ROOT / ".build/Build/Products/Debug-iphonesimulator/OpenCare.app"
+    app = ROOT / ".build/Build/Products/Debug-iphonesimulator/OpenHealth.app"
     if not run(["xcrun", "simctl", "install", simulator, str(app)]):
         return False
     if not run(["xcrun", "simctl", "launch", simulator, BUNDLE_ID]):
         return False
-    print("OpenCare reloaded in Simulator. The browser stream stays connected.", flush=True)
+    print("OpenHealth reloaded in Simulator. The browser stream stays connected.", flush=True)
     return True
 
 
@@ -76,7 +76,7 @@ def main() -> int:
         print(error, file=sys.stderr)
         return 1
 
-    print(f"Watching OpenCare sources for Simulator {simulator}", flush=True)
+    print(f"Watching OpenHealth sources for Simulator {simulator}", flush=True)
     rebuild(simulator)
     previous = changed_files()
     try:

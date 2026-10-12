@@ -1,4 +1,4 @@
 enum WidgetKind {
-    static let steps = "OpenCareSteps"
-    static let hydration = "OpenCareHydration"
+    static let steps = "OpenHealthSteps"
+    static let hydration = "OpenHealthHydration"
 }
