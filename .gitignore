@@ -1,0 +1,11 @@
+.build/
+.build-device/
+.test-build/
+.DS_Store
+__pycache__/
+xcuserdata/
+*.xcuserstate
+
+# Agent skills (installed via `npx skills add`; restore with `npx skills experimental_install`)
+.agents/
+.claude/skills/

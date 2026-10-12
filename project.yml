@@ -1,0 +1,51 @@
+name: OpenCare
+options:
+  bundleIdPrefix: com.prasanthdendukuri
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    IPHONEOS_DEPLOYMENT_TARGET: 17.0
+    TARGETED_DEVICE_FAMILY: 1
+    CODE_SIGN_STYLE: Automatic
+    DEVELOPMENT_TEAM: 3J6HBM8Q2Z
+    MARKETING_VERSION: 1.0
+    CURRENT_PROJECT_VERSION: 1
+targets:
+  OpenCare:
+    type: application
+    platform: iOS
+    sources:
+      - path: OpenCare
+      - path: Shared
+    settings:
+      base:
+        TARGETED_DEVICE_FAMILY: 1
+        PRODUCT_BUNDLE_IDENTIFIER: com.prasanthdendukuri.opencare
+        GENERATE_INFOPLIST_FILE: NO
+        INFOPLIST_FILE: OpenCare/Info.plist
+        CODE_SIGN_ENTITLEMENTS: OpenCare/OpenCare.entitlements
+    dependencies:
+      - target: StepsWidget
+        embed: true
+  StepsWidget:
+    type: app-extension
+    platform: iOS
+    sources:
+      - path: StepsWidget
+      - path: Shared
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.prasanthdendukuri.opencare.StepsWidget
+        GENERATE_INFOPLIST_FILE: NO
+        INFOPLIST_FILE: StepsWidget/Info.plist
+        CODE_SIGN_ENTITLEMENTS: StepsWidget/StepsWidget.entitlements
+  OpenCareTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: OpenCareTests
+    dependencies:
+      - target: OpenCare
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
