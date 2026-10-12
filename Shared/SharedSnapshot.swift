@@ -17,7 +17,7 @@ struct SharedSnapshot: Codable {
 
     static let empty = SharedSnapshot(
         steps: 0, stepGoal: 10_000, waterOunces: 0, waterGoal: 80,
-        sourceName: "OpenCare", updatedAt: .distantPast,
+        sourceName: "OpenHealth", updatedAt: .distantPast,
         stepsCheckedAt: .distantPast, waterCheckedAt: .distantPast,
         deviceSyncedAt: nil
     )

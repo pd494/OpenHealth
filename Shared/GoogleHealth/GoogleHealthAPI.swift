@@ -2,13 +2,20 @@ import Foundation
 
 struct GoogleHealthAPI {
     private static let base = "https://health.googleapis.com/v4/users/me"
+    private static let sources = "users/me/dataSourceFamilies/google-sources"
     private static let wearables = "users/me/dataSourceFamilies/google-wearables"
 
     func dailySteps(daysBack: Int = 7) async throws -> [DailyStepCount] {
         let today = Calendar.current.startOfDay(for: .now)
-        let body = DailyRollUpRequest(from: today.adding(-daysBack, .day), to: today.adding(1, .day), dataSourceFamily: Self.wearables)
+        let body = DailyRollUpRequest(from: today.adding(-daysBack, .day), to: today.adding(1, .day), dataSourceFamily: Self.sources)
         let response: DailyStepsResponse = try await post("/dataTypes/steps/dataPoints:dailyRollUp", body: body)
         return response.days
+    }
+
+    func dailyDashboard(_ dataType: String) async throws -> DailyDashboardResponse {
+        let today = Calendar.current.startOfDay(for: .now)
+        let body = DailyRollUpRequest(from: today.adding(-7, .day), to: today.adding(1, .day), dataSourceFamily: Self.sources)
+        return try await post("/dataTypes/\(dataType)/dataPoints:dailyRollUp", body: body)
     }
 
     func pairedAir() async throws -> PairedAir? {

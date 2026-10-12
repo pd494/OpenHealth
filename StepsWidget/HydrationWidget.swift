@@ -1,19 +1,19 @@
 import SwiftUI
 import WidgetKit
 
-struct OpenCareHydrationWidget: Widget {
+struct OpenHealthHydrationWidget: Widget {
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: WidgetKind.hydration, provider: SnapshotProvider()) { entry in
             HydrationWidgetView(snapshot: entry.snapshot)
         }
-        .configurationDisplayName("OpenCare Hydration")
+        .configurationDisplayName("OpenHealth Hydration")
         .description("Today's water and your daily goal.")
         .supportedFamilies([.systemSmall])
     }
 }
 
 #Preview("Hydration", as: .systemSmall) {
-    OpenCareHydrationWidget()
+    OpenHealthHydrationWidget()
 } timeline: {
     SnapshotEntry(date: .now, snapshot: .sample)
 }

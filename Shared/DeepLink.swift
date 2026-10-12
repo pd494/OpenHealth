@@ -4,10 +4,10 @@ enum DeepLink: String {
     case steps
     case water
 
-    var url: URL { URL(string: "opencare://\(rawValue)")! }
+    var url: URL { URL(string: "openhealth://\(rawValue)")! }
 
     init?(url: URL) {
-        guard url.scheme == "opencare", let host = url.host, let link = Self(rawValue: host) else { return nil }
+        guard url.scheme == "openhealth", let host = url.host, let link = Self(rawValue: host) else { return nil }
         self = link
     }
 }
