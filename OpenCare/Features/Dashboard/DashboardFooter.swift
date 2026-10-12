@@ -13,6 +13,13 @@ struct DashboardFooter: View {
     }
 
     var body: some View {
+        VStack(spacing: 14) {
+            Hairline()
+            statusRow
+        }
+    }
+
+    private var statusRow: some View {
         HStack(spacing: 7) {
             Circle()
                 .fill(isConnected ? Palette.green : Color.secondary)

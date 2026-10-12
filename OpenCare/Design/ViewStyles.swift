@@ -5,6 +5,7 @@ extension View {
         padding(Layout.cardPadding)
             .frame(maxWidth: .infinity, alignment: .leading)
             .background(Palette.card, in: .rect(cornerRadius: radius))
+            .overlay { RoundedRectangle(cornerRadius: radius).strokeBorder(Palette.hairline) }
     }
 
     func inputSurface(radius: Double = 20) -> some View {
