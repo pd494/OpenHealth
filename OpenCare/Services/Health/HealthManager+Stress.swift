@@ -20,7 +20,9 @@ extension HealthManager {
         stressDay = StressDay(
             points: points.filter { $0.date >= dayStart },
             interval: 3600,
-            sleepWindow: nil,
+            sleepWindow: sleepNight.flatMap { night in
+                night.bedtime.flatMap { bed in night.wakeTime.map { bed...$0 } }
+            },
             week: StressSampler.dailyAverages(points)
         )
         readings[.stress] = stressDay?.current?.score

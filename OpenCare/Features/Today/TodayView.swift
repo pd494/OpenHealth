@@ -1,16 +1,11 @@
 import SwiftUI
 
 struct TodayView: View {
-    @Environment(\.scenePhase) private var scenePhase
     @Environment(HealthManager.self) private var health
     @Environment(GoogleHealthManager.self) private var google
     @State private var sheet: TodaySheet?
     @State private var route: TodayRoute? = DebugLaunch.string("route") == "stress" ? .stress : nil
     @State private var isEditing = DebugLaunch.flag("editMode")
-
-    private static let stepPollInterval = Duration.seconds(30)
-
-    private var isPollingSteps: Bool { google.isConnected && scenePhase == .active }
 
     var body: some View {
         ScrollView {
@@ -39,10 +34,6 @@ struct TodayView: View {
         .onOpenURL { url in
             if DeepLink(url: url) == .water { sheet = .water }
         }
-        .errorAlert("OpenCare", message: Bindable(health).errorMessage)
-        .errorAlert("Google Health", message: Bindable(google).errorMessage)
-        .task { await loadInitialData() }
-        .task(id: isPollingSteps) { await pollGoogleSteps() }
     }
 
     private func select(_ metric: MetricID) {
@@ -50,24 +41,6 @@ struct TodayView: View {
         case .hydration: sheet = .water
         case .stress: route = .stress
         default: break
-        }
-    }
-
-    private func loadInitialData() async {
-        #if targetEnvironment(simulator)
-        if !health.isConnected && !google.isConnected { health.loadDemo() }
-        #endif
-        await AppRefresh.run(force: true)
-        if google.isConnected && health.googleStepWakeupsEnabled {
-            await health.checkGoogleSharedSteps()
-        }
-    }
-
-    private func pollGoogleSteps() async {
-        guard isPollingSteps else { return }
-        while !Task.isCancelled {
-            do { try await Task.sleep(for: Self.stepPollInterval) } catch { return }
-            await google.syncStepsOnly()
         }
     }
 }

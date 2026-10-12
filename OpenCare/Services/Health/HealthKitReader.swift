@@ -95,6 +95,37 @@ struct HealthKitReader {
         }
     }
 
+    /// Sleep stages for the window, from the single source that recorded the most sleep so devices don't overlap.
+    func sleepSegments(from start: Date, to end: Date) async -> [SleepSegment] {
+        await withCheckedContinuation { continuation in
+            let predicate = HKQuery.predicateForSamples(withStart: start, end: end)
+            let oldestFirst = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: true)
+            store.execute(HKSampleQuery(sampleType: HealthTypes.sleep, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: [oldestFirst]) { _, samples, _ in
+                let bySource = Dictionary(grouping: (samples ?? []).compactMap { $0 as? HKCategorySample }) {
+                    $0.sourceRevision.source.bundleIdentifier
+                }
+                let segments = bySource.values.map { group in
+                    group.compactMap { sample -> SleepSegment? in
+                        guard let stage = Self.stage(for: sample.value) else { return nil }
+                        return SleepSegment(stage: stage, start: max(start, sample.startDate), end: min(end, sample.endDate))
+                    }
+                }
+                let best = segments.max { $0.reduce(0) { $0 + $1.duration } < $1.reduce(0) { $0 + $1.duration } }
+                continuation.resume(returning: best ?? [])
+            })
+        }
+    }
+
+    private static func stage(for value: Int) -> SleepStage? {
+        switch HKCategoryValueSleepAnalysis(rawValue: value) {
+        case .awake: .awake
+        case .asleepREM: .rem
+        case .asleepDeep: .deep
+        case .asleepCore, .asleepUnspecified: .core
+        default: nil
+        }
+    }
+
     private func statistics(_ type: HKQuantityType, _ predicate: NSPredicate, _ options: HKStatisticsOptions) async -> HKStatistics? {
         await withCheckedContinuation { continuation in
             store.execute(HKStatisticsQuery(quantityType: type, quantitySamplePredicate: predicate, options: options) { _, result, _ in

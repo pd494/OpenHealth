@@ -15,3 +15,9 @@ extension Palette {
     static let stressMedium = Color(red: 1.0, green: 0.80, blue: 0.30)
     static let stressHigh = Color(red: 1.0, green: 0.36, blue: 0.34)
 }
+
+extension Palette {
+    static let sleepDeep = Color(red: 0.36, green: 0.34, blue: 0.86)
+    static let sleepREM = Color(red: 0.74, green: 0.56, blue: 1.0)
+    static let sleepAwake = Color(red: 1.0, green: 0.62, blue: 0.40)
+}
