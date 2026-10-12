@@ -4,20 +4,18 @@ import SwiftUI
 struct OpenCareApp: App {
     @Environment(\.scenePhase) private var scenePhase
     @UIApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
-    @State private var health = HealthManager.shared
-    @State private var google = GoogleHealthManager.shared
-    @State private var layoutStore = DashboardLayoutStore()
+    @State private var dependencies = AppDependencies()
 
     var body: some Scene {
         WindowGroup {
-            TodayView()
-                .environment(health)
-                .environment(google)
-                .environment(layoutStore)
+            RootTabView()
+                .environment(dependencies.health)
+                .environment(dependencies.google)
+                .environment(dependencies.layout)
         }
         .onChange(of: scenePhase) {
             guard scenePhase == .active else { return }
-            health.checkDayRollover()
+            dependencies.health.checkDayRollover()
             Task { await AppRefresh.run(force: true) }
         }
     }

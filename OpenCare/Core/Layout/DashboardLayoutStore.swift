@@ -9,9 +9,7 @@ final class DashboardLayoutStore {
 
     init(layout: DashboardLayout? = nil) {
         var initial = layout ?? Self.load()
-        #if DEBUG
         DebugLaunch.apply(to: &initial)
-        #endif
         self.layout = initial
     }
 
