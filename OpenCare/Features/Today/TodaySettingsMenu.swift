@@ -5,6 +5,9 @@ struct TodaySettingsMenu: View {
 
     var body: some View {
         Menu {
+            Picker("Rings", selection: Binding(get: { store.layout.ringsMode }, set: store.setRingsMode)) {
+                ForEach(RingsMode.allCases) { Text($0.title).tag($0) }
+            }
             Picker("Tiles", selection: Binding(get: { store.layout.tileLayout }, set: store.setTileLayout)) {
                 ForEach(TileLayout.allCases) { Text($0.title).tag($0) }
             }

@@ -10,6 +10,8 @@ enum DebugLaunch {
     static func apply(to layout: inout DashboardLayout) {
         if string("resetLayout") != nil { layout = .default }
         if let value = string("tileLayout").flatMap(TileLayout.init) { layout.tileLayout = value }
+        if let value = string("ringsMode").flatMap(RingsMode.init) { layout.ringsMode = value }
+        if flag("collapsed") { layout.ringDetailsCollapsed = true }
         if let value = string("calories").flatMap(CaloriePreference.init) { layout.calories = value }
     }
 }

@@ -26,7 +26,12 @@ struct TileGrid: View {
             .overlay(alignment: .topLeading) {
                 if isEditing { HideBadge(metric: item.metric) }
             }
-            .contextMenu { TileContextMenu(metric: item.metric) }
+            .overlay(alignment: .bottomTrailing) {
+                if isEditing && item.metric.descriptor.supportsGoal {
+                    StyleBadge(metric: item.metric, style: .ring).offset(x: 6, y: 6)
+                }
+            }
+            .contextMenu { TileContextMenu(metric: item.metric, style: .tile) }
         }
     }
 }

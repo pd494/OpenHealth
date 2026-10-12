@@ -20,7 +20,7 @@ struct TodayView: View {
                 } else if !health.isConnected && !health.isDemo {
                     ConnectionCard(sheet: $sheet)
                 }
-                RingsCard()
+                RingsSection(isEditing: isEditing)
                 TileGrid(isEditing: isEditing, onSelect: select)
                 if isEditing { EditTray() }
                 AskCard(sheet: $sheet)

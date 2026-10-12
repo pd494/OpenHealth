@@ -4,29 +4,15 @@ struct MetricRingView: View {
     let value: MetricValue
 
     private var descriptor: MetricDescriptor { value.id.descriptor }
-    private var centerText: String { descriptor.format == .percent && value.value != nil ? value.number + "%" : value.number }
+    private var caption: String { value.goalText ?? value.subtitle ?? "No data" }
 
     var body: some View {
         VStack(spacing: 10) {
-            ZStack {
-                ProgressRing(ratio: value.progress ?? 0, lineWidth: Layout.ringLineWidth, tint: descriptor.tint)
-                VStack(spacing: 2) {
-                    Image(systemName: descriptor.symbol)
-                        .font(.caption)
-                        .foregroundStyle(descriptor.tint)
-                        .accessibilityHidden(true)
-                    Text(centerText)
-                        .metricNumber(centerText.count > 5 ? .subheadline : .title3)
-                        .minimumScaleFactor(0.7)
-                        .lineLimit(1)
-                }
-                .padding(.horizontal, 10)
-            }
-            .frame(width: Layout.ringSize, height: Layout.ringSize)
+            RingGauge(value: value)
             VStack(spacing: 2) {
                 Text(descriptor.title)
                     .font(.subheadline.weight(.medium))
-                Text(value.goalText ?? value.subtitle ?? "No data")
+                Text(caption)
                     .font(.caption)
                     .foregroundStyle(.secondary)
                     .lineLimit(1)
@@ -35,7 +21,7 @@ struct MetricRingView: View {
         }
         .frame(maxWidth: .infinity)
         .accessibilityElement(children: .ignore)
-        .accessibilityLabel("\(descriptor.title), \(centerText), \(value.goalText ?? value.subtitle ?? "no data")")
+        .accessibilityLabel("\(descriptor.title), \(RingGauge(value: value).text), \(caption)")
     }
 }
 
