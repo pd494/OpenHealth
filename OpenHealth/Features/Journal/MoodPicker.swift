@@ -15,10 +15,10 @@ struct MoodPicker: View {
                     .frame(maxWidth: .infinity, minHeight: Layout.minTapTarget + 20)
                     .background(
                         mood == option.rawValue ? Palette.mind.opacity(0.16) : Color.white.opacity(0.05),
-                        in: .rect(cornerRadius: 16)
+                        in: .rect(cornerRadius: Layout.cardRadius)
                     )
                 }
-                .buttonStyle(.plain)
+                .buttonStyle(.pressable)
                 .accessibilityAddTraits(mood == option.rawValue ? .isSelected : [])
             }
         }

@@ -3,6 +3,7 @@ import SwiftUI
 
 struct FitnessTrendCard: View {
     @Environment(HealthManager.self) private var health
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var selection = MetricID.steps
 
     var body: some View {
@@ -37,7 +38,7 @@ struct FitnessTrendCard: View {
                 }
             }
             .frame(height: 170)
-            .animation(.snappy, value: selection)
+            .animation(Motion.resolve(Motion.state, reduceMotion: reduceMotion), value: selection)
             .accessibilityLabel("\(selection.descriptor.title) over the last seven days")
         }
         .card()

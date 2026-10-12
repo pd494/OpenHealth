@@ -11,17 +11,27 @@ struct TodayView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: Layout.sectionSpacing) {
                 TodayHeader(sheet: $sheet, isEditing: $isEditing)
-                if google.isConnected {
-                    GoogleStatusCard(sheet: $sheet)
-                } else if !health.isConnected && !health.isDemo {
-                    ConnectionCard(sheet: $sheet)
+                    .todayEntrance(0)
+                VStack(alignment: .leading, spacing: Layout.sectionSpacing) {
+                    if google.isConnected {
+                        GoogleStatusCard(sheet: $sheet)
+                    } else if !health.isConnected && !health.isDemo {
+                        ConnectionCard(sheet: $sheet)
+                    }
+                    RingsSection(isEditing: isEditing)
                 }
-                RingsSection(isEditing: isEditing)
-                TileGrid(isEditing: isEditing, onSelect: select)
-                if isEditing { EditTray() }
-                AskCard(sheet: $sheet)
-                if health.isDemo { DemoBanner(sheet: $sheet) }
-                TodayFooter()
+                .todayEntrance(1)
+                VStack(alignment: .leading, spacing: Layout.sectionSpacing) {
+                    TileGrid(isEditing: isEditing, onSelect: select)
+                    if isEditing { EditTray() }
+                }
+                .todayEntrance(2)
+                VStack(alignment: .leading, spacing: Layout.sectionSpacing) {
+                    AskCard(sheet: $sheet)
+                    if health.isDemo { DemoBanner(sheet: $sheet) }
+                    TodayFooter()
+                }
+                .todayEntrance(3)
             }
             .padding(.horizontal, Layout.screenPadding)
             .padding(.vertical, Layout.screenPadding)

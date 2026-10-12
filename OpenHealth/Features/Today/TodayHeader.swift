@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct TodayHeader: View {
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Binding var sheet: TodaySheet?
     @Binding var isEditing: Bool
 
@@ -12,8 +13,9 @@ struct TodayHeader: View {
                     .foregroundStyle(Palette.green)
                     .accessibilityHidden(true)
                 Spacer()
-                Button(isEditing ? "Done" : "Edit") { withAnimation(.snappy) { isEditing.toggle() } }
+                Button(isEditing ? "Done" : "Edit") { withMotion(reduceMotion: reduceMotion) { isEditing.toggle() } }
                     .font(.rounded(.subheadline, weight: .semibold))
+                    .contentTransition(.opacity)
                     .padding(.horizontal, 14)
                     .frame(minHeight: Layout.minTapTarget)
                     .background(isEditing ? Palette.green.opacity(0.18) : Palette.card, in: .capsule)

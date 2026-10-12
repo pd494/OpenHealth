@@ -2,6 +2,7 @@ import SwiftUI
 
 struct EditTray: View {
     @Environment(DashboardLayoutStore.self) private var store
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     private var hidden: [DashboardItem] { store.layout.hidden }
 
@@ -15,25 +16,22 @@ struct EditTray: View {
             } else {
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 130), spacing: 8)], alignment: .leading, spacing: 8) {
                     ForEach(hidden) { item in
-                        Button { withAnimation(.snappy) { store.setVisible(item.metric, true) } } label: {
+                        Button { withMotion(reduceMotion: reduceMotion) { store.setVisible(item.metric, true) } } label: {
                             Label(item.metric.descriptor.title, systemImage: "plus")
                                 .font(.subheadline.weight(.medium))
                                 .frame(maxWidth: .infinity, minHeight: Layout.minTapTarget)
                                 .background(Palette.card, in: .capsule)
                                 .overlay { Capsule().strokeBorder(Palette.hairline) }
                         }
-                        .buttonStyle(.plain)
+                        .buttonStyle(.pressable)
                     }
                 }
             }
         }
         .padding(Layout.cardPadding)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .overlay {
-            RoundedRectangle(cornerRadius: Layout.cardRadius)
-                .strokeBorder(Palette.stitch, style: StrokeStyle(lineWidth: 1, dash: [5, 4]))
-        }
-        .transition(.move(edge: .bottom).combined(with: .opacity))
+        .dashedSurface()
+        .softLift()
     }
 }
 

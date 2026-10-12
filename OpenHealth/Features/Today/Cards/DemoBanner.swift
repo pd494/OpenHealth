@@ -16,5 +16,6 @@ struct DemoBanner: View {
             .font(.caption.weight(.medium))
             .foregroundStyle(Color.secondary)
         }
+        .buttonStyle(.pressable)
     }
 }

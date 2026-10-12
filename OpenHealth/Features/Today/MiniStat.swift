@@ -11,7 +11,7 @@ struct MiniStat: View {
         .padding(.horizontal, 8)
         .padding(.vertical, 6)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(.white.opacity(0.05), in: .rect(cornerRadius: 12))
+        .background(.white.opacity(0.05), in: .rect(cornerRadius: Layout.chipRadius))
         .accessibilityElement(children: .combine)
     }
 }

@@ -4,6 +4,7 @@ enum Layout {
     static let cardPadding = 18.0
     static let tilePadding = 16.0
     static let cardRadius = 20.0
+    static let chipRadius = 10.0
     static let sheetPadding = 22.0
     static let minTapTarget = 44.0
     static let ringSize = 104.0

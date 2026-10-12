@@ -6,14 +6,16 @@ struct ProgressBar: View {
     var height = 3.0
 
     var body: some View {
-        Capsule()
-            .fill(Palette.track)
-            .frame(height: height)
-            .overlay(alignment: .leading) {
-                GeometryReader { proxy in
-                    Capsule().fill(tint).frame(width: proxy.size.width * min(max(ratio, 0), 1))
+        AnimatedProgress(ratio: ratio) { displayed in
+            Capsule()
+                .fill(Palette.track)
+                .frame(height: height)
+                .overlay(alignment: .leading) {
+                    GeometryReader { proxy in
+                        Capsule().fill(tint).frame(width: proxy.size.width * min(max(displayed, 0), 1))
+                    }
                 }
-            }
-            .accessibilityHidden(true)
+        }
+        .accessibilityHidden(true)
     }
 }

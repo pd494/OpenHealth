@@ -12,7 +12,9 @@ struct RingGauge: View {
 
     var body: some View {
         ZStack {
-            ProgressRing(ratio: value.progress ?? 0, lineWidth: isLarge ? Layout.ringLineWidth : 6, tint: descriptor.tint)
+            AnimatedProgress(ratio: value.progress ?? 0) {
+                ProgressRing(ratio: $0, lineWidth: isLarge ? Layout.ringLineWidth : 6, tint: descriptor.tint)
+            }
             VStack(spacing: 2) {
                 if isLarge {
                     Image(systemName: descriptor.symbol)

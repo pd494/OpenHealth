@@ -24,7 +24,7 @@ struct JournalView: View {
                 Section {
                     ForEach(day.entries) { entry in
                         Button { sheet = .edit(entry) } label: { JournalEntryRow(entry: entry) }
-                            .buttonStyle(.plain)
+                            .buttonStyle(.pressable)
                             .listRowInsets(.init(top: 5, leading: Layout.screenPadding, bottom: 5, trailing: Layout.screenPadding))
                             .listRowSeparator(.hidden)
                             .listRowBackground(Color.clear)

@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ReorderHandle<ID: Hashable>: View {
     @Environment(\.reorderActions) private var actions
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     @State private var isActive = false
 
@@ -17,7 +18,7 @@ struct ReorderHandle<ID: Hashable>: View {
             }
         }
         .foregroundStyle(.white.opacity(isActive ? 0.7 : 0.16))
-        .animation(.snappy, value: isActive)
+        .animation(Motion.resolve(Motion.state, reduceMotion: reduceMotion), value: isActive)
         .frame(width: Layout.minTapTarget, height: Layout.minTapTarget)
         .contentShape(.rect)
         .padding(-(Layout.minTapTarget - 20) / 2)

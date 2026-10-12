@@ -31,7 +31,7 @@ struct InsightsSheet: View {
                             .disabled(!canAsk)
                     }
                     .padding(14)
-                    .inputSurface(radius: 17)
+                    .inputSurface()
                     HStack {
                         ForEach(HealthInsights.suggestedQuestions, id: \.self) { prompt in
                             Button(prompt) {

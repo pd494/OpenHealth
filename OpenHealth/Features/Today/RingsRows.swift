@@ -10,7 +10,10 @@ struct RingsRows: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
             RingFlowLayout {
-                ForEach(rings) { RingCell(metric: $0.metric, isEditing: isEditing) }
+                ForEach(Array(rings.enumerated()), id: \.element.id) { index, item in
+                    RingCell(metric: item.metric, isEditing: isEditing)
+                        .environment(\.fillDelay, Double(index) * RingsSection.ringStagger)
+                }
             }
             if showsDetails {
                 VStack(alignment: .leading, spacing: 16) {
@@ -28,7 +31,7 @@ struct RingsRows: View {
                         }
                     }
                 }
-                .transition(.opacity.combined(with: .move(edge: .top)))
+                .softLift()
             }
         }
     }

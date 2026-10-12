@@ -20,6 +20,7 @@ struct ConnectionCard: View {
             }
             Button("Preview with sample data", action: health.loadDemo)
                 .font(.caption.weight(.medium))
+                .buttonStyle(.pressable)
         }
         .card()
     }

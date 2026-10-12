@@ -4,11 +4,22 @@ extension View {
     func card(radius: Double = Layout.cardRadius) -> some View {
         padding(Layout.cardPadding)
             .frame(maxWidth: .infinity, alignment: .leading)
-            .background(Palette.card, in: .rect(cornerRadius: radius))
+            .surface(radius: radius)
+    }
+
+    func surface(radius: Double = Layout.cardRadius) -> some View {
+        background(Palette.card, in: .rect(cornerRadius: radius))
             .overlay { RoundedRectangle(cornerRadius: radius).strokeBorder(Palette.hairline, lineWidth: 0.5) }
     }
 
-    func inputSurface(radius: Double = 20) -> some View {
+    func dashedSurface(radius: Double = Layout.cardRadius) -> some View {
+        overlay {
+            RoundedRectangle(cornerRadius: radius)
+                .strokeBorder(Palette.stitch, style: StrokeStyle(lineWidth: 1, dash: [5, 4]))
+        }
+    }
+
+    func inputSurface(radius: Double = Layout.cardRadius) -> some View {
         background(.white.opacity(0.08), in: .rect(cornerRadius: radius))
     }
 

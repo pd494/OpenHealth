@@ -2,12 +2,13 @@ import SwiftUI
 
 struct HideBadge: View {
     @Environment(DashboardLayoutStore.self) private var store
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     let metric: MetricID
 
     var body: some View {
         Button("Hide \(metric.descriptor.title)", systemImage: "minus.circle.fill") {
-            withAnimation(.snappy) { store.setVisible(metric, false) }
+            withMotion(reduceMotion: reduceMotion) { store.setVisible(metric, false) }
         }
         .labelStyle(.iconOnly)
         .font(.title2)

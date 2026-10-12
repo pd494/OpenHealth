@@ -26,9 +26,11 @@ struct GoogleStatusCard: View {
             Spacer(minLength: 0)
             Button("Check Google Health now", systemImage: "arrow.clockwise", action: sync)
                 .iconOnlyButton()
+                .buttonStyle(.pressable)
                 .disabled(google.isSyncing)
             Button("Google Health connection settings", systemImage: "ellipsis") { sheet = .googleConnection }
                 .iconOnlyButton()
+                .buttonStyle(.pressable)
         }
         .card()
     }

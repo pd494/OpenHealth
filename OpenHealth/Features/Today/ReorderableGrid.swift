@@ -27,7 +27,7 @@ struct ReorderableGrid<Item: Identifiable & Hashable, Cell: View>: View {
                 slot(item)
             }
         }
-        .animation(reduceMotion ? nil : .snappy, value: items)
+        .animation(Motion.resolve(Motion.reorder, reduceMotion: reduceMotion), value: items)
         .coordinateSpace(name: ReorderSpace.name)
         .onGeometryChange(for: Double.self) { $0.size.width } action: { width = $0 }
         .overlay(alignment: .topLeading) { liftedCell }
@@ -41,10 +41,7 @@ struct ReorderableGrid<Item: Identifiable & Hashable, Cell: View>: View {
             .frame(height: rowHeight)
             .opacity(item.id == lifted ? 0 : 1)
             .overlay {
-                if item.id == lifted {
-                    RoundedRectangle(cornerRadius: Layout.cardRadius)
-                        .strokeBorder(Palette.stitch, style: StrokeStyle(lineWidth: 1, dash: [5, 4]))
-                }
+                if item.id == lifted { Color.clear.dashedSurface() }
             }
             .accessibilityAction(named: "Move earlier") { onMove(item.id, index - 1) }
             .accessibilityAction(named: "Move later") { onMove(item.id, index + 1) }
@@ -55,8 +52,9 @@ struct ReorderableGrid<Item: Identifiable & Hashable, Cell: View>: View {
             let origin = grab.map { CGPoint(x: finger.x - $0.width, y: finger.y - $0.height) } ?? origin(of: index)
             cell(items[index])
                 .frame(width: slotWidth, height: rowHeight)
-                .scaleEffect(1.04)
-                .shadow(color: .black.opacity(0.45), radius: 18, y: 10)
+                .scaleEffect(1.03)
+                .shadow(color: .black.opacity(0.35), radius: 16, y: 8)
+                .shadow(color: .black.opacity(0.2), radius: 2, y: 1)
                 .offset(x: origin.x, y: origin.y)
                 .allowsHitTesting(false)
         }
@@ -92,7 +90,7 @@ struct ReorderableGrid<Item: Identifiable & Hashable, Cell: View>: View {
     }
 
     private func drop() {
-        withAnimation(reduceMotion ? nil : .smooth) {
+        withMotion(Motion.reorder, reduceMotion: reduceMotion) {
             lifted = nil
             grab = nil
         }

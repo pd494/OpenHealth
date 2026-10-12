@@ -40,7 +40,7 @@ struct JournalEntryEditor: View {
                         LazyVGrid(columns: [GridItem(.adaptive(minimum: 120), spacing: 8)], alignment: .leading, spacing: 8) {
                             ForEach(JournalTag.allCases) { tag in
                                 Button { toggle(tag) } label: { TagChip(tag: tag, isSelected: tags.contains(tag)) }
-                                    .buttonStyle(.plain)
+                                    .buttonStyle(.pressable)
                             }
                         }
                         .sensoryFeedback(.selection, trigger: tags)

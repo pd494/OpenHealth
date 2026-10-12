@@ -22,7 +22,7 @@ struct TileGrid: View {
             Button { onSelect(item.metric) } label: {
                 MetricTile(value: health.value(item.metric), layout: tileLayout)
             }
-            .buttonStyle(.plain)
+            .buttonStyle(.pressable)
             .overlay(alignment: .topLeading) {
                 if isEditing { HideBadge(metric: item.metric) }
             }

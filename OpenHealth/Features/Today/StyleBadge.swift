@@ -2,6 +2,7 @@ import SwiftUI
 
 struct StyleBadge: View {
     @Environment(DashboardLayoutStore.self) private var store
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     let metric: MetricID
     let style: DisplayStyle
@@ -11,7 +12,7 @@ struct StyleBadge: View {
             style == .ring ? "Show \(metric.descriptor.title) as ring" : "Show \(metric.descriptor.title) as tile",
             systemImage: style == .ring ? "circle.dashed" : "square.grid.2x2.fill"
         ) {
-            withAnimation(.snappy) { store.setStyle(metric, style) }
+            withMotion(reduceMotion: reduceMotion) { store.setStyle(metric, style) }
         }
         .labelStyle(.iconOnly)
         .font(.caption.weight(.bold))

@@ -17,8 +17,7 @@ struct MetricTile: View {
             }
         }
         .padding(Layout.tilePadding)
-        .background(Palette.card, in: .rect(cornerRadius: Layout.cardRadius))
-        .overlay { RoundedRectangle(cornerRadius: Layout.cardRadius).strokeBorder(Palette.hairline) }
+        .surface()
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(descriptor.title)
         .accessibilityValue("\(value.number) \(value.unit) \(caption)")

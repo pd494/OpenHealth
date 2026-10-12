@@ -19,10 +19,8 @@ struct EmptyState: View {
         }
         .padding(28)
         .frame(maxWidth: .infinity)
-        .overlay {
-            RoundedRectangle(cornerRadius: Layout.cardRadius)
-                .strokeBorder(Palette.stitch, style: StrokeStyle(lineWidth: 1, dash: [5, 4]))
-        }
+        .dashedSurface()
         .accessibilityElement(children: .combine)
+        .softLift()
     }
 }

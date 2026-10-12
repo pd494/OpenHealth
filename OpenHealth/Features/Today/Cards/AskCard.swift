@@ -25,5 +25,6 @@ struct AskCard: View {
             }
             .card()
         }
+        .buttonStyle(.pressable)
     }
 }

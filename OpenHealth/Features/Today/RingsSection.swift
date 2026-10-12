@@ -3,8 +3,11 @@ import SwiftUI
 struct RingsSection: View {
     @Environment(HealthManager.self) private var health
     @Environment(DashboardLayoutStore.self) private var store
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     let isEditing: Bool
+
+    static let ringStagger = 0.08
 
     private var layout: DashboardLayout { store.layout }
     private var showsDetails: Bool { !layout.ringDetailsCollapsed }
@@ -17,13 +20,13 @@ struct RingsSection: View {
                 }
                 content
             }
-            .card(radius: 28)
+            .card()
         }
     }
 
     private var chevron: some View {
         Button(showsDetails ? "Hide details" : "Show details", systemImage: "chevron.down") {
-            withAnimation(.snappy) { store.toggleRingDetails() }
+            withMotion(reduceMotion: reduceMotion) { store.toggleRingDetails() }
         }
         .labelStyle(.iconOnly)
         .font(.body.weight(.bold))
@@ -44,15 +47,17 @@ struct RingsSection: View {
         } else {
             let isExpanded = layout.ringsMode == .expanded
             VStack(spacing: 16) {
-                ForEach(layout.rings) { item in
-                    if item.id != layout.rings.first?.id { Hairline() }
+                ForEach(Array(layout.rings.enumerated()), id: \.element.id) { index, item in
+                    if index > 0 { Hairline() }
                     RingStatsRow(
                         metric: item.metric,
                         isEditing: isEditing,
                         ringSize: isExpanded ? Layout.ringSize : 76
                     )
+                    .environment(\.fillDelay, Double(index) * Self.ringStagger)
                 }
             }
+            .softLift()
         }
     }
 }
