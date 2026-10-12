@@ -36,4 +36,5 @@ extension Defaults.Key where Value == Date {
 
 extension Defaults.Key where Value == Data {
     static var localWater: Self { .init(name: "localWaterRecord") }
+    static var dashboardLayout: Self { .init(name: "dashboardLayout") }
 }
