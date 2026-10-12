@@ -1,6 +1,8 @@
+import Inject
 import SwiftUI
 
 struct SleepView: View {
+    @ObserveInjection private var inject
     @Environment(HealthManager.self) private var health
 
     var body: some View {
@@ -30,6 +32,7 @@ struct SleepView: View {
             .padding(Layout.screenPadding)
         }
         .background(Palette.background)
+        .enableInjection()
     }
 }
 

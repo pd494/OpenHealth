@@ -1,7 +1,9 @@
+import Inject
 import SwiftData
 import SwiftUI
 
 struct JournalView: View {
+    @ObserveInjection private var inject
     @Environment(\.modelContext) private var context
     @Environment(HealthManager.self) private var health
     @Environment(JournalStore.self) private var store
@@ -38,6 +40,7 @@ struct JournalView: View {
         .listStyle(.plain)
         .scrollContentBackground(.hidden)
         .background(Palette.background)
+        .enableInjection()
         .sheet(item: $sheet) { destination in
             switch destination {
             case .new: JournalEntryEditor(entry: nil)

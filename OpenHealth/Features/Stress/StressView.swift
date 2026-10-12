@@ -1,6 +1,8 @@
+import Inject
 import SwiftUI
 
 struct StressView: View {
+    @ObserveInjection private var inject
     @Environment(HealthManager.self) private var health
 
     var body: some View {
@@ -27,6 +29,7 @@ struct StressView: View {
             .padding(Layout.screenPadding)
         }
         .background(Palette.background)
+        .enableInjection()
         .navigationTitle("Stress")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar(.visible, for: .navigationBar)

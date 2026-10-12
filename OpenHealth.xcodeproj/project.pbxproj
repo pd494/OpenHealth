@@ -100,6 +100,7 @@
 		7387EB8E91679C63421090A6 /* DeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DFA6D03F204AC2C979D406 /* DeepLink.swift */; };
 		7569D2057978DE1A1ADD417A /* PressableButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4A3C09CAA621659411B012 /* PressableButtonStyle.swift */; };
 		78C55EFF95C536DD2722F754 /* JournalEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1830C1B5927B5451616C38E0 /* JournalEntry.swift */; };
+		79499DA9E373144A16654A95 /* Inject in Frameworks */ = {isa = PBXBuildFile; productRef = CC86B415703033DAF18F679C /* Inject */; };
 		7B530CC92357B1C5DE84ED75 /* WidgetFootnote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BC04CAA736E10DCCA8949A /* WidgetFootnote.swift */; };
 		7D07FDA7E542BD181D194F21 /* DailyRollUpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A02A92031980D1B7DED7B1 /* DailyRollUpRequest.swift */; };
 		7EA01E055239A54D0EEC4E65 /* HealthManager+Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4352C8D0BBF4044CFD9E782 /* HealthManager+Preview.swift */; };
@@ -429,6 +430,17 @@
 		FDF8C463990925E5E398052F /* SleepStagesCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepStagesCard.swift; sourceTree = "<group>"; };
 		FF0D3A9410BCB75A2021474D /* GoogleHealthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleHealthManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		28920E2A9A8376C9D7416F4F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				79499DA9E373144A16654A95 /* Inject in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		0362642063DA846419F0668A /* GoogleHealth */ = {
@@ -869,6 +881,7 @@
 			buildConfigurationList = 8CEFB05129430AFF657C420D /* Build configuration list for PBXNativeTarget "OpenHealth" */;
 			buildPhases = (
 				1CE4376CD98F309BB25BB5A6 /* Sources */,
+				28920E2A9A8376C9D7416F4F /* Frameworks */,
 				B8D4D834C6FDB7329733050C /* Embed Foundation Extensions */,
 			);
 			buildRules = (
@@ -878,6 +891,7 @@
 			);
 			name = OpenHealth;
 			packageProductDependencies = (
+				CC86B415703033DAF18F679C /* Inject */,
 			);
 			productName = OpenHealth;
 			productReference = 887D1651D6F32D2DC291F71D /* OpenHealth.app */;
@@ -933,6 +947,9 @@
 			);
 			mainGroup = 4B32CD38E66B3ED0D20D9709;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				93B3440868A5C425CED2ED5D /* XCRemoteSwiftPackageReference "Inject" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 6CEAE5C57577D79B81215256 /* Products */;
 			projectDirPath = "";
@@ -1407,11 +1424,17 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = OpenHealth/OpenHealth.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				EMIT_FRONTEND_COMMAND_LINES = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = OpenHealth/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-Xlinker",
+					"-interposable",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.prasanthdendukuri.openhealth;
 				SDKROOT = iphoneos;
@@ -1459,6 +1482,25 @@
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		93B3440868A5C425CED2ED5D /* XCRemoteSwiftPackageReference "Inject" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/krzysztofzablocki/Inject";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CC86B415703033DAF18F679C /* Inject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 93B3440868A5C425CED2ED5D /* XCRemoteSwiftPackageReference "Inject" */;
+			productName = Inject;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 02492C0294AF09ABFEAE17C8 /* Project object */;
 }

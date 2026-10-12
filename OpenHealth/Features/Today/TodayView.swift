@@ -1,6 +1,8 @@
+import Inject
 import SwiftUI
 
 struct TodayView: View {
+    @ObserveInjection private var inject
     @Environment(HealthManager.self) private var health
     @Environment(GoogleHealthManager.self) private var google
     @State private var sheet: TodaySheet?
@@ -37,6 +39,7 @@ struct TodayView: View {
             .padding(.vertical, Layout.screenPadding)
         }
         .background(Palette.background)
+        .enableInjection()
         .preferredColorScheme(.dark)
         .tint(Palette.green)
         .todaySheets($sheet)

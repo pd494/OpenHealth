@@ -1,6 +1,8 @@
+import Inject
 import SwiftUI
 
 struct FitnessView: View {
+    @ObserveInjection private var inject
     @Environment(HealthManager.self) private var health
 
     private static let today: [MetricID] = [.steps, .distance, .activeEnergy, .exerciseMinutes]
@@ -29,6 +31,7 @@ struct FitnessView: View {
             .padding(Layout.screenPadding)
         }
         .background(Palette.background)
+        .enableInjection()
     }
 
     private var workouts: some View {

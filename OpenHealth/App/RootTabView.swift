@@ -1,6 +1,8 @@
+import Inject
 import SwiftUI
 
 struct RootTabView: View {
+    @ObserveInjection private var inject
     @Environment(\.scenePhase) private var scenePhase
     @Environment(HealthManager.self) private var health
     @Environment(GoogleHealthManager.self) private var google
@@ -24,6 +26,7 @@ struct RootTabView: View {
         .sensoryFeedback(.selection, trigger: selection)
         .errorAlert("OpenHealth", message: Bindable(health).errorMessage)
         .errorAlert("Google Health", message: Bindable(google).errorMessage)
+        .enableInjection()
         .task { await loadInitialData() }
         .task(id: isPollingSteps) { await pollGoogleSteps() }
     }

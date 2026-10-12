@@ -15,7 +15,7 @@ A native SwiftUI health dashboard for iPhone, backed by Apple Health and Google 
 - Open `OpenHealth.xcodeproj` and run the `OpenHealth` scheme
 - The simulator loads demo data automatically
 - `project.yml` is the source of truth: run `xcodegen generate` after adding files
-- Live reload: boot a simulator, then run `python3 scripts/dev-watch.py`
+- Hot reload: open InjectionIII, point it at this folder, run the Debug build in the simulator, and save any Swift file
 
 ## On a device
 

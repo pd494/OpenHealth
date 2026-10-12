@@ -1,4 +1,8 @@
 name: OpenHealth
+packages:
+  Inject:
+    url: https://github.com/krzysztofzablocki/Inject
+    from: 1.5.0
 options:
   bundleIdPrefix: com.prasanthdendukuri
 settings:
@@ -24,9 +28,14 @@ targets:
         GENERATE_INFOPLIST_FILE: NO
         INFOPLIST_FILE: OpenHealth/Info.plist
         CODE_SIGN_ENTITLEMENTS: OpenHealth/OpenHealth.entitlements
+      configs:
+        Debug:
+          OTHER_LDFLAGS: ["$(inherited)", "-Xlinker", "-interposable"]
+          EMIT_FRONTEND_COMMAND_LINES: YES
     dependencies:
       - target: StepsWidget
         embed: true
+      - package: Inject
   StepsWidget:
     type: app-extension
     platform: iOS
