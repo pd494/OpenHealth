@@ -13,7 +13,7 @@ struct MetricTile: View {
         Group {
             switch layout {
             case .grid: gridContent
-            case .list: listContent
+            case .list, .pills: listContent
             }
         }
         .padding(Layout.tilePadding)

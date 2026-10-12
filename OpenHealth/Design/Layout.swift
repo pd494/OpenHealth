@@ -12,4 +12,5 @@ enum Layout {
     static let tileSpacing = 10.0
     static let gridTileHeight = 118.0
     static let listTileHeight = 60.0
+    static let pillTileHeight = 70.0
 }

@@ -6,21 +6,34 @@ struct TileGrid: View {
     @Environment(\.dynamicTypeSize) private var typeSize
     @ScaledMetric(relativeTo: .title) private var gridHeight = Layout.gridTileHeight
     @ScaledMetric(relativeTo: .body) private var listHeight = Layout.listTileHeight
+    @ScaledMetric(relativeTo: .body) private var pillHeight = Layout.pillTileHeight
 
     let isEditing: Bool
     let onSelect: (MetricID) -> Void
 
     private var tileLayout: TileLayout { typeSize.isAccessibilitySize ? .list : store.layout.tileLayout }
 
+    private var rowHeight: Double {
+        switch tileLayout {
+        case .pills: pillHeight
+        case .grid: gridHeight
+        case .list: listHeight
+        }
+    }
+
     var body: some View {
         ReorderableGrid(
             items: store.layout.tiles,
             columns: tileLayout.columns,
-            rowHeight: tileLayout == .grid ? gridHeight : listHeight,
+            rowHeight: rowHeight,
             onMove: store.moveTile
         ) { item in
             Button { onSelect(item.metric) } label: {
-                MetricTile(value: health.value(item.metric), layout: tileLayout)
+                if tileLayout == .pills {
+                    MetricPill(value: health.value(item.metric))
+                } else {
+                    MetricTile(value: health.value(item.metric), layout: tileLayout)
+                }
             }
             .buttonStyle(.pressable)
             .overlay(alignment: .topLeading) {

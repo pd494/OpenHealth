@@ -26,6 +26,7 @@
 		1CE376D06797040AE032FFAF /* JournalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768F3813C7670672B3EFA07C /* JournalTests.swift */; };
 		1D34383DCA7BBABEBA410705 /* SleepNightTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5225D43149D5AD1D3CBE043F /* SleepNightTests.swift */; };
 		1F76F8AD615211937C3049AD /* DailyMetric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE64B39C69A0DC161E17161 /* DailyMetric.swift */; };
+		208266D2B0419F80C022522D /* MetricPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43862E5948E0EAC8E5397125 /* MetricPill.swift */; };
 		23355551C5D68BFD3DF86BB6 /* DemoFitness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C62C0B6B468156D2E6CED5F /* DemoFitness.swift */; };
 		24E95F9637519472C716AF12 /* GoogleTokenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051E36A15C9E43E887C28960 /* GoogleTokenStore.swift */; };
 		24FCE165C815557AAA45AE31 /* GoogleSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7670F4BF112E7CFADC175A /* GoogleSession.swift */; };
@@ -297,6 +298,7 @@
 		3E78D1C35D763242B454DCAF /* Mood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mood.swift; sourceTree = "<group>"; };
 		40A02A92031980D1B7DED7B1 /* DailyRollUpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRollUpRequest.swift; sourceTree = "<group>"; };
 		419A4C3F35AB4CE2CA1FA69D /* DemoStress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoStress.swift; sourceTree = "<group>"; };
+		43862E5948E0EAC8E5397125 /* MetricPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricPill.swift; sourceTree = "<group>"; };
 		43F021567B6CC08E81AD159F /* MetricStatsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricStatsTests.swift; sourceTree = "<group>"; };
 		466107EAC4B8DC962A8D3536 /* DepthRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepthRing.swift; sourceTree = "<group>"; };
 		491DEF0D3904AC5BD2E0743A /* GoogleAccountSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAccountSection.swift; sourceTree = "<group>"; };
@@ -618,6 +620,7 @@
 			children = (
 				3209CCA72C974BE0BEB5EC94 /* EditTray.swift */,
 				FA7163C072E1513ECEEFD49D /* HideBadge.swift */,
+				43862E5948E0EAC8E5397125 /* MetricPill.swift */,
 				00360E933E2B24760DB8DDB9 /* MetricTile.swift */,
 				88AEF7E3733B41322556C312 /* MiniStat.swift */,
 				2E7E5B6BC0411EE2B3DFA0F6 /* ReorderableGrid.swift */,
@@ -1052,6 +1055,7 @@
 				0114FFA082F21DD502B4C0BF /* MetricDomain.swift in Sources */,
 				E3C79E5D8A8FAF8D3CF69968 /* MetricFormat.swift in Sources */,
 				DBA4EC3D86B830BC938C5BCC /* MetricID.swift in Sources */,
+				208266D2B0419F80C022522D /* MetricPill.swift in Sources */,
 				94642B6BADA61749D6D7FB73 /* MetricRegistry.swift in Sources */,
 				845893AAB0696906DBC30C99 /* MetricRingView.swift in Sources */,
 				31AF90434E6152BE94B5A9B0 /* MetricSource.swift in Sources */,

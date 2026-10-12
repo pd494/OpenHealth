@@ -6,7 +6,7 @@ struct DashboardLayout: Codable, Equatable {
     var ringsMode = RingsMode.standard
     var ringDetailsCollapsed = false
     var calories = CaloriePreference.active
-    var tileLayout = TileLayout.grid
+    var tileLayout = TileLayout.pills
 
     static let `default` = DashboardLayout(items: [
         .init(metric: .steps, isVisible: true, style: .ring),
@@ -109,6 +109,6 @@ extension DashboardLayout {
         ringsMode = try container.decodeIfPresent(RingsMode.self, forKey: .ringsMode) ?? .standard
         ringDetailsCollapsed = try container.decodeIfPresent(Bool.self, forKey: .ringDetailsCollapsed) ?? false
         calories = try container.decodeIfPresent(CaloriePreference.self, forKey: .calories) ?? .active
-        tileLayout = try container.decodeIfPresent(TileLayout.self, forKey: .tileLayout) ?? .grid
+        tileLayout = try container.decodeIfPresent(TileLayout.self, forKey: .tileLayout) ?? .pills
     }
 }
