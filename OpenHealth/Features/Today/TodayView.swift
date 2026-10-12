@@ -20,7 +20,7 @@ struct TodayView: View {
                     } else if !health.isConnected && !health.isDemo {
                         ConnectionCard(sheet: $sheet)
                     }
-                    RingsSection(isEditing: isEditing)
+                    RingsSection(isEditing: isEditing, onSelect: select)
                 }
                 .todayEntrance(1)
                 VStack(alignment: .leading, spacing: Layout.sectionSpacing) {

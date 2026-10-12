@@ -4,16 +4,16 @@ struct DashboardLayout: Codable, Equatable {
     var schemaVersion = currentSchemaVersion
     var items: [DashboardItem]
     var ringsMode = RingsMode.standard
-    var ringDetailsCollapsed = false
+    var ringDetailsCollapsed = true
     var calories = CaloriePreference.active
-    var tileLayout = TileLayout.pills
+    var tileLayout = TileLayout.grid
 
     static let `default` = DashboardLayout(items: [
         .init(metric: .steps, isVisible: true, style: .ring),
         .init(metric: .recovery, isVisible: true, style: .ring),
         .init(metric: .sleep, isVisible: true, style: .ring),
-        .init(metric: .hydration, isVisible: true, style: .tile),
-        .init(metric: .activeEnergy, isVisible: true, style: .tile),
+        .init(metric: .hydration, isVisible: true, style: .pill),
+        .init(metric: .activeEnergy, isVisible: true, style: .pill),
         .init(metric: .distance, isVisible: true, style: .tile),
         .init(metric: .heartRate, isVisible: true, style: .tile),
         .init(metric: .hrv, isVisible: true, style: .tile),
@@ -28,6 +28,7 @@ struct DashboardLayout: Codable, Equatable {
     ])
 
     var rings: [DashboardItem] { displayed { $0.isVisible && $0.style == .ring } }
+    var pills: [DashboardItem] { displayed { $0.isVisible && $0.style == .pill } }
     var tiles: [DashboardItem] { displayed { $0.isVisible && $0.style == .tile } }
     var hidden: [DashboardItem] { displayed { !$0.isVisible } }
 
@@ -51,9 +52,9 @@ struct DashboardLayout: Codable, Equatable {
         update(id) { $0.isVisible = visible }
     }
 
-    /// Ignored for metrics without a goal, which can only be tiles.
+    /// Ignored when the style can't show the metric, such as a ring for a metric without a goal.
     mutating func setStyle(_ id: MetricID, _ style: DisplayStyle) {
-        guard style == .tile || id.descriptor.supportsGoal else { return }
+        guard style.supports(id) else { return }
         update(id) { $0.style = style }
     }
 
@@ -65,7 +66,7 @@ struct DashboardLayout: Codable, Equatable {
             let metric = Self.canonical(item.metric)
             guard seen.insert(metric).inserted else { return nil }
             var item = DashboardItem(metric: metric, isVisible: item.isVisible, style: item.style)
-            if !metric.descriptor.supportsGoal { item.style = .tile }
+            if !item.style.supports(metric) { item.style = .tile }
             return item
         }
         for metric in MetricID.allCases where metric != .totalEnergy && !seen.contains(metric) {
@@ -107,8 +108,8 @@ extension DashboardLayout {
             MetricID(rawValue: stored.metric).map { DashboardItem(metric: $0, isVisible: stored.isVisible, style: stored.style) }
         }
         ringsMode = try container.decodeIfPresent(RingsMode.self, forKey: .ringsMode) ?? .standard
-        ringDetailsCollapsed = try container.decodeIfPresent(Bool.self, forKey: .ringDetailsCollapsed) ?? false
+        ringDetailsCollapsed = try container.decodeIfPresent(Bool.self, forKey: .ringDetailsCollapsed) ?? true
         calories = try container.decodeIfPresent(CaloriePreference.self, forKey: .calories) ?? .active
-        tileLayout = try container.decodeIfPresent(TileLayout.self, forKey: .tileLayout) ?? .pills
+        tileLayout = try container.decodeIfPresent(TileLayout.self, forKey: .tileLayout) ?? .grid
     }
 }

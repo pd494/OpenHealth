@@ -19,9 +19,12 @@ final class DashboardLayoutStore {
         layout.move(id, before: index < others.count ? others[index] : nil)
     }
 
-    func shiftRing(_ id: MetricID, by offset: Int) {
+    func shiftRing(_ id: MetricID, by offset: Int) { shift(id, by: offset, among: layout.rings) }
+    func shiftPill(_ id: MetricID, by offset: Int) { shift(id, by: offset, among: layout.pills) }
+
+    private func shift(_ id: MetricID, by offset: Int, among items: [DashboardItem]) {
         let canonical = DashboardLayout.canonical(id)
-        let ids = layout.rings.map(\.metric).map(DashboardLayout.canonical)
+        let ids = items.map(\.metric).map(DashboardLayout.canonical)
         guard let from = ids.firstIndex(of: canonical), ids.indices.contains(from + offset) else { return }
         let target = from + offset
         layout.move(id, before: offset > 0 ? (target + 1 < ids.count ? ids[target + 1] : nil) : ids[target])

@@ -7,14 +7,14 @@ final class DashboardLayoutTests: XCTestCase {
     private func order(_ items: [DashboardItem]) -> [MetricID] { items.map(\.metric) }
 
     func testMoveBeforeTargetReordersIndividually() {
-        layout.move(.weight, before: .hydration)
+        layout.move(.weight, before: .distance)
         XCTAssertEqual(order(layout.tiles).first, .weight)
-        XCTAssertEqual(order(layout.tiles)[1], .hydration)
+        XCTAssertEqual(order(layout.tiles)[1], .distance)
     }
 
     func testMoveToNilGoesAfterLastTile() {
-        layout.move(.hydration, before: nil)
-        XCTAssertEqual(order(layout.tiles).last, .hydration)
+        layout.move(.distance, before: nil)
+        XCTAssertEqual(order(layout.tiles).last, .distance)
     }
 
     func testMoveBeforeItselfIsNoOp() {
@@ -38,10 +38,10 @@ final class DashboardLayoutTests: XCTestCase {
     }
 
     func testCaloriePreferenceChoosesDisplayedID() {
-        XCTAssertTrue(order(layout.tiles).contains(.activeEnergy))
+        XCTAssertTrue(order(layout.pills).contains(.activeEnergy))
         layout.calories = .total
-        XCTAssertTrue(order(layout.tiles).contains(.totalEnergy))
-        XCTAssertFalse(order(layout.tiles).contains(.activeEnergy))
+        XCTAssertTrue(order(layout.pills).contains(.totalEnergy))
+        XCTAssertFalse(order(layout.pills).contains(.activeEnergy))
         layout.setVisible(.totalEnergy, false)
         XCTAssertTrue(order(layout.hidden).contains(.totalEnergy))
     }
@@ -99,5 +99,22 @@ final class DashboardLayoutTests: XCTestCase {
         store.shiftRing(.sleep, by: -1)
         XCTAssertEqual(order(store.layout.rings), [.recovery, .sleep, .steps])
         Defaults[.dashboardLayout] = nil
+    }
+}
+
+extension DashboardLayoutTests {
+    func testAnyMetricCanBePinnedButOnlyGoalMetricsBecomeRings() {
+        var layout = DashboardLayout.default
+        layout.setStyle(.heartRate, .pill)
+        XCTAssertTrue(layout.pills.contains { $0.metric == .heartRate })
+        layout.setStyle(.heartRate, .ring)
+        XCTAssertFalse(layout.rings.contains { $0.metric == .heartRate })
+    }
+
+    @MainActor func testShiftPillReordersWithinGoalsCard() {
+        let store = DashboardLayoutStore(layout: .default)
+        let first = store.layout.pills.map(\.metric)
+        store.shiftPill(first[0], by: 1)
+        XCTAssertEqual(store.layout.pills.map(\.metric), [first[1], first[0]])
     }
 }

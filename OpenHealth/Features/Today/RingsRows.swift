@@ -6,6 +6,8 @@ struct RingsRows: View {
     let rings: [DashboardItem]
     let isEditing: Bool
     let showsDetails: Bool
+    var pills: [DashboardItem] = []
+    var onSelect: (MetricID) -> Void = { _ in }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 18) {
@@ -15,6 +17,7 @@ struct RingsRows: View {
                         .environment(\.fillDelay, Double(index) * RingsSection.ringStagger)
                 }
             }
+            if !pills.isEmpty { GoalPills(pills: pills, isEditing: isEditing, onSelect: onSelect) }
             if showsDetails {
                 VStack(alignment: .leading, spacing: 16) {
                     ForEach(rings) { item in

@@ -6,6 +6,7 @@ struct RingsSection: View {
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     let isEditing: Bool
+    var onSelect: (MetricID) -> Void = { _ in }
 
     static let ringStagger = 0.08
 
@@ -13,7 +14,7 @@ struct RingsSection: View {
     private var showsDetails: Bool { !layout.ringDetailsCollapsed }
 
     var body: some View {
-        if !layout.rings.isEmpty || isEditing {
+        if !layout.rings.isEmpty || !layout.pills.isEmpty || isEditing {
             VStack(alignment: .leading, spacing: 14) {
                 SectionHeader(title: "Goals") {
                     if layout.ringsMode != .standard || !layout.rings.isEmpty { chevron }
@@ -30,7 +31,7 @@ struct RingsSection: View {
         }
         .labelStyle(.iconOnly)
         .font(.body.weight(.bold))
-        .foregroundStyle(Palette.red)
+        .foregroundStyle(.secondary)
         .rotationEffect(.degrees(showsDetails ? 0 : -90))
         .frame(width: Layout.minTapTarget, height: Layout.minTapTarget, alignment: .trailing)
         .contentShape(.rect)
@@ -39,11 +40,15 @@ struct RingsSection: View {
 
     @ViewBuilder private var content: some View {
         if layout.rings.isEmpty {
-            Text("Switch a goal tile to a ring to see it here.")
-                .font(.footnote)
-                .foregroundStyle(.secondary)
+            if layout.pills.isEmpty {
+                Text("Long-press a tile to show it as a ring or pin it here.")
+                    .font(.footnote)
+                    .foregroundStyle(.secondary)
+            } else {
+                GoalPills(pills: layout.pills, isEditing: isEditing, onSelect: onSelect)
+            }
         } else if layout.ringsMode == .standard || !showsDetails {
-            RingsRows(rings: layout.rings, isEditing: isEditing, showsDetails: showsDetails && layout.ringsMode == .standard)
+            RingsRows(rings: layout.rings, isEditing: isEditing, showsDetails: showsDetails && layout.ringsMode == .standard, pills: layout.pills, onSelect: onSelect)
         } else {
             let isExpanded = layout.ringsMode == .expanded
             VStack(spacing: 16) {
@@ -58,6 +63,7 @@ struct RingsSection: View {
                 }
             }
             .softLift()
+            if !layout.pills.isEmpty { GoalPills(pills: layout.pills, isEditing: isEditing, onSelect: onSelect) }
         }
     }
 }

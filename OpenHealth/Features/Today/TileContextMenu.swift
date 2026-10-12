@@ -8,17 +8,20 @@ struct TileContextMenu: View {
     let style: DisplayStyle
 
     var body: some View {
-        if metric.descriptor.supportsGoal {
-            Button(
-                style == .tile ? "Show as ring" : "Show as tile",
-                systemImage: style == .tile ? "circle.dashed" : "square.grid.2x2"
-            ) {
-                withMotion(reduceMotion: reduceMotion) { store.setStyle(metric, style == .tile ? .ring : .tile) }
-            }
+        if style != .ring && DisplayStyle.ring.supports(metric) {
+            Button("Show as ring", systemImage: "circle.dashed") { set(.ring) }
         }
-        if style == .ring {
-            Button("Move earlier", systemImage: "arrow.left") { withMotion(reduceMotion: reduceMotion) { store.shiftRing(metric, by: -1) } }
-            Button("Move later", systemImage: "arrow.right") { withMotion(reduceMotion: reduceMotion) { store.shiftRing(metric, by: 1) } }
+        if style != .pill {
+            Button("Pin to Goals", systemImage: "pin") { set(.pill) }
+        }
+        if style != .tile {
+            Button("Move to tiles", systemImage: "square.grid.2x2") { set(.tile) }
+        }
+        if style != .tile {
+            Section {
+                Button("Move earlier", systemImage: "arrow.left") { shift(-1) }
+                Button("Move later", systemImage: "arrow.right") { shift(1) }
+            }
         }
         if DashboardLayout.canonical(metric) == .activeEnergy {
             Picker("Cal burned", selection: Binding(get: { store.layout.calories }, set: store.setCalories)) {
@@ -26,5 +29,15 @@ struct TileContextMenu: View {
             }
         }
         Button("Hide", systemImage: "eye.slash") { withMotion(reduceMotion: reduceMotion) { store.setVisible(metric, false) } }
+    }
+
+    private func set(_ newStyle: DisplayStyle) {
+        withMotion(reduceMotion: reduceMotion) { store.setStyle(metric, newStyle) }
+    }
+
+    private func shift(_ offset: Int) {
+        withMotion(reduceMotion: reduceMotion) {
+            style == .ring ? store.shiftRing(metric, by: offset) : store.shiftPill(metric, by: offset)
+        }
     }
 }
