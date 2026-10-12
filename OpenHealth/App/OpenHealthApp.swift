@@ -8,7 +8,7 @@ struct OpenHealthApp: App {
 
     var body: some Scene {
         WindowGroup {
-            RootTabView()
+            RootView()
                 .environment(dependencies.health)
                 .environment(dependencies.google)
                 .environment(dependencies.layout)

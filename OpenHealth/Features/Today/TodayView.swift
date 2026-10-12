@@ -51,7 +51,7 @@ struct TodayView: View {
                         }
                     if metricsExpanded {
                         TileGrid(isEditing: isEditing, fillHeight: fillHeight, onSelect: select)
-                            .onGeometryChange(for: Double.self) { $0.frame(in: .named(Self.content)).minY } action: { gridTop = $0 }
+                            .onGeometryChange(for: Double.self) { $0.frame(in: .named(Self.content)).minY.rounded() } action: { gridTop = $0 }
                         if isEditing { EditTray() }
                     }
                 }
@@ -66,7 +66,7 @@ struct TodayView: View {
             .padding(.bottom, Layout.screenPadding)
             .coordinateSpace(name: Self.content)
         }
-        .onGeometryChange(for: Double.self) { $0.size.height } action: { viewportHeight = $0 }
+        .onGeometryChange(for: Double.self) { $0.size.height.rounded() } action: { viewportHeight = $0 }
         .pageBackground()
         .enableInjection()
         .tint(.blue)
@@ -91,10 +91,7 @@ struct TodayView: View {
     }
 
     private func select(_ metric: MetricID) {
-        switch metric {
-        case .hydration: sheet = .water
-        default: break
-        }
+        sheet = metric.descriptor.opens
     }
 }
 

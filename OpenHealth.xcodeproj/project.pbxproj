@@ -61,6 +61,7 @@
 		52D177DD8539E5C12230D18D /* FasterStepsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F10BF151E328AA22C40ABE5 /* FasterStepsSection.swift */; };
 		53AC3E76438A331AF1651F2A /* Date+Adding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D6FD2E8BF38722AE068461 /* Date+Adding.swift */; };
 		54BDD69BC8789FB3985CBB91 /* Palette+Domains.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBDA689EF7F0DF87BAD6182 /* Palette+Domains.swift */; };
+		5578049DC984907FB52DEA73 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535FECE2663842CE2F7228CB /* RootView.swift */; };
 		559B50550EECC2614B0DBE31 /* GoogleHealthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B9DE1F050D8A207A476926 /* GoogleHealthAPI.swift */; };
 		57886D167117D31E1C753B04 /* TodaySettingsMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4ECA528FFCD23096C096CE /* TodaySettingsMenu.swift */; };
 		57CE7E4029DF25F7BC55F6AB /* SnapshotStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCFE8DD9636EEF34600C4F8 /* SnapshotStore.swift */; };
@@ -167,7 +168,6 @@
 		EC8D48E15122320142B427BF /* StepsWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 6A960E7E606836FDF5DCA3C7 /* StepsWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		ED0BB9811C3935B6DB64C4D0 /* HealthManager+Metrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AFE71D040E0EB0614F9089 /* HealthManager+Metrics.swift */; };
 		ED39164C8AD068773E9D2A1E /* GoogleTokenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051E36A15C9E43E887C28960 /* GoogleTokenStore.swift */; };
-		ED7834530827D87D3F9E1A08 /* RootTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598CA651E094A130A9EEC3B9 /* RootTabView.swift */; };
 		ED94B00C67356D08A5F62644 /* OpenHealthApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CF215ACAF0AE033B56CFB5 /* OpenHealthApp.swift */; };
 		EDBFCD1244FE5E9E922585BE /* WidgetKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = B766CC0EC8B586099980CBAC /* WidgetKind.swift */; };
 		EF85C5839C37C1965EC6C055 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970ED648D3CC66B284A0545E /* Layout.swift */; };
@@ -270,9 +270,9 @@
 		4FEFD04BBAF736D1840C120E /* RingStatsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingStatsRow.swift; sourceTree = "<group>"; };
 		5225D43149D5AD1D3CBE043F /* SleepNightTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepNightTests.swift; sourceTree = "<group>"; };
 		52B9DE1F050D8A207A476926 /* GoogleHealthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleHealthAPI.swift; sourceTree = "<group>"; };
+		535FECE2663842CE2F7228CB /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		544B77C092F1222000D08110 /* HealthTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthTypes.swift; sourceTree = "<group>"; };
 		56978E4ED30AF56D60342A87 /* OpenHealthWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenHealthWidgets.swift; sourceTree = "<group>"; };
-		598CA651E094A130A9EEC3B9 /* RootTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabView.swift; sourceTree = "<group>"; };
 		5B91F9B37D553112E1648A05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5BD8C047BBDD77869D8F07D7 /* HotReload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotReload.swift; sourceTree = "<group>"; };
 		5C7670F4BF112E7CFADC175A /* GoogleSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSession.swift; sourceTree = "<group>"; };
@@ -555,7 +555,7 @@
 				CDAB4FABE736C6F13EEA190A /* DebugLaunch.swift */,
 				5BD8C047BBDD77869D8F07D7 /* HotReload.swift */,
 				D6CF215ACAF0AE033B56CFB5 /* OpenHealthApp.swift */,
-				598CA651E094A130A9EEC3B9 /* RootTabView.swift */,
+				535FECE2663842CE2F7228CB /* RootView.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -955,7 +955,7 @@
 				AFDB9AAA2530ED8E8E65882B /* RingsMode.swift in Sources */,
 				4B6585CA974014A73F8F8C54 /* RingsRows.swift in Sources */,
 				645788397443818CB1D7A60E /* RingsSection.swift in Sources */,
-				ED7834530827D87D3F9E1A08 /* RootTabView.swift in Sources */,
+				5578049DC984907FB52DEA73 /* RootView.swift in Sources */,
 				05B483281EF64A072EEDD81A /* SectionHeader.swift in Sources */,
 				C5567DC9F4BFC3FA7397FE50 /* SharedSnapshot.swift in Sources */,
 				BFCDED70A418294C5E73CD80 /* SheetContainer.swift in Sources */,

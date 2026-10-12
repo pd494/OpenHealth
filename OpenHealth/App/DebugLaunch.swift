@@ -1,6 +1,6 @@
 import Foundation
 
-/// Launch arguments for screenshots and manual testing, e.g. `-tab sleep -ringsMode expanded`.
+/// Launch arguments for screenshots and manual testing, e.g. `-ringsMode expanded -tileLayout list`.
 /// Release builds ignore all of them.
 enum DebugLaunch {
     static func string(_ key: String) -> String? {

@@ -1,7 +1,7 @@
 import Inject
 import SwiftUI
 
-struct RootTabView: View {
+struct RootView: View {
     @ObserveInjection private var inject
     @Environment(\.scenePhase) private var scenePhase
     @Environment(HealthManager.self) private var health

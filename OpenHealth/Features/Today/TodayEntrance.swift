@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// First-launch entrance for the Today screen; later visits and tab switches render in place.
+/// First-launch entrance for the Today screen; later appearances render in place.
 private struct TodayEntrance: ViewModifier {
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var shown = Self.played

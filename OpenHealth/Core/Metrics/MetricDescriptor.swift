@@ -12,6 +12,8 @@ struct MetricDescriptor: Sendable {
     var healthKit: HealthQuery?
     /// Fixed caption under the value; live captions (HRV baseline, stress band) stay in `HealthManager`.
     var subtitle: String?
+    /// Sheet that opens when the tile is tapped.
+    var opens: TodaySheet?
     /// Value shown in preview mode.
     var demo: Double
 

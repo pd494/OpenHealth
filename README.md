@@ -4,10 +4,9 @@ A native SwiftUI health dashboard for iPhone, backed by Apple Health and Google 
 
 ## What it does
 
-- Steps, sleep, recovery, and hydration rings
+- One Today screen: goal rings plus a two-column grid of metric pills
 - Home Screen widgets for steps and hydration
 - Water logging
-- **Ask OpenHealth**: on-device answers about your stats (Foundation Models when available)
 - Recovery estimate: 50% sleep vs goal, 25% HRV and 25% resting HR vs your 7-day baseline. Not medical advice.
 
 ## Run it
@@ -15,7 +14,8 @@ A native SwiftUI health dashboard for iPhone, backed by Apple Health and Google 
 - Open `OpenHealth.xcodeproj` and run the `OpenHealth` scheme
 - The simulator loads demo data automatically
 - `project.yml` is the source of truth: run `xcodegen generate` after adding files
-- Hot reload: run the Debug build in the simulator and save any Swift file. No extra app needed (InjectionIII standalone via the `Inject` package)
+- Hot reload: `./scripts/run-sim.sh` builds, installs and launches with hot reload on; save any Swift file to update the simulator (InjectionIII standalone via the `Inject` package)
+- Add a metric: a `MetricID` case plus one line in `MetricRegistry`
 
 ## On a device
 

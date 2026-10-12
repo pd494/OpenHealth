@@ -2,7 +2,7 @@ import HealthKit
 
 /// The single place a Today metric is defined. To add one:
 /// 1. Add a case to `MetricID`.
-/// 2. Add a line below with its title, symbol, domain, format, goal, HealthKit query, subtitle and demo value.
+/// 2. Add a line below with its title, symbol, domain, format, goal, HealthKit query, subtitle, tap sheet and demo value.
 enum MetricRegistry {
     /// Built once; `id.descriptor` is read on every render.
     static let all: [MetricID: MetricDescriptor] = Dictionary(
@@ -22,7 +22,7 @@ enum MetricRegistry {
         case .hrv: make(id, "HRV", "waveform.path.ecg", .heart, .milliseconds, .average(T.hrv, .milliseconds), demo: 52)
         case .recovery: make(id, "Recovery", "bolt.heart.fill", .heart, .percent, goal: 100, subtitle: "Estimate", demo: 71)
         case .weight: make(id, "Weight", "scalemass.fill", .body, .mass, .latest(T.bodyMass, .pound()), subtitle: "Latest", demo: 168.4)
-        case .hydration: make(id, "Hydration", "drop.fill", .hydration, .volume, goal: 80, .sum(T.water, .fluidOunceUS()), demo: 44)
+        case .hydration: make(id, "Hydration", "drop.fill", .hydration, .volume, goal: 80, .sum(T.water, .fluidOunceUS()), opens: .water, demo: 44)
         case .sleep: make(id, "Sleep", "moon.stars.fill", .sleep, .duration, goal: 8, .sleep, demo: 7.2)
         case .stress: make(id, "Stress", "brain.head.profile", .mind, .score, demo: 31)
         case .caloriesIn: make(id, "Cal in", "fork.knife", .nutrition, .energy, goal: 2_000, .sum(T.dietaryEnergy, .kilocalorie()), demo: 1_640)
@@ -44,10 +44,10 @@ enum MetricRegistry {
 
     private static func make(
         _ id: MetricID, _ title: String, _ symbol: String, _ domain: MetricDomain, _ format: MetricFormat,
-        goal: Double? = nil, _ healthKit: HealthQuery? = nil, subtitle: String? = nil, demo: Double
+        goal: Double? = nil, _ healthKit: HealthQuery? = nil, subtitle: String? = nil, opens: TodaySheet? = nil, demo: Double
     ) -> MetricDescriptor {
         MetricDescriptor(id: id, title: title, symbol: symbol, domain: domain, format: format,
-                         defaultGoal: goal, healthKit: healthKit, subtitle: subtitle, demo: demo)
+                         defaultGoal: goal, healthKit: healthKit, subtitle: subtitle, opens: opens, demo: demo)
     }
 }
 
