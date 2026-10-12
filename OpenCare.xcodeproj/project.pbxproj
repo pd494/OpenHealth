@@ -39,6 +39,7 @@
 		2BF9347381F94C28FBA504E3 /* TodaySettingsMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC449E08D7829B58ED9A099 /* TodaySettingsMenu.swift */; };
 		2C32D63C5580F62B9B395237 /* DailyStepCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = D083810A16F5E37832AAFA1B /* DailyStepCount.swift */; };
 		2DD84B8E18CB1535FE9836C7 /* DailyMetric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B14B2A41CA40B0922C4C0BC /* DailyMetric.swift */; };
+		2E10B197AE8B2602D7968C59 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EE8C2225E8AB3627825236 /* Haptics.swift */; };
 		2E95B852366C351EB2976BEB /* DashboardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F39A5B315C5795EF8F8A02 /* DashboardLayout.swift */; };
 		2FF7D9520FBC02F96A0AB70A /* TodayFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6152252130A496FACD92E6EF /* TodayFooter.swift */; };
 		31C62A368B9417467B5DC00D /* WidgetStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8628E0A268E39192AB15F03F /* WidgetStyle.swift */; };
@@ -59,6 +60,7 @@
 		58C8094502D53605D97F0D49 /* TodayHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF33F907506BB1B22C686187 /* TodayHeader.swift */; };
 		5A9E28B6BAAFB84B9CC27C98 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D5ECE6E8D6A642CEEBA3C0 /* ProgressBar.swift */; };
 		5ABF3655797EC8DEFE845C8E /* RingsMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A016868C170F3EAFEE038ADA /* RingsMode.swift */; };
+		5AD29799AFA6B2F9AB4ABBB4 /* ReorderActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5084DA02133CF3836A4CEB10 /* ReorderActions.swift */; };
 		602E17BB4BA88E0A83FE2B5E /* JSONDecoder+GoogleHealth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C7180F18D21609FBA01C3C /* JSONDecoder+GoogleHealth.swift */; };
 		61ABAB8326A920C98FA07E1B /* JSONDecoder+GoogleHealth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C7180F18D21609FBA01C3C /* JSONDecoder+GoogleHealth.swift */; };
 		626E25D45F279FBC4B6D584A /* LiveSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F29D0296DC7BAA1FF4ACC4 /* LiveSteps.swift */; };
@@ -119,6 +121,7 @@
 		C4D1B61923286A830ED51D9F /* DailyMetricResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64885B8EF9A01216BA3F2297 /* DailyMetricResponse.swift */; };
 		C70C2FB721BFE4EF6165A5D9 /* CivilDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88744B3E17EAE0ED656C9E2F /* CivilDate.swift */; };
 		C78190ECB6031B17F0948EDF /* GoogleStatusCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1A9D8D166428CC89080559 /* GoogleStatusCard.swift */; };
+		C7EBC3504E380226D221A75D /* ReorderHandle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC1E050DA788AB1E7B1F788 /* ReorderHandle.swift */; };
 		CB779D3697CF508C2349EC15 /* FlexibleDouble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CCFB9CD751617B85AD2411 /* FlexibleDouble.swift */; };
 		CC0B3DCFFB309996049DC621 /* DisplayStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016C73D511F7A158AFB1B149 /* DisplayStyle.swift */; };
 		D25ABFC898937B0616EA0A38 /* SnapshotStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9580DEEB631F493DE00056D3 /* SnapshotStore.swift */; };
@@ -138,6 +141,7 @@
 		F5F2CD49B097B322644DC9C9 /* HealthKitMetricSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA52566F029414DF27B9E30B /* HealthKitMetricSource.swift */; };
 		F650D5D575F32CEDCD8AAA82 /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D48664FA5D6D5DB6D71EFD /* TodayView.swift */; };
 		F7D52D3D4DE6246B07FC6D06 /* HealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC53718A3C41BCCA1E622829 /* HealthManager.swift */; };
+		F89E81A63C753E818C0E6D4F /* ReorderableGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8113588AF5078808386DA65F /* ReorderableGrid.swift */; };
 		FA599D7C0ADDD8C8D2A0C62F /* GoogleSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3A35E519524D99E840E755 /* GoogleSession.swift */; };
 		FBF5FC5AAF59F7D4E94DE8F4 /* TileLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CAD4A069A94E2FA2A7E4FD /* TileLayout.swift */; };
 		FE56B8C6B97E752CD51D28D8 /* GoogleHealthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34149B94813673EDDD5E21D /* GoogleHealthAPI.swift */; };
@@ -219,6 +223,7 @@
 		490E1D5A365B12C95474AE97 /* SnapshotEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotEntry.swift; sourceTree = "<group>"; };
 		4CCF4E5B554BB5A6537936D9 /* Date+Adding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Adding.swift"; sourceTree = "<group>"; };
 		4DA7DEEAD0B76267AF866CD3 /* OpenCareWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenCareWidgets.swift; sourceTree = "<group>"; };
+		5084DA02133CF3836A4CEB10 /* ReorderActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReorderActions.swift; sourceTree = "<group>"; };
 		516A4EE65A9853DD043DD91A /* TileContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileContextMenu.swift; sourceTree = "<group>"; };
 		5BD2916E02DB16D5B46C5220 /* Recovery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recovery.swift; sourceTree = "<group>"; };
 		5E8105FF38DE3C99BA0AED94 /* DashboardLayoutStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardLayoutStore.swift; sourceTree = "<group>"; };
@@ -229,6 +234,7 @@
 		73D1906DFB50EF8D718B477A /* DemoMetricSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoMetricSource.swift; sourceTree = "<group>"; };
 		7473042698924CA940184ECE /* OpenCareTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = OpenCareTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		75CA5D62558EF2C9BFAB372C /* SharedSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedSnapshot.swift; sourceTree = "<group>"; };
+		8113588AF5078808386DA65F /* ReorderableGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReorderableGrid.swift; sourceTree = "<group>"; };
 		836606E0FBC36FF9B739AE2C /* MetricDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricDomain.swift; sourceTree = "<group>"; };
 		839DE1E05DE07DEEC1872DD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		846D1266ECA0EB97EFBBA4A4 /* Palette+Surfaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Palette+Surfaces.swift"; sourceTree = "<group>"; };
@@ -239,9 +245,11 @@
 		88744B3E17EAE0ED656C9E2F /* CivilDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CivilDate.swift; sourceTree = "<group>"; };
 		8C3A7B612DFDAA97F93F8CC6 /* ProgressRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressRing.swift; sourceTree = "<group>"; };
 		8F7AD0B54667E025E8523737 /* StepSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepSource.swift; sourceTree = "<group>"; };
+		90EE8C2225E8AB3627825236 /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
 		93D5C4574C8CDFC9A8D1F1A3 /* LocalWater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalWater.swift; sourceTree = "<group>"; };
 		955EA7B5D13C1BCA7B73AB68 /* HealthTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthTypes.swift; sourceTree = "<group>"; };
 		9580DEEB631F493DE00056D3 /* SnapshotStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotStore.swift; sourceTree = "<group>"; };
+		9BC1E050DA788AB1E7B1F788 /* ReorderHandle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReorderHandle.swift; sourceTree = "<group>"; };
 		9C6427AD4A7A551011DDB4FA /* PairedDevicesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairedDevicesResponse.swift; sourceTree = "<group>"; };
 		A016868C170F3EAFEE038ADA /* RingsMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingsMode.swift; sourceTree = "<group>"; };
 		A0D940337A8702F0667D5C23 /* HydrationWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HydrationWidgetView.swift; sourceTree = "<group>"; };
@@ -412,6 +420,9 @@
 			isa = PBXGroup;
 			children = (
 				33264159FB0C09FDD6AECF92 /* MetricTile.swift */,
+				8113588AF5078808386DA65F /* ReorderableGrid.swift */,
+				5084DA02133CF3836A4CEB10 /* ReorderActions.swift */,
+				9BC1E050DA788AB1E7B1F788 /* ReorderHandle.swift */,
 				516A4EE65A9853DD043DD91A /* TileContextMenu.swift */,
 				870D105D3C3EA3E3DF10D6F1 /* TileGrid.swift */,
 				6152252130A496FACD92E6EF /* TodayFooter.swift */,
@@ -458,6 +469,7 @@
 		69395F2ECA19165A9F226B60 /* Design */ = {
 			isa = PBXGroup;
 			children = (
+				90EE8C2225E8AB3627825236 /* Haptics.swift */,
 				12A1D06B823D2932BE34BC22 /* Layout.swift */,
 				05633406CA3FBBADA71553D3 /* Palette+Domains.swift */,
 				846D1266ECA0EB97EFBBA4A4 /* Palette+Surfaces.swift */,
@@ -803,6 +815,7 @@
 				0BE88ABD47A222F257AECE41 /* GoogleTokenStore.swift in Sources */,
 				BFC9CAEB7EC86CBBEFC65BAD /* GoogleTokens.swift in Sources */,
 				122428B1BE191A3A7F7EB4D8 /* Hairline.swift in Sources */,
+				2E10B197AE8B2602D7968C59 /* Haptics.swift in Sources */,
 				D3708190E76B11027227591A /* HealthInsights.swift in Sources */,
 				F5F2CD49B097B322644DC9C9 /* HealthKitMetricSource.swift in Sources */,
 				0505823F2CCAC2D0933C977C /* HealthKitReader.swift in Sources */,
@@ -834,6 +847,9 @@
 				5A9E28B6BAAFB84B9CC27C98 /* ProgressBar.swift in Sources */,
 				38C245407E48A7AA67AAFDD8 /* ProgressRing.swift in Sources */,
 				77E87DA2CE9A0C9FC4FFDF13 /* Recovery.swift in Sources */,
+				5AD29799AFA6B2F9AB4ABBB4 /* ReorderActions.swift in Sources */,
+				C7EBC3504E380226D221A75D /* ReorderHandle.swift in Sources */,
+				F89E81A63C753E818C0E6D4F /* ReorderableGrid.swift in Sources */,
 				7E2F83A140BE45035AF9C4F6 /* RingsCard.swift in Sources */,
 				5ABF3655797EC8DEFE845C8E /* RingsMode.swift in Sources */,
 				246E539F6C94F484CA258376 /* SectionHeader.swift in Sources */,

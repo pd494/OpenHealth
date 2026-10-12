@@ -12,19 +12,17 @@ struct TileGrid: View {
     private var tileLayout: TileLayout { typeSize.isAccessibilitySize ? .list : store.layout.tileLayout }
 
     var body: some View {
-        LazyVGrid(
-            columns: Array(repeating: GridItem(.flexible(), spacing: Layout.tileSpacing), count: tileLayout.columns),
-            spacing: Layout.tileSpacing
-        ) {
-            ForEach(store.layout.tiles) { item in
-                Button { onSelect(item.metric) } label: {
-                    MetricTile(value: health.value(item.metric), layout: tileLayout)
-                        .frame(height: tileLayout == .grid ? gridHeight : listHeight)
-                }
-                .buttonStyle(.plain)
-                .contextMenu { TileContextMenu(metric: item.metric) }
+        ReorderableGrid(
+            items: store.layout.tiles,
+            columns: tileLayout.columns,
+            rowHeight: tileLayout == .grid ? gridHeight : listHeight,
+            onMove: store.moveTile
+        ) { item in
+            Button { onSelect(item.metric) } label: {
+                MetricTile(value: health.value(item.metric), layout: tileLayout)
             }
+            .buttonStyle(.plain)
+            .contextMenu { TileContextMenu(metric: item.metric) }
         }
-        .animation(.snappy, value: store.layout.tiles)
     }
 }

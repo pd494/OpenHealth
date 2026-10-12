@@ -36,11 +36,15 @@ struct MetricTile: View {
 
     private var gridContent: some View {
         VStack(alignment: .leading, spacing: 6) {
-            Label(descriptor.title, systemImage: descriptor.symbol)
-                .font(.caption.weight(.medium))
-                .foregroundStyle(.secondary)
-                .labelStyle(TintedIconLabelStyle(tint: descriptor.tint))
-                .lineLimit(1)
+            HStack {
+                Label(descriptor.title, systemImage: descriptor.symbol)
+                    .font(.caption.weight(.medium))
+                    .foregroundStyle(.secondary)
+                    .labelStyle(TintedIconLabelStyle(tint: descriptor.tint))
+                    .lineLimit(1)
+                Spacer(minLength: 0)
+                ReorderHandle(id: value.id)
+            }
             Spacer(minLength: 0)
             figure
             if let progress = value.progress {
@@ -64,6 +68,7 @@ struct MetricTile: View {
             }
             Spacer(minLength: 8)
             figure
+            ReorderHandle(id: value.id)
         }
     }
 }
