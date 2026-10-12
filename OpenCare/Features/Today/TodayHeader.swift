@@ -1,7 +1,7 @@
 import SwiftUI
 
-struct DashboardHeader: View {
-    @Binding var sheet: DashboardSheet?
+struct TodayHeader: View {
+    @Binding var sheet: TodaySheet?
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -15,6 +15,7 @@ struct DashboardHeader: View {
                         .font(.rounded(.footnote, weight: .bold))
                 }
                 Spacer()
+                TodaySettingsMenu()
                 Button("Edit goals", systemImage: "slider.horizontal.3") { sheet = .goals }
                     .iconOnlyButton()
                     .font(.title3)

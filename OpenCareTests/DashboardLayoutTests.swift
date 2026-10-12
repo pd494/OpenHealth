@@ -52,6 +52,8 @@ final class DashboardLayoutTests: XCTestCase {
         layout.setStyle(.hydration, .ring)
         layout.ringsMode = .beside
         layout.ringDetailsCollapsed = true
+        layout.tileLayout = .list
+        layout.calories = .total
         let decoded = try JSONDecoder().decode(DashboardLayout.self, from: JSONEncoder().encode(layout))
         XCTAssertEqual(decoded, layout)
     }

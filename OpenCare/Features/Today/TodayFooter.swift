@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct DashboardFooter: View {
+struct TodayFooter: View {
     @Environment(HealthManager.self) private var health
     @Environment(GoogleHealthManager.self) private var google
 

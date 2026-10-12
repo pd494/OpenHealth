@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct DemoBanner: View {
-    @Binding var sheet: DashboardSheet?
+    @Binding var sheet: TodaySheet?
 
     var body: some View {
         Button { sheet = .googleConnection } label: {

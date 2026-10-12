@@ -1,7 +1,7 @@
 import SwiftUI
 
 /// One optional value, so only one sheet can be active at a time.
-enum DashboardSheet: String, Identifiable {
+enum TodaySheet: String, Identifiable {
     case water
     case goals
     case googleConnection
@@ -11,7 +11,7 @@ enum DashboardSheet: String, Identifiable {
 }
 
 extension View {
-    func dashboardSheets(_ sheet: Binding<DashboardSheet?>) -> some View {
+    func todaySheets(_ sheet: Binding<TodaySheet?>) -> some View {
         self.sheet(item: sheet) { destination in
             switch destination {
             case .water: WaterSheet().presentationDetents([.medium])

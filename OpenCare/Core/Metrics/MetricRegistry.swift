@@ -11,7 +11,7 @@ enum MetricRegistry {
         case .hrv: make(id, "HRV", "waveform.path.ecg", .heart, .milliseconds)
         case .recovery: make(id, "Recovery", "bolt.heart.fill", .heart, .percent, goal: 100)
         case .weight: make(id, "Weight", "scalemass.fill", .body, .mass)
-        case .hydration: make(id, "Hydration", "drop.fill", .nutrition, .volume, goal: 80)
+        case .hydration: make(id, "Hydration", "drop.fill", .hydration, .volume, goal: 80)
         case .sleep: make(id, "Sleep", "moon.stars.fill", .sleep, .duration, goal: 8)
         case .stress: make(id, "Stress", "brain.head.profile", .mind, .score)
         case .caloriesIn: make(id, "Cal in", "fork.knife", .nutrition, .energy, goal: 2_000)

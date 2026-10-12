@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ConnectionCard: View {
     @Environment(HealthManager.self) private var health
-    @Binding var sheet: DashboardSheet?
+    @Binding var sheet: TodaySheet?
 
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {

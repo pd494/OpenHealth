@@ -2,7 +2,7 @@ import SwiftUI
 
 struct GoogleStatusCard: View {
     @Environment(GoogleHealthManager.self) private var google
-    @Binding var sheet: DashboardSheet?
+    @Binding var sheet: TodaySheet?
 
     var body: some View {
         HStack(spacing: 12) {

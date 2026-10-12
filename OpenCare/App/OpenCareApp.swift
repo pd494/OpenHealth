@@ -6,12 +6,14 @@ struct OpenCareApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
     @State private var health = HealthManager.shared
     @State private var google = GoogleHealthManager.shared
+    @State private var layoutStore = DashboardLayoutStore()
 
     var body: some Scene {
         WindowGroup {
-            DashboardView()
+            TodayView()
                 .environment(health)
                 .environment(google)
+                .environment(layoutStore)
         }
         .onChange(of: scenePhase) {
             guard scenePhase == .active else { return }

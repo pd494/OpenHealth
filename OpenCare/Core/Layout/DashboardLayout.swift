@@ -6,6 +6,7 @@ struct DashboardLayout: Codable, Equatable {
     var ringsMode = RingsMode.standard
     var ringDetailsCollapsed = false
     var calories = CaloriePreference.active
+    var tileLayout = TileLayout.grid
 
     static let `default` = DashboardLayout(items: [
         .init(metric: .steps, isVisible: true, style: .ring),
@@ -95,7 +96,7 @@ extension DashboardLayout {
     }
 
     private enum CodingKeys: String, CodingKey {
-        case schemaVersion, items, ringsMode, ringDetailsCollapsed, calories
+        case schemaVersion, items, ringsMode, ringDetailsCollapsed, calories, tileLayout
     }
 
     /// Unknown metric IDs are dropped instead of failing, so removing a metric never wipes a saved layout.
@@ -108,5 +109,6 @@ extension DashboardLayout {
         ringsMode = try container.decodeIfPresent(RingsMode.self, forKey: .ringsMode) ?? .standard
         ringDetailsCollapsed = try container.decodeIfPresent(Bool.self, forKey: .ringDetailsCollapsed) ?? false
         calories = try container.decodeIfPresent(CaloriePreference.self, forKey: .calories) ?? .active
+        tileLayout = try container.decodeIfPresent(TileLayout.self, forKey: .tileLayout) ?? .grid
     }
 }

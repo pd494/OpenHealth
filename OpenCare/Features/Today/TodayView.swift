@@ -1,10 +1,10 @@
 import SwiftUI
 
-struct DashboardView: View {
+struct TodayView: View {
     @Environment(\.scenePhase) private var scenePhase
     @Environment(HealthManager.self) private var health
     @Environment(GoogleHealthManager.self) private var google
-    @State private var sheet: DashboardSheet?
+    @State private var sheet: TodaySheet?
 
     private static let stepPollInterval = Duration.seconds(30)
 
@@ -13,17 +13,17 @@ struct DashboardView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: Layout.sectionSpacing) {
-                DashboardHeader(sheet: $sheet)
+                TodayHeader(sheet: $sheet)
                 if google.isConnected {
                     GoogleStatusCard(sheet: $sheet)
                 } else if !health.isConnected && !health.isDemo {
                     ConnectionCard(sheet: $sheet)
                 }
                 RingsCard()
-                HydrationCard(sheet: $sheet)
+                TileGrid(onSelect: select)
                 AskCard(sheet: $sheet)
                 if health.isDemo { DemoBanner(sheet: $sheet) }
-                DashboardFooter()
+                TodayFooter()
             }
             .padding(.horizontal, Layout.screenPadding)
             .padding(.vertical, Layout.screenPadding)
@@ -31,7 +31,7 @@ struct DashboardView: View {
         .background(Palette.background)
         .preferredColorScheme(.dark)
         .tint(Palette.green)
-        .dashboardSheets($sheet)
+        .todaySheets($sheet)
         .onOpenURL { url in
             if DeepLink(url: url) == .water { sheet = .water }
         }
@@ -39,6 +39,10 @@ struct DashboardView: View {
         .errorAlert("Google Health", message: Bindable(google).errorMessage)
         .task { await loadInitialData() }
         .task(id: isPollingSteps) { await pollGoogleSteps() }
+    }
+
+    private func select(_ metric: MetricID) {
+        if metric == .hydration { sheet = .water }
     }
 
     private func loadInitialData() async {
@@ -61,13 +65,15 @@ struct DashboardView: View {
 }
 
 #Preview("Demo") {
-    DashboardView()
+    TodayView()
         .environment(HealthManager.preview)
+        .environment(DashboardLayoutStore(layout: .default))
         .environment(GoogleHealthManager.shared)
 }
 
 #Preview("Not connected") {
-    DashboardView()
+    TodayView()
         .environment(HealthManager())
+        .environment(DashboardLayoutStore(layout: .default))
         .environment(GoogleHealthManager.shared)
 }

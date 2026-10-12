@@ -7,4 +7,7 @@ enum Layout {
     static let minTapTarget = 44.0
     static let ringSize = 84.0
     static let ringLineWidth = 9.0
+    static let tileSpacing = 12.0
+    static let gridTileHeight = 112.0
+    static let listTileHeight = 68.0
 }

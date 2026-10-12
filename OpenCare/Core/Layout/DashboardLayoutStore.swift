@@ -8,7 +8,11 @@ final class DashboardLayoutStore {
     }
 
     init(layout: DashboardLayout? = nil) {
-        self.layout = layout ?? Self.load()
+        var initial = layout ?? Self.load()
+        #if DEBUG
+        DebugLaunch.apply(to: &initial)
+        #endif
+        self.layout = initial
     }
 
     func moveTile(_ id: MetricID, to index: Int) {
@@ -28,6 +32,7 @@ final class DashboardLayoutStore {
     func setVisible(_ id: MetricID, _ visible: Bool) { layout.setVisible(id, visible) }
     func setStyle(_ id: MetricID, _ style: DisplayStyle) { layout.setStyle(id, style) }
     func setRingsMode(_ mode: RingsMode) { layout.ringsMode = mode }
+    func setTileLayout(_ tileLayout: TileLayout) { layout.tileLayout = tileLayout }
     func setCalories(_ calories: CaloriePreference) { layout.calories = calories }
     func toggleRingDetails() { layout.ringDetailsCollapsed.toggle() }
     func reset() { layout = .default }
