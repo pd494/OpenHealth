@@ -3,6 +3,7 @@ import SwiftUI
 /// A ring with its supporting figures listed beside it as label/value lines.
 struct RingStatsRow: View {
     @Environment(HealthManager.self) private var health
+    @Environment(DashboardLayoutStore.self) private var store
 
     let metric: MetricID
     let isEditing: Bool
@@ -19,7 +20,7 @@ struct RingStatsRow: View {
                     Text(value.goalText ?? "").font(.footnote).foregroundStyle(.secondary)
                 }
                 .padding(.bottom, 6)
-                ForEach(Array(health.stats(for: metric).enumerated()), id: \.element.id) { index, stat in
+                ForEach(Array(health.stats(for: metric, hiding: store.layout.rings.map(\.metric)).enumerated()), id: \.element.id) { index, stat in
                     Hairline()
                     HStack {
                         Text(stat.label).foregroundStyle(.secondary)

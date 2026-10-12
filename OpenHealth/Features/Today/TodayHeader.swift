@@ -8,23 +8,13 @@ struct TodayHeader: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
             HStack {
-                Image(systemName: "circle.hexagongrid.fill")
-                    .font(.footnote)
-                    .foregroundStyle(Palette.green)
-                    .accessibilityHidden(true)
                 Spacer()
                 Button(isEditing ? "Done" : "Edit") { withMotion(reduceMotion: reduceMotion) { isEditing.toggle() } }
                     .font(.rounded(.subheadline, weight: .semibold))
                     .contentTransition(.opacity)
-                    .padding(.horizontal, 14)
                     .frame(minHeight: Layout.minTapTarget)
-                    .background(isEditing ? Palette.green.opacity(0.18) : Palette.card, in: .capsule)
                     .sensoryFeedback(.selection, trigger: isEditing)
-                TodaySettingsMenu()
-                Button("Edit goals", systemImage: "slider.horizontal.3") { sheet = .goals }
-                    .iconOnlyButton()
-                    .font(.title3)
-                    .background(Palette.card, in: .circle)
+                TodaySettingsMenu(sheet: $sheet)
             }
             Text(Date.now, format: .dateTime.weekday(.wide).month(.abbreviated).day())
                 .font(.rounded(.largeTitle, weight: .bold))

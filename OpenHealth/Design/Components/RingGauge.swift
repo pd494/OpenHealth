@@ -4,11 +4,12 @@ struct RingGauge: View {
     let value: MetricValue
     /// Fixed diameter, or nil to fill the available width up to `Layout.ringSize`.
     var size: Double?
+    var centerText: String?
 
     private var descriptor: MetricDescriptor { value.id.descriptor }
     private var isLarge: Bool { (size ?? Layout.ringSize) > 80 }
 
-    var text: String { descriptor.format == .percent && value.value != nil ? value.number + "%" : value.number }
+    var text: String { centerText ?? (descriptor.format == .percent && value.value != nil ? value.number + "%" : value.number) }
 
     var body: some View {
         ZStack {

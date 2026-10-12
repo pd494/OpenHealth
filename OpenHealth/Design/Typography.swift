@@ -16,6 +16,10 @@ extension View {
             .contentTransition(.numericText())
     }
 
+    func cardTitle() -> some View {
+        font(.subheadline.weight(.medium)).foregroundStyle(.secondary)
+    }
+
     func eyebrow() -> some View {
         font(.caption2.weight(.semibold))
             .textCase(.uppercase)

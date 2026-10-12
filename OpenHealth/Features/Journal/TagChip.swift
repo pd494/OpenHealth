@@ -2,7 +2,7 @@ import SwiftUI
 
 struct TagChip: View {
     let tag: JournalTag
-    var isSelected = true
+    var isSelected = false
 
     var body: some View {
         HStack(spacing: 6) {

@@ -2,9 +2,11 @@ import SwiftUI
 
 struct TodaySettingsMenu: View {
     @Environment(DashboardLayoutStore.self) private var store
+    @Binding var sheet: TodaySheet?
 
     var body: some View {
         Menu {
+            Button("Edit goals", systemImage: "slider.horizontal.3") { sheet = .goals }
             Picker("Rings", selection: Binding(get: { store.layout.ringsMode }, set: store.setRingsMode)) {
                 ForEach(RingsMode.allCases) { Text($0.title).tag($0) }
             }
@@ -18,7 +20,6 @@ struct TodaySettingsMenu: View {
             Label("Layout", systemImage: "ellipsis")
                 .iconOnlyButton()
                 .font(.title3)
-                .background(Palette.card, in: .circle)
         }
     }
 }

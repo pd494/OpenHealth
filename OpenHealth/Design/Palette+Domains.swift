@@ -6,7 +6,7 @@ extension Palette {
     static let sleep = Color(red: 0.56, green: 0.60, blue: 1.0)
     static let hydration = Color(red: 0.36, green: 0.74, blue: 1.0)
     static let nutrition = Color(red: 1.0, green: 0.73, blue: 0.36)
-    static let body = Color(red: 0.86, green: 0.79, blue: 0.67)
+    static let body = Color.secondary
     static let mind = Color(red: 0.78, green: 0.58, blue: 0.96)
 }
 
@@ -18,6 +18,6 @@ extension Palette {
 
 extension Palette {
     static let sleepDeep = Color(red: 0.36, green: 0.34, blue: 0.86)
-    static let sleepREM = Color(red: 0.74, green: 0.56, blue: 1.0)
+    static let sleepREM = Color(red: 0.38, green: 0.82, blue: 0.92)
     static let sleepAwake = Color(red: 1.0, green: 0.62, blue: 0.40)
 }

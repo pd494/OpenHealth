@@ -7,7 +7,7 @@ struct SleepWeekChart: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
-            Text("Last 7 nights").eyebrow()
+            Text("Last 7 nights").cardTitle()
             Chart {
                 ForEach(week) { night in
                     BarMark(x: .value("Day", night.date, unit: .day), y: .value("Hours", night.value))

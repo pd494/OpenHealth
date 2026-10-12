@@ -1,10 +1,20 @@
+import Foundation
+
 extension HealthManager {
-    /// Up to three supporting figures shown beside or beneath a goal ring.
-    func stats(for id: MetricID) -> [MetricStat] {
+    /// Up to three supporting figures for a goal ring, skipping any that are another visible ring's headline.
+    func stats(for id: MetricID, hiding rings: [MetricID]) -> [MetricStat] {
+        let shown = rings.map(DashboardLayout.canonical)
+        let unique = candidates(for: id).filter { stat in
+            stat.metric.map { !shown.contains(DashboardLayout.canonical($0)) } ?? true
+        }
+        return Array(unique.prefix(3))
+    }
+
+    private func candidates(for id: MetricID) -> [MetricStat] {
         switch DashboardLayout.canonical(id) {
-        case .steps: [stat("Distance", .distance), stat("Active", .exerciseMinutes), left(.steps)]
-        case .recovery: [stat("HRV", .hrv), stat("Resting", .restingHR), stat("Sleep", .sleep)]
-        case .sleep: [stat("Goal", goalOf(.sleep)), left(.sleep), stat("Recovery", .recovery)]
+        case .steps: [stat("Distance", .distance), stat("Active", .exerciseMinutes), left(.steps), stat("Cal burned", .activeEnergy)]
+        case .recovery: [stat("HRV", .hrv), stat("Resting", .restingHR), stat("Sleep", .sleep), hrvDelta]
+        case .sleep: [stat("Goal", goalOf(.sleep)), left(.sleep), stat("Recovery", .recovery), clock("Bedtime", sleepNight?.bedtime), clock("Wake", sleepNight?.wakeTime)]
         case .hydration: [left(.hydration), stat("Goal", goalOf(.hydration)), percent(.hydration)]
         case .activeEnergy: [stat("Active", .activeEnergy), stat("Total", .totalEnergy), stat("Exercise", .exerciseMinutes)]
         case .distance: [stat("Steps", .steps), stat("Cal burned", .activeEnergy), stat("Goal", goalOf(.distance))]
@@ -21,11 +31,21 @@ extension HealthManager {
     }
 
     private func stat(_ label: String, _ id: MetricID) -> MetricStat {
-        MetricStat(label: label, value: text(id, value(id).value))
+        MetricStat(label: label, value: text(id, value(id).value), metric: id)
     }
 
     private func stat(_ label: String, _ goal: (MetricID, Double?)) -> MetricStat {
         MetricStat(label: label, value: text(goal.0, goal.1))
+    }
+
+    private var hrvDelta: MetricStat {
+        let delta = hrv.today.flatMap { today in hrv.baseline.map { today - $0 } }
+        let text = delta.map { $0.formatted(.number.sign(strategy: .always()).precision(.fractionLength(0))) + " ms" }
+        return MetricStat(label: "HRV vs avg", value: text ?? "—")
+    }
+
+    private func clock(_ label: String, _ date: Date?) -> MetricStat {
+        MetricStat(label: label, value: date?.formatted(date: .omitted, time: .shortened) ?? "—")
     }
 
     private func goalOf(_ id: MetricID) -> (MetricID, Double?) { (id, value(id).goal) }

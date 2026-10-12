@@ -3,7 +3,8 @@ import SwiftUI
 struct ProgressBar: View {
     let ratio: Double
     let tint: Color
-    var height = 3.0
+    static let defaultHeight = 3.0
+    var height = Self.defaultHeight
 
     var body: some View {
         AnimatedProgress(ratio: ratio) { displayed in

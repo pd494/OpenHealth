@@ -24,6 +24,11 @@ struct JournalView: View {
             }
             ForEach(JournalDay.grouping(entries)) { day in
                 Section {
+                    Text(day.day, format: .dateTime.weekday(.wide).month().day())
+                        .eyebrow()
+                        .listRowInsets(.init(top: 14, leading: Layout.screenPadding, bottom: 0, trailing: Layout.screenPadding))
+                        .listRowSeparator(.hidden)
+                        .listRowBackground(Color.clear)
                     ForEach(day.entries) { entry in
                         Button { sheet = .edit(entry) } label: { JournalEntryRow(entry: entry) }
                             .buttonStyle(.pressable)
@@ -32,8 +37,6 @@ struct JournalView: View {
                             .listRowBackground(Color.clear)
                             .swipeActions { Button("Delete", systemImage: "trash", role: .destructive) { context.delete(entry) } }
                     }
-                } header: {
-                    Text(day.day, format: .dateTime.weekday(.wide).month().day()).eyebrow()
                 }
             }
         }

@@ -12,7 +12,7 @@ struct StressTrendCard: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
-            Text("Trends").eyebrow()
+            Text("Trends").cardTitle()
             HStack(alignment: .bottom) {
                 VStack(alignment: .leading, spacing: 4) {
                     Text("Stress score").font(.subheadline).foregroundStyle(.secondary)

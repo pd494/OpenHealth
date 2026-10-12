@@ -8,7 +8,7 @@ struct EditTray: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Hidden").eyebrow()
+            Text("Hidden").cardTitle()
             if hidden.isEmpty {
                 Text("Everything is on your dashboard.")
                     .font(.footnote)

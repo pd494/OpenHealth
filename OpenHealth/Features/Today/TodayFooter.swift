@@ -9,13 +9,15 @@ struct TodayFooter: View {
     private var sourceName: String {
         if google.isConnected { return "Google Health" }
         if health.isConnected { return "Apple Health" }
-        return health.isDemo ? "Demo mode" : "Not connected"
+        return "Not connected"
     }
 
     var body: some View {
-        VStack(spacing: 14) {
-            Hairline()
-            statusRow
+        if !health.isDemo {
+            VStack(spacing: 14) {
+                Hairline()
+                statusRow
+            }
         }
     }
 

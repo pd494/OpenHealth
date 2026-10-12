@@ -30,7 +30,7 @@ struct StressView: View {
         }
         .background(Palette.background)
         .enableInjection()
-        .navigationTitle("Stress")
+        .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar(.visible, for: .navigationBar)
     }
@@ -38,7 +38,7 @@ struct StressView: View {
     private func todayCard(_ day: StressDay) -> some View {
         VStack(alignment: .leading, spacing: 14) {
             HStack(alignment: .firstTextBaseline) {
-                Text("Today's stress").eyebrow()
+                Text("Today's stress").cardTitle()
                 Spacer()
                 if let current = day.current {
                     Label(current.band.title, systemImage: "circle.fill")

@@ -20,13 +20,10 @@ struct RingsRows: View {
                     ForEach(rings) { item in
                         VStack(alignment: .leading, spacing: 8) {
                             Label(item.metric.descriptor.title, systemImage: item.metric.descriptor.symbol)
-                                .font(.caption2.weight(.semibold))
-                                .textCase(.uppercase)
-                                .tracking(0.6)
-                                .foregroundStyle(.secondary)
+                                .cardTitle()
                                 .labelStyle(DetailLabelStyle(tint: item.metric.descriptor.tint))
                             HStack(spacing: 8) {
-                                ForEach(health.stats(for: item.metric)) { MiniStat(stat: $0) }
+                                ForEach(health.stats(for: item.metric, hiding: rings.map(\.metric))) { MiniStat(stat: $0) }
                             }
                         }
                     }

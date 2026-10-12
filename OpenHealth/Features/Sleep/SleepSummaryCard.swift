@@ -6,9 +6,9 @@ struct SleepSummaryCard: View {
 
     var body: some View {
         HStack(spacing: 22) {
-            RingGauge(value: value, size: 112)
+            RingGauge(value: value, size: 112, centerText: value.progress?.formatted(.percent.precision(.fractionLength(0))))
             VStack(alignment: .leading, spacing: 6) {
-                Text("Time asleep").eyebrow()
+                Text("Time asleep").cardTitle()
                 Text(value.number).metricNumber(.largeTitle, weight: .bold).minimumScaleFactor(0.7).lineLimit(1)
                 if let bed = night?.bedtime, let wake = night?.wakeTime {
                     Text("\(bed, format: .dateTime.hour().minute()) to \(wake, format: .dateTime.hour().minute())")

@@ -10,7 +10,7 @@ enum StressBand: CaseIterable, Identifiable {
     var title: String {
         switch self {
         case .high: "High"
-        case .medium: "Med"
+        case .medium: "Medium"
         case .low: "Low"
         }
     }

@@ -23,6 +23,11 @@ struct MetricTile: View {
         .accessibilityValue("\(value.number) \(value.unit) \(caption)")
     }
 
+    private var captionTint: Color {
+        guard value.id == .stress, let score = value.value else { return .secondary }
+        return StressScore.band(score).color
+    }
+
     private var figure: some View {
         HStack(alignment: .firstTextBaseline, spacing: 3) {
             Text(value.number)
@@ -36,13 +41,10 @@ struct MetricTile: View {
     }
 
     private var gridContent: some View {
-        VStack(alignment: .leading, spacing: 6) {
+        VStack(alignment: .leading, spacing: 4) {
             HStack {
                 Label(descriptor.title, systemImage: descriptor.symbol)
-                    .font(.caption2.weight(.semibold))
-                    .textCase(.uppercase)
-                    .tracking(0.6)
-                    .foregroundStyle(.secondary)
+                    .cardTitle()
                     .labelStyle(TintedIconLabelStyle(tint: descriptor.tint))
                     .lineLimit(1)
                 Spacer(minLength: 0)
@@ -52,8 +54,10 @@ struct MetricTile: View {
             figure
             if let progress = value.progress {
                 ProgressBar(ratio: progress, tint: descriptor.tint)
+            } else {
+                Color.clear.frame(height: ProgressBar.defaultHeight)
             }
-            Text(caption).font(.caption2).foregroundStyle(.secondary).lineLimit(1)
+            Text(caption).font(.caption2).foregroundStyle(captionTint).lineLimit(1)
                 .frame(minHeight: 14, alignment: .leading)
         }
         .frame(maxWidth: .infinity, alignment: .leading)

@@ -8,7 +8,7 @@ struct HypnogramChart: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
-            Text("Stages").eyebrow()
+            Text("Stages").cardTitle()
             Chart(night.segments) { segment in
                 RectangleMark(
                     xStart: .value("Start", segment.start),

@@ -21,6 +21,7 @@ extension HealthManager {
         case .heartRate, .weight: return "Latest"
         case .restingHR: return "Resting"
         case .recovery: return "Estimate"
+        case .stress: return readings[.stress].map { StressScore.band($0).title }
         default: return nil
         }
     }
