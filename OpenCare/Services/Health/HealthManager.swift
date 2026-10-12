@@ -13,6 +13,7 @@ final class HealthManager {
     var recoveryScore: Int?
     var hrv = Vital()
     var rhr = Vital()
+    var stressDay: StressDay?
     var readings: [MetricID: Double] = [:]
 
     var lastUpdated: Date?
@@ -144,6 +145,7 @@ final class HealthManager {
         let apple = try? await HealthKitMetricSource(reader: reader).values(for: Set(MetricID.allCases), on: now)
         if stepSource == .apple { readings = apple ?? [:] }
         readings[.recovery] = recoveryScore.map(Double.init)
+        await refreshStress()
         lastUpdated = now
         publishWidget()
     }
@@ -196,6 +198,8 @@ final class HealthManager {
         hrv = Vital(today: 52, baseline: 48)
         rhr = Vital(today: 58, baseline: 60)
         readings = DemoMetricSource.values
+        stressDay = DemoStress.day()
+        readings[.stress] = stressDay?.current?.score
         lastUpdated = .now
         publishWidget()
     }

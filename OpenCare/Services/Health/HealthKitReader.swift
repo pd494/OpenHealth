@@ -23,6 +23,28 @@ struct HealthKitReader {
         }
     }
 
+    func hourlyAverages(_ type: HKQuantityType, unit: HKUnit, from start: Date, to end: Date) async -> [DayValue] {
+        await withCheckedContinuation { continuation in
+            let query = HKStatisticsCollectionQuery(
+                quantityType: type,
+                quantitySamplePredicate: HKQuery.predicateForSamples(withStart: start, end: end),
+                options: .discreteAverage,
+                anchorDate: start,
+                intervalComponents: DateComponents(hour: 1)
+            )
+            query.initialResultsHandler = { _, collection, _ in
+                var values: [DayValue] = []
+                collection?.enumerateStatistics(from: start, to: end) { statistics, _ in
+                    if let average = statistics.averageQuantity() {
+                        values.append(DayValue(date: statistics.startDate, value: average.doubleValue(for: unit)))
+                    }
+                }
+                continuation.resume(returning: values)
+            }
+            store.execute(query)
+        }
+    }
+
     /// Detection only: Google's API stays the source of truth for the step total.
     func googleSharedStepsToday() async -> Double? {
         let sources: Set<HKSource> = await withCheckedContinuation { continuation in

@@ -5,6 +5,7 @@ struct TodayView: View {
     @Environment(HealthManager.self) private var health
     @Environment(GoogleHealthManager.self) private var google
     @State private var sheet: TodaySheet?
+    @State private var route: TodayRoute? = DebugLaunch.string("route") == "stress" ? .stress : nil
     @State private var isEditing = DebugLaunch.flag("editMode")
 
     private static let stepPollInterval = Duration.seconds(30)
@@ -34,6 +35,7 @@ struct TodayView: View {
         .preferredColorScheme(.dark)
         .tint(Palette.green)
         .todaySheets($sheet)
+        .navigationDestination(item: $route) { _ in StressView() }
         .onOpenURL { url in
             if DeepLink(url: url) == .water { sheet = .water }
         }
@@ -44,7 +46,11 @@ struct TodayView: View {
     }
 
     private func select(_ metric: MetricID) {
-        if metric == .hydration { sheet = .water }
+        switch metric {
+        case .hydration: sheet = .water
+        case .stress: route = .stress
+        default: break
+        }
     }
 
     private func loadInitialData() async {
