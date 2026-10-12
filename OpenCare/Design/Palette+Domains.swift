@@ -9,3 +9,9 @@ extension Palette {
     static let body = Color(red: 0.86, green: 0.79, blue: 0.67)
     static let mind = Color(red: 0.78, green: 0.58, blue: 0.96)
 }
+
+extension Palette {
+    static let stressLow = Color(red: 0.42, green: 0.84, blue: 0.52)
+    static let stressMedium = Color(red: 1.0, green: 0.80, blue: 0.30)
+    static let stressHigh = Color(red: 1.0, green: 0.36, blue: 0.34)
+}
