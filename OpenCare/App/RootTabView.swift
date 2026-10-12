@@ -55,7 +55,7 @@ struct RootTabView: View {
         case .today: TodayView()
         case .sleep: SleepView()
         case .fitness: FitnessView()
-        case .journal: TabPlaceholder(tab: tab)
+        case .journal: JournalView()
         }
     }
 }

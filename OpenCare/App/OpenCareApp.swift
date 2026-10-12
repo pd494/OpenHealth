@@ -12,6 +12,8 @@ struct OpenCareApp: App {
                 .environment(dependencies.health)
                 .environment(dependencies.google)
                 .environment(dependencies.layout)
+                .environment(dependencies.journal)
+                .modelContainer(dependencies.journal.container)
         }
         .onChange(of: scenePhase) {
             guard scenePhase == .active else { return }
