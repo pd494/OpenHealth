@@ -7,28 +7,20 @@ struct RingGauge: View {
     var centerText: String?
 
     private var descriptor: MetricDescriptor { value.id.descriptor }
-    private var isLarge: Bool { (size ?? Layout.ringSize) > 80 }
+    private var isLarge: Bool { (size ?? Layout.ringSize) > 64 }
 
     var text: String { centerText ?? (descriptor.format == .percent && value.value != nil ? value.number + "%" : value.number) }
 
     var body: some View {
         ZStack {
             AnimatedProgress(ratio: value.progress ?? 0) {
-                ProgressRing(ratio: $0, lineWidth: isLarge ? Layout.ringLineWidth : 6, tint: descriptor.tint)
+                DepthRing(ratio: $0, lineWidth: isLarge ? Layout.ringLineWidth : 6, tint: descriptor.tint)
             }
-            VStack(spacing: 2) {
-                if isLarge {
-                    Image(systemName: descriptor.symbol)
-                        .font(.caption)
-                        .foregroundStyle(descriptor.tint)
-                        .accessibilityHidden(true)
-                }
-                Text(text)
-                    .metricNumber(isLarge ? (text.count > 5 ? .headline : .title2) : .caption, weight: .bold)
-                    .minimumScaleFactor(0.6)
-                    .lineLimit(1)
-            }
-            .padding(.horizontal, isLarge ? 10 : 6)
+            Text(text)
+                .metricNumber(isLarge ? (text.count > 5 ? .subheadline : .headline) : .caption2, weight: .semibold)
+                .minimumScaleFactor(0.6)
+                .lineLimit(1)
+                .padding(.horizontal, isLarge ? 14 : 8)
         }
         .frame(maxWidth: size ?? Layout.ringSize, maxHeight: size ?? Layout.ringSize)
         .aspectRatio(1, contentMode: .fit)

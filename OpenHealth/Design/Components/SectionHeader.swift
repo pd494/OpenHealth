@@ -7,8 +7,7 @@ struct SectionHeader<Trailing: View>: View {
     var body: some View {
         HStack {
             Text(title)
-                .font(.rounded(.title3))
-                .tracking(-0.3)
+                .font(.rounded(.headline))
                 .accessibilityAddTraits(.isHeader)
             Spacer()
             trailing

@@ -14,7 +14,7 @@ struct RingsSection: View {
 
     var body: some View {
         if !layout.rings.isEmpty || isEditing {
-            VStack(alignment: .leading, spacing: 24) {
+            VStack(alignment: .leading, spacing: 14) {
                 SectionHeader(title: "Goals") {
                     if layout.ringsMode != .standard || !layout.rings.isEmpty { chevron }
                 }

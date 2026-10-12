@@ -6,12 +6,9 @@ struct MiniStat: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 1) {
             Text(stat.label).font(.caption2).foregroundStyle(.secondary).lineLimit(1)
-            Text(stat.value).metricNumber(.caption, weight: .semibold).lineLimit(1).minimumScaleFactor(0.7)
+            Text(stat.value).metricNumber(.subheadline, weight: .semibold).lineLimit(1).minimumScaleFactor(0.7)
         }
-        .padding(.horizontal, 8)
-        .padding(.vertical, 6)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(.white.opacity(0.05), in: .rect(cornerRadius: Layout.chipRadius))
         .accessibilityElement(children: .combine)
     }
 }

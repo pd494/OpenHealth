@@ -8,7 +8,7 @@ struct RingsRows: View {
     let showsDetails: Bool
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 20) {
+        VStack(alignment: .leading, spacing: 18) {
             RingFlowLayout {
                 ForEach(Array(rings.enumerated()), id: \.element.id) { index, item in
                     RingCell(metric: item.metric, isEditing: isEditing)

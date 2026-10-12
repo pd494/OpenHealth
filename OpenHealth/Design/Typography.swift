@@ -17,7 +17,7 @@ extension View {
     }
 
     func cardTitle() -> some View {
-        font(.subheadline.weight(.medium)).foregroundStyle(.secondary)
+        font(.footnote.weight(.medium)).foregroundStyle(.secondary)
     }
 
     func eyebrow() -> some View {

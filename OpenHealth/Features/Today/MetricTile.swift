@@ -4,7 +4,7 @@ struct MetricTile: View {
     let value: MetricValue
     let layout: TileLayout
     var showsHandle = true
-    @ScaledMetric(relativeTo: .title) private var figureSize = 28.0
+    @ScaledMetric(relativeTo: .title) private var figureSize = 30.0
 
     private var descriptor: MetricDescriptor { value.id.descriptor }
     private var caption: String { value.goalText ?? value.subtitle ?? (value.value == nil ? "No data" : "") }
@@ -29,13 +29,13 @@ struct MetricTile: View {
     }
 
     private var figure: some View {
-        HStack(alignment: .firstTextBaseline, spacing: 3) {
+        HStack(alignment: .firstTextBaseline, spacing: value.unit == "%" ? 0 : 3) {
             Text(value.number)
                 .metricFigure(layout == .grid ? figureSize : figureSize * 0.82)
                 .minimumScaleFactor(0.6)
                 .lineLimit(1)
             if !value.unit.isEmpty {
-                Text(value.unit).font(.caption.weight(.medium)).foregroundStyle(.secondary)
+                Text(value.unit).font(.caption2.weight(.medium)).foregroundStyle(.secondary)
             }
         }
     }
@@ -67,7 +67,7 @@ struct MetricTile: View {
         HStack(spacing: 12) {
             Image(systemName: descriptor.symbol)
                 .foregroundStyle(descriptor.tint)
-                .frame(width: 34, height: 34)
+                .frame(width: 30, height: 30)
                 .background(descriptor.tint.opacity(0.14), in: .circle)
                 .accessibilityHidden(true)
             VStack(alignment: .leading, spacing: 2) {

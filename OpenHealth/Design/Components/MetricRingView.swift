@@ -7,13 +7,13 @@ struct MetricRingView: View {
     private var caption: String { value.goalText ?? value.subtitle ?? "No data" }
 
     var body: some View {
-        VStack(spacing: 12) {
+        VStack(spacing: 8) {
             RingGauge(value: value)
             VStack(spacing: 2) {
                 Text(descriptor.title)
-                    .font(.subheadline.weight(.medium))
+                    .font(.footnote.weight(.semibold))
                 Text(caption)
-                    .font(.caption)
+                    .font(.caption2)
                     .foregroundStyle(.secondary)
                     .lineLimit(1)
                     .minimumScaleFactor(0.75)

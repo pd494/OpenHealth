@@ -121,6 +121,7 @@
 		8CA4C3C8D4B74C4C3E9DA52F /* JSONDecoder+GoogleHealth.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E664A51AB25D45025EB62 /* JSONDecoder+GoogleHealth.swift */; };
 		8CECA31729624A6C30743358 /* WaterSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4A55387893CBD1C43ACCF5 /* WaterSheet.swift */; };
 		8FB20176E613273941EE1928 /* StressDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D0047E6F957E766D1D465E /* StressDay.swift */; };
+		8FC4B683456FE681DED5F872 /* DepthRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466107EAC4B8DC962A8D3536 /* DepthRing.swift */; };
 		91FA36DF3D478A5E1807C5C9 /* StepSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F056DD7E4807D23AE4CE9ED /* StepSource.swift */; };
 		9249FE5B6E558F272FCC0048 /* AppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1729D982F8145A6BC9B1F702 /* AppDependencies.swift */; };
 		92CC8DF42AE70DC92F4F5E24 /* GoogleOAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5740C3B947DD8D0472CCFE /* GoogleOAuth.swift */; };
@@ -297,6 +298,7 @@
 		40A02A92031980D1B7DED7B1 /* DailyRollUpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRollUpRequest.swift; sourceTree = "<group>"; };
 		419A4C3F35AB4CE2CA1FA69D /* DemoStress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoStress.swift; sourceTree = "<group>"; };
 		43F021567B6CC08E81AD159F /* MetricStatsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricStatsTests.swift; sourceTree = "<group>"; };
+		466107EAC4B8DC962A8D3536 /* DepthRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepthRing.swift; sourceTree = "<group>"; };
 		491DEF0D3904AC5BD2E0743A /* GoogleAccountSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAccountSection.swift; sourceTree = "<group>"; };
 		4AC23E163399585948A6AE21 /* HealthKitMetricSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitMetricSource.swift; sourceTree = "<group>"; };
 		4AE64B39C69A0DC161E17161 /* DailyMetric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyMetric.swift; sourceTree = "<group>"; };
@@ -685,6 +687,7 @@
 		A9C2B2C8B40A739F1A172539 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				466107EAC4B8DC962A8D3536 /* DepthRing.swift */,
 				1DF4C17CC34332325E24AA13 /* EmptyState.swift */,
 				DFF7B55D9FA3BDF7C669196C /* Hairline.swift */,
 				C9B3CA895DB02010D9912B22 /* MetricRingView.swift */,
@@ -995,6 +998,7 @@
 				5A2D06B576DADB0DB3E41DF0 /* DemoMetricSource.swift in Sources */,
 				2A134066017C889C4E536C1E /* DemoSleep.swift in Sources */,
 				F26ED153DF6BBF1C493AB1A8 /* DemoStress.swift in Sources */,
+				8FC4B683456FE681DED5F872 /* DepthRing.swift in Sources */,
 				3F7AE97335D460B931C00481 /* DisplayStyle.swift in Sources */,
 				C8DF7475B718E4C79F571651 /* EditTray.swift in Sources */,
 				C764CD01998173A4D5A44E84 /* EmptyState.swift in Sources */,

@@ -18,8 +18,11 @@ struct TodaySettingsMenu: View {
             }
         } label: {
             Label("Layout", systemImage: "ellipsis")
-                .iconOnlyButton()
-                .font(.title3)
+                .labelStyle(.iconOnly)
+                .font(.subheadline.weight(.semibold))
+                .frame(width: 34, height: 34)
+                .chrome(in: .circle)
+                .frame(width: Layout.minTapTarget, height: Layout.minTapTarget)
         }
     }
 }
