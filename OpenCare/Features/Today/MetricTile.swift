@@ -3,6 +3,7 @@ import SwiftUI
 struct MetricTile: View {
     let value: MetricValue
     let layout: TileLayout
+    var showsHandle = true
 
     private var descriptor: MetricDescriptor { value.id.descriptor }
     private var caption: String { value.goalText ?? value.subtitle ?? (value.value == nil ? "No data" : "") }
@@ -43,7 +44,7 @@ struct MetricTile: View {
                     .labelStyle(TintedIconLabelStyle(tint: descriptor.tint))
                     .lineLimit(1)
                 Spacer(minLength: 0)
-                ReorderHandle(id: value.id)
+                if showsHandle { ReorderHandle(id: value.id) }
             }
             Spacer(minLength: 0)
             figure
@@ -68,7 +69,7 @@ struct MetricTile: View {
             }
             Spacer(minLength: 8)
             figure
-            ReorderHandle(id: value.id)
+            if showsHandle { ReorderHandle(id: value.id) }
         }
     }
 }

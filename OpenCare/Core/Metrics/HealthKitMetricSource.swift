@@ -18,6 +18,17 @@ struct HealthKitMetricSource: MetricSource {
         return result
     }
 
+    func dailyValues(_ id: MetricID, days: Int) async -> [DayValue] {
+        let start = Calendar.current.startOfDay(for: .now).adding(1 - days, .day)
+        switch id {
+        case .steps: return await reader.dailySums(HealthTypes.steps, unit: .count(), from: start)
+        case .distance: return await reader.dailySums(HealthTypes.distance, unit: .mile(), from: start)
+        case .activeEnergy: return await reader.dailySums(HealthTypes.activeEnergy, unit: .kilocalorie(), from: start)
+        case .exerciseMinutes: return await reader.dailySums(HealthTypes.exerciseTime, unit: .minute(), from: start)
+        default: return []
+        }
+    }
+
     private func read(_ id: MetricID, from start: Date, to end: Date) async -> Double? {
         switch id {
         case .steps: await sum(HealthTypes.steps, .count(), start, end)

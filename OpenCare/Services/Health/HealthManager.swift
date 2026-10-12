@@ -16,6 +16,8 @@ final class HealthManager {
     var stressDay: StressDay?
     var sleepNight: SleepNight?
     var sleepWeek: [DayValue] = []
+    var trends: [MetricID: [DayValue]] = [:]
+    var workouts: [WorkoutSummary] = []
     var readings: [MetricID: Double] = [:]
 
     var lastUpdated: Date?
@@ -148,6 +150,7 @@ final class HealthManager {
         if stepSource == .apple { readings = apple ?? [:] }
         readings[.recovery] = recoveryScore.map(Double.init)
         await refreshSleepDetails()
+        await refreshFitness()
         await refreshStress()
         lastUpdated = now
         publishWidget()
@@ -205,6 +208,8 @@ final class HealthManager {
         let night = DemoSleep.night()
         sleepNight = night
         sleepWeek = DemoSleep.week(tonight: night.asleepHours)
+        trends = DemoFitness.trends()
+        workouts = DemoFitness.workouts()
         readings[.stress] = stressDay?.current?.score
         lastUpdated = .now
         publishWidget()

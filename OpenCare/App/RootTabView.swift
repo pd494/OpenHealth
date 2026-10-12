@@ -54,7 +54,8 @@ struct RootTabView: View {
         switch tab {
         case .today: TodayView()
         case .sleep: SleepView()
-        case .fitness, .journal: TabPlaceholder(tab: tab)
+        case .fitness: FitnessView()
+        case .journal: TabPlaceholder(tab: tab)
         }
     }
 }

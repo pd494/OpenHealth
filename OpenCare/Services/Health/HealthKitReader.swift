@@ -95,6 +95,35 @@ struct HealthKitReader {
         }
     }
 
+    func dailySums(_ type: HKQuantityType, unit: HKUnit, from start: Date) async -> [DayValue] {
+        await withCheckedContinuation { continuation in
+            let query = HKStatisticsCollectionQuery(
+                quantityType: type,
+                quantitySamplePredicate: HKQuery.predicateForSamples(withStart: start, end: nil),
+                options: .cumulativeSum,
+                anchorDate: start,
+                intervalComponents: DateComponents(day: 1)
+            )
+            query.initialResultsHandler = { _, collection, _ in
+                var values: [DayValue] = []
+                collection?.enumerateStatistics(from: start, to: .now) { statistics, _ in
+                    values.append(DayValue(date: statistics.startDate, value: statistics.sumQuantity()?.doubleValue(for: unit) ?? 0))
+                }
+                continuation.resume(returning: values)
+            }
+            store.execute(query)
+        }
+    }
+
+    func workouts(limit: Int) async -> [WorkoutSummary] {
+        await withCheckedContinuation { continuation in
+            let newestFirst = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)
+            store.execute(HKSampleQuery(sampleType: HealthTypes.workout, predicate: nil, limit: limit, sortDescriptors: [newestFirst]) { _, samples, _ in
+                continuation.resume(returning: (samples as? [HKWorkout] ?? []).map(WorkoutSummary.init))
+            })
+        }
+    }
+
     /// Sleep stages for the window, from the single source that recorded the most sleep so devices don't overlap.
     func sleepSegments(from start: Date, to end: Date) async -> [SleepSegment] {
         await withCheckedContinuation { continuation in

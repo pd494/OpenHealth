@@ -18,9 +18,11 @@ enum HealthTypes {
     static let carbs = HKQuantityType(.dietaryCarbohydrates)
     static let fat = HKQuantityType(.dietaryFatTotal)
 
+    static let workout = HKObjectType.workoutType()
+
     static let all: [HKSampleType] = [
         steps, water, sleep, hrv, restingHeartRate, distance, activeEnergy, basalEnergy, exerciseTime,
-        heartRate, bodyMass, dietaryEnergy, protein, carbs, fat
+        heartRate, bodyMass, dietaryEnergy, protein, carbs, fat, workout
     ]
 }
 
