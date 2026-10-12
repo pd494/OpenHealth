@@ -18,6 +18,10 @@ targets:
   OpenHealth:
     type: application
     platform: iOS
+    scheme:
+      testTargets: [OpenHealthTests]
+      environmentVariables:
+        INJECTION_STANDALONE: "1"
     sources:
       - path: OpenHealth
       - path: Shared
