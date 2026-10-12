@@ -3,9 +3,9 @@ import Security
 
 /// Both targets list the same first keychain access group, so an item saved by the app is readable by the widget.
 enum GoogleTokenStore {
-    private static let service = "com.prasanthdendukuri.opencare.googlehealth.session"
+    private static let service = "com.prasanthdendukuri.openhealth.googlehealth.session"
     /// Before the widget shared the session, it lived in the app's private keychain group under this service.
-    private static let legacyService = "com.prasanthdendukuri.opencare.googlehealth"
+    private static let legacyService = "com.prasanthdendukuri.openhealth.googlehealth"
 
     private static func identity(service: String = service) -> [String: Any] {
         [

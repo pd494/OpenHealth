@@ -1,4 +1,8 @@
-name: OpenCare
+name: OpenHealth
+packages:
+  Inject:
+    url: https://github.com/krzysztofzablocki/Inject
+    from: 1.5.0
 options:
   bundleIdPrefix: com.prasanthdendukuri
 settings:
@@ -11,22 +15,31 @@ settings:
     MARKETING_VERSION: 1.0
     CURRENT_PROJECT_VERSION: 1
 targets:
-  OpenCare:
+  OpenHealth:
     type: application
     platform: iOS
+    scheme:
+      testTargets: [OpenHealthTests]
+      environmentVariables:
+        INJECTION_STANDALONE: "1"
     sources:
-      - path: OpenCare
+      - path: OpenHealth
       - path: Shared
     settings:
       base:
         TARGETED_DEVICE_FAMILY: 1
-        PRODUCT_BUNDLE_IDENTIFIER: com.prasanthdendukuri.opencare
+        PRODUCT_BUNDLE_IDENTIFIER: com.prasanthdendukuri.openhealth
         GENERATE_INFOPLIST_FILE: NO
-        INFOPLIST_FILE: OpenCare/Info.plist
-        CODE_SIGN_ENTITLEMENTS: OpenCare/OpenCare.entitlements
+        INFOPLIST_FILE: OpenHealth/Info.plist
+        CODE_SIGN_ENTITLEMENTS: OpenHealth/OpenHealth.entitlements
+      configs:
+        Debug:
+          OTHER_LDFLAGS: ["$(inherited)", "-Xlinker", "-interposable"]
+          EMIT_FRONTEND_COMMAND_LINES: YES
     dependencies:
       - target: StepsWidget
         embed: true
+      - package: Inject
   StepsWidget:
     type: app-extension
     platform: iOS
@@ -35,17 +48,17 @@ targets:
       - path: Shared
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.prasanthdendukuri.opencare.StepsWidget
+        PRODUCT_BUNDLE_IDENTIFIER: com.prasanthdendukuri.openhealth.StepsWidget
         GENERATE_INFOPLIST_FILE: NO
         INFOPLIST_FILE: StepsWidget/Info.plist
         CODE_SIGN_ENTITLEMENTS: StepsWidget/StepsWidget.entitlements
-  OpenCareTests:
+  OpenHealthTests:
     type: bundle.unit-test
     platform: iOS
     sources:
-      - path: OpenCareTests
+      - path: OpenHealthTests
     dependencies:
-      - target: OpenCare
+      - target: OpenHealth
     settings:
       base:
         GENERATE_INFOPLIST_FILE: YES

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Set the public iOS OAuth client ID and its callback scheme for OpenCare."""
+"""Set the public iOS OAuth client ID and its callback scheme for OpenHealth."""
 
 import plistlib
 import sys
@@ -19,18 +19,18 @@ def main() -> int:
         print("Expected an iOS OAuth client ID ending in .apps.googleusercontent.com")
         return 2
     scheme = "com.googleusercontent.apps." + client_id[: -len(SUFFIX)]
-    path = ROOT / "OpenCare/Info.plist"
+    path = ROOT / "OpenHealth/Info.plist"
     with path.open("rb") as file:
         info = plistlib.load(file)
     info["GoogleHealthClientID"] = client_id
     info["GoogleHealthRedirectScheme"] = scheme
     info["CFBundleURLTypes"] = [
         {"CFBundleURLName": "Google Health OAuth", "CFBundleURLSchemes": [scheme]},
-        {"CFBundleURLName": "OpenCare links", "CFBundleURLSchemes": ["opencare"]},
+        {"CFBundleURLName": "OpenHealth links", "CFBundleURLSchemes": ["openhealth"]},
     ]
     with path.open("wb") as file:
         plistlib.dump(info, file, sort_keys=False)
-    print("Configured Google Health iOS OAuth callback. The development watcher will rebuild OpenCare.")
+    print("Configured Google Health iOS OAuth callback. The development watcher will rebuild OpenHealth.")
     return 0
 
 

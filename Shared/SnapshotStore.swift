@@ -1,7 +1,7 @@
 import Foundation
 
 enum SnapshotStore {
-    static let groupID = "group.com.prasanthdendukuri.opencare"
+    static let groupID = "group.com.prasanthdendukuri.openhealth"
     private static let key = "dailyStepsSnapshot"
 
     static func load() -> SharedSnapshot {

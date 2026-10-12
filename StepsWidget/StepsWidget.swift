@@ -1,25 +1,25 @@
 import SwiftUI
 import WidgetKit
 
-struct OpenCareStepsWidget: Widget {
+struct OpenHealthStepsWidget: Widget {
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: WidgetKind.steps, provider: SnapshotProvider()) { entry in
             StepsWidgetView(snapshot: entry.snapshot)
         }
-        .configurationDisplayName("OpenCare Steps")
+        .configurationDisplayName("OpenHealth Steps")
         .description("Your steps and goal on the Home Screen.")
         .supportedFamilies([.systemSmall, .systemMedium])
     }
 }
 
 #Preview("Small", as: .systemSmall) {
-    OpenCareStepsWidget()
+    OpenHealthStepsWidget()
 } timeline: {
     SnapshotEntry(date: .now, snapshot: .sample)
 }
 
 #Preview("Medium", as: .systemMedium) {
-    OpenCareStepsWidget()
+    OpenHealthStepsWidget()
 } timeline: {
     SnapshotEntry(date: .now, snapshot: .sample)
 }
