@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>BGTaskSchedulerPermittedIdentifiers</key>
-	<array>
-		<string>com.prasanthdendukuri.openhealth.refresh</string>
-	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -22,41 +18,10 @@
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
 	<string>$(MARKETING_VERSION)</string>
-	<key>CFBundleURLTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleURLName</key>
-			<string>Google Health OAuth</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>com.googleusercontent.apps.131049154717-g0qdag8e9hh60ufrfet5ihq737bc508s</string>
-			</array>
-		</dict>
-		<dict>
-			<key>CFBundleURLName</key>
-			<string>OpenHealth links</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>openhealth</string>
-			</array>
-		</dict>
-	</array>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
-	<key>GoogleHealthClientID</key>
-	<string>131049154717-g0qdag8e9hh60ufrfet5ihq737bc508s.apps.googleusercontent.com</string>
-	<key>GoogleHealthRedirectScheme</key>
-	<string>com.googleusercontent.apps.131049154717-g0qdag8e9hh60ufrfet5ihq737bc508s</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSHealthShareUsageDescription</key>
-	<string>OpenHealth reads steps, sleep, heart rate, and hydration for your daily dashboard.</string>
-	<key>NSHealthUpdateUsageDescription</key>
-	<string>OpenHealth saves water you log to Apple Health.</string>
-	<key>UIBackgroundModes</key>
-	<array>
-		<string>fetch</string>
-	</array>
 	<key>UILaunchScreen</key>
 	<dict/>
 </dict>

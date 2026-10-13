@@ -19,7 +19,6 @@ targets:
     type: application
     platform: iOS
     scheme:
-      testTargets: [OpenHealthTests]
       environmentVariables:
         INJECTION_STANDALONE: "1"
     sources:
@@ -31,34 +30,9 @@ targets:
         PRODUCT_BUNDLE_IDENTIFIER: com.prasanthdendukuri.openhealth
         GENERATE_INFOPLIST_FILE: NO
         INFOPLIST_FILE: OpenHealth/Info.plist
-        CODE_SIGN_ENTITLEMENTS: OpenHealth/OpenHealth.entitlements
       configs:
         Debug:
           OTHER_LDFLAGS: ["$(inherited)", "-Xlinker", "-interposable"]
           EMIT_FRONTEND_COMMAND_LINES: YES
     dependencies:
-      - target: StepsWidget
-        embed: true
       - package: Inject
-  StepsWidget:
-    type: app-extension
-    platform: iOS
-    sources:
-      - path: StepsWidget
-      - path: Shared
-    settings:
-      base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.prasanthdendukuri.openhealth.StepsWidget
-        GENERATE_INFOPLIST_FILE: NO
-        INFOPLIST_FILE: StepsWidget/Info.plist
-        CODE_SIGN_ENTITLEMENTS: StepsWidget/StepsWidget.entitlements
-  OpenHealthTests:
-    type: bundle.unit-test
-    platform: iOS
-    sources:
-      - path: OpenHealthTests
-    dependencies:
-      - target: OpenHealth
-    settings:
-      base:
-        GENERATE_INFOPLIST_FILE: YES

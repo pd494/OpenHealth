@@ -1,29 +1,13 @@
-enum MetricID: String, Codable, CaseIterable, Sendable {
+enum MetricID: String, Codable, CaseIterable {
     case steps
     case distance
     case activeEnergy
-    case totalEnergy
     case exerciseMinutes
-    case heartRate
-    case restingHR
-    case hrv
     case recovery
-    case weight
     case hydration
     case sleep
-    case stress
     case caloriesIn
     case protein
     case carbs
     case fat
-    case activeZoneMinutes
-    case floors
-    case elevationGain
-    case oxygenSaturation
-    case respiratoryRate
-    case skinTemperature
-    case bodyTemperature
-    case vo2Max
-    case bodyFat
-    case bloodGlucose
 }

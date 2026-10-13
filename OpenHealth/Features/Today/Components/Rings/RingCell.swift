@@ -1,26 +1,33 @@
 import SwiftUI
 
 struct RingCell: View {
-    @Environment(\.dynamicTypeSize) private var typeSize
-    @Environment(HealthManager.self) private var health
+    @Environment(DashboardLayoutStore.self) private var store
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     let metric: MetricID
     let isEditing: Bool
-    var onSelect: (MetricID) -> Void = { _ in }
+    var showsDivider = false
 
     var body: some View {
-        Button { onSelect(metric) } label: {
-            MetricRingView(value: health.value(metric))
-                .padding(4)
-                .contentShape(.rect)
-        }
-        .buttonStyle(.pressable)
-        .overlay(alignment: .topLeading) {
-            if isEditing { HideBadge(metric: metric).scaleEffect(0.8).offset(x: -4, y: -4) }
-        }
-        .overlay(alignment: .topTrailing) {
-            if isEditing { StyleBadge(metric: metric, style: .tile).offset(x: 4, y: -4) }
-        }
-        .contextMenu { TileContextMenu(metric: metric, style: .ring) }
+        MetricRingView(metric: metric.descriptor)
+            .padding(4)
+            .contentShape(.rect)
+            .overlay(alignment: .leading) {
+                if showsDivider { VerticalHairline().padding(.vertical, 18).offset(x: -2) }
+            }
+            .overlay(alignment: .topLeading) {
+                if isEditing { HideBadge(metric: metric).scaleEffect(0.8).offset(x: -4, y: -4) }
+            }
+            .contextMenu {
+                Button("Move earlier", systemImage: "arrow.left") { shift(-1) }
+                Button("Move later", systemImage: "arrow.right") { shift(1) }
+                Button("Hide", systemImage: "eye.slash") {
+                    withMotion(reduceMotion: reduceMotion) { store.setVisible(metric, false) }
+                }
+            }
+    }
+
+    private func shift(_ offset: Int) {
+        withMotion(reduceMotion: reduceMotion) { store.shiftRing(metric, by: offset) }
     }
 }

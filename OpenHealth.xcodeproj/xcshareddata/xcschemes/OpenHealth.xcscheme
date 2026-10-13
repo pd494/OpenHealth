@@ -39,17 +39,6 @@
          </BuildableReference>
       </MacroExpansion>
       <Testables>
-         <TestableReference
-            skipped = "NO"
-            parallelizable = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DD86E323E8BC2F6F874E3163"
-               BuildableName = "OpenHealthTests.xctest"
-               BlueprintName = "OpenHealthTests"
-               ReferencedContainer = "container:OpenHealth.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <CommandLineArguments>
       </CommandLineArguments>

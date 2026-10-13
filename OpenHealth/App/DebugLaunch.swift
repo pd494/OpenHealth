@@ -1,24 +1,13 @@
 import Foundation
 
-/// Launch arguments for screenshots and manual testing, e.g. `-ringsMode expanded -tileLayout list`.
+/// Launch arguments for screenshots and manual testing, e.g. `-editMode 1 -resetLayout 1`.
 /// Release builds ignore all of them.
 enum DebugLaunch {
-    static func string(_ key: String) -> String? {
+    static func flag(_ key: String) -> Bool {
         #if DEBUG
-        UserDefaults.standard.string(forKey: key)
+        UserDefaults.standard.string(forKey: key) != nil
         #else
-        nil
+        false
         #endif
-    }
-
-    static func flag(_ key: String) -> Bool { string(key) != nil }
-
-
-    static func apply(to layout: inout DashboardLayout) {
-        if flag("resetLayout") { layout = .default }
-        if let value = string("tileLayout").flatMap(TileLayout.init) { layout.tileLayout = value }
-        if let value = string("ringsMode").flatMap(RingsMode.init) { layout.ringsMode = value }
-        if flag("collapsed") { layout.ringDetailsCollapsed = true }
-        if let value = string("calories").flatMap(CaloriePreference.init) { layout.calories = value }
     }
 }

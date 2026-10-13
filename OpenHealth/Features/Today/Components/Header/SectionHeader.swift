@@ -14,9 +14,3 @@ struct SectionHeader<Trailing: View>: View {
         }
     }
 }
-
-extension SectionHeader where Trailing == EmptyView {
-    init(_ title: String) {
-        self.init(title: title) { EmptyView() }
-    }
-}
