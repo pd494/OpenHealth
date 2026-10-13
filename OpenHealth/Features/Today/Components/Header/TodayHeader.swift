@@ -2,7 +2,6 @@ import SwiftUI
 
 struct TodayHeader: View {
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
-    @Binding var sheet: TodaySheet?
     @Binding var isEditing: Bool
 
     var body: some View {
@@ -17,7 +16,6 @@ struct TodayHeader: View {
             .font(.subheadline.weight(.semibold))
             .frame(minWidth: Layout.minTapTarget, minHeight: Layout.minTapTarget)
             .sensoryFeedback(.selection, trigger: isEditing)
-            TodaySettingsMenu(sheet: $sheet)
         }
         .padding(.vertical, -8)
     }

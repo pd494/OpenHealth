@@ -7,14 +7,16 @@ private struct TodayEntrance: ViewModifier {
 
     @MainActor private static var played = false
     private static let stagger = 0.1
+    private static let blur = 4.0
+    private static let rise = 12.0
 
     let index: Int
 
     func body(content: Content) -> some View {
         content
             .opacity(shown ? 1 : 0)
-            .blur(radius: shown || reduceMotion ? 0 : SoftLift.blur)
-            .offset(y: shown || reduceMotion ? 0 : SoftLift.rise)
+            .blur(radius: shown || reduceMotion ? 0 : Self.blur)
+            .offset(y: shown || reduceMotion ? 0 : Self.rise)
             .onAppear(perform: enter)
     }
 

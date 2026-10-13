@@ -5,25 +5,19 @@ struct EditTray: View {
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     private var hidden: [DashboardItem] { store.layout.hidden }
-    private var isFull: Bool { store.layout.isMetricGridFull }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack {
-                Text("Available metrics").cardTitle()
+                Text("Available metrics").font(.subheadline.weight(.medium))
                 Spacer()
-                if !hidden.isEmpty && !isFull {
+                if !hidden.isEmpty {
                     Button("Add all") {
                         withMotion(reduceMotion: reduceMotion) {
                             for item in hidden { store.setVisible(item.metric, true) }
                         }
                     }
                 }
-            }
-            if isFull {
-                Text("Your dashboard holds \(DashboardLayout.maxMetrics) metrics. Remove one to add another.")
-                    .font(.footnote)
-                    .foregroundStyle(.secondary)
             }
             if hidden.isEmpty {
                 Text("Everything is on your dashboard.")
@@ -40,7 +34,6 @@ struct EditTray: View {
                                 .overlay { Capsule().strokeBorder(Palette.hairline) }
                         }
                         .buttonStyle(.pressable)
-                        .disabled(isFull)
                     }
                 }
             }
@@ -48,7 +41,6 @@ struct EditTray: View {
         .padding(Layout.cardPadding)
         .frame(maxWidth: .infinity, alignment: .leading)
         .dashedSurface()
-        .softLift()
     }
 }
 

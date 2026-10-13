@@ -2,21 +2,12 @@ import SwiftUI
 
 @main
 struct OpenHealthApp: App {
-    @Environment(\.scenePhase) private var scenePhase
-    @UIApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
-    @State private var dependencies = AppDependencies()
+    @State private var layout = DashboardLayoutStore()
 
     var body: some Scene {
         WindowGroup {
             RootView()
-                .environment(dependencies.health)
-                .environment(dependencies.google)
-                .environment(dependencies.layout)
-        }
-        .onChange(of: scenePhase) {
-            guard scenePhase == .active else { return }
-            dependencies.health.checkDayRollover()
-            Task { await AppRefresh.run(force: true) }
+                .environment(layout)
         }
     }
 }

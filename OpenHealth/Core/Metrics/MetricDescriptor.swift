@@ -1,21 +1,19 @@
-import SwiftUI
-
-/// Everything the Today screen needs to know about a metric. Add new metrics in `MetricRegistry`.
-struct MetricDescriptor: Sendable {
+/// Everything a ring needs to know about a metric. The values are hard-coded placeholders until real data is wired in.
+struct MetricDescriptor {
     let id: MetricID
     let title: String
     let symbol: String
     let domain: MetricDomain
     let format: MetricFormat
-    var defaultGoal: Double?
-    /// Where HealthKit reads it from; nil when it comes from elsewhere (Google, derived scores).
-    var healthKit: HealthQuery?
-    /// Fixed caption under the value; live captions (HRV baseline, stress band) stay in `HealthManager`.
-    var subtitle: String?
-    /// Sheet that opens when the tile is tapped.
-    var opens: TodaySheet?
-    /// Value shown in preview mode.
-    var demo: Double
+    let goal: Double
+    let value: Double
 
-    var tint: Color { domain.tint }
+    var progress: Double { value / goal }
+    var number: String { format.number(value) }
+    var unit: String { format.unit }
+
+    var goalText: String {
+        let suffix = unit == "%" ? unit : (unit.isEmpty ? "" : " \(unit)")
+        return "of \(format.number(goal))\(suffix)"
+    }
 }
