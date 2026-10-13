@@ -33,3 +33,10 @@ struct DashboardLayout: Codable, Equatable {
         items.swapAt(a, b)
     }
 }
+
+struct DashboardItem: Codable, Hashable, Identifiable {
+    let metric: MetricID
+    var isVisible: Bool
+
+    var id: MetricID { metric }
+}

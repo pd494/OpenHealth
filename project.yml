@@ -23,7 +23,6 @@ targets:
         INJECTION_STANDALONE: "1"
     sources:
       - path: OpenHealth
-      - path: Shared
     settings:
       base:
         TARGETED_DEVICE_FAMILY: 1

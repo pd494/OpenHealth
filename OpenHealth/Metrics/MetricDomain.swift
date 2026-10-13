@@ -13,7 +13,7 @@ enum MetricDomain {
         case .heart: rgb(0xC84235)
         case .nutrition: rgb(0x327C36)
         case .hydration: rgb(0x155DA6)
-        case .sleep: rgb(0x6E528A)
+        case .sleep: rgb(0x6C31E3)
         }
     }
 
@@ -24,7 +24,7 @@ enum MetricDomain {
         case .heart: rgb(0xFF594B)
         case .nutrition: rgb(0x5CCB57)
         case .hydration: rgb(0x399AFF)
-        case .sleep: rgb(0x6F6397)
+        case .sleep: rgb(0x6C31E3)
         }
     }
 
@@ -35,7 +35,7 @@ enum MetricDomain {
         case .heart: rgb(0xFF9A3C)
         case .nutrition: rgb(0xB7E86A)
         case .hydration: rgb(0x7FD4FF)
-        case .sleep: rgb(0xB6ADD5)
+        case .sleep: rgb(0xC6A8E6)
         }
     }
 
