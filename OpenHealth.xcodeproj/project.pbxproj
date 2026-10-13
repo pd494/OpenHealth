@@ -148,6 +148,7 @@
 		CACC335703BEAB5480C5D31A /* PairedAir.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9655BFE854F17E39F82B03C0 /* PairedAir.swift */; };
 		CBAA6F07F318BCA9F5296A0C /* HealthQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90EC7854A240EEB3B7B0E0 /* HealthQuery.swift */; };
 		CC03C99BE1F51B0CA5828B50 /* GoogleHealthError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED1D5DA384EEE3DAC3A0BE0 /* GoogleHealthError.swift */; };
+		CD7C8C2D2988B7B20275A11D /* RingCenterLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7CB1F0862BF5E9883AB39C /* RingCenterLabel.swift */; };
 		CE12F4BDAB7A53021E402C2B /* DashboardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152F2C204A616A17F2937E23 /* DashboardLayout.swift */; };
 		CE6503F2C6662E684B8A58FC /* Vital.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FD068945AB4559D70F0F95 /* Vital.swift */; };
 		CF3251C09906EDF8D8276FD3 /* HealthTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544B77C092F1222000D08110 /* HealthTypes.swift */; };
@@ -158,6 +159,7 @@
 		D41749DCABFF66807453280C /* DemoBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0015982C1B51E93A96752730 /* DemoBanner.swift */; };
 		D7C823EBADBE25B3713BC9FA /* JSONDecoder+GoogleHealth.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E664A51AB25D45025EB62 /* JSONDecoder+GoogleHealth.swift */; };
 		DBA4EC3D86B830BC938C5BCC /* MetricID.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB8CF9FE85FF6CEE6F41511 /* MetricID.swift */; };
+		E22954CABBDD66DC7CB3B5A0 /* VerticalHairline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FEDDD84A096E72B47CE077A /* VerticalHairline.swift */; };
 		E3C5E43DC75149613CF89853 /* FlexibleDouble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1237FC223AA063AEC18BD7A4 /* FlexibleDouble.swift */; };
 		E3C79E5D8A8FAF8D3CF69968 /* MetricFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0888CE369FDD54A92518C61 /* MetricFormat.swift */; };
 		E59E1EFC27BEA142093198B0 /* DashboardLayoutStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB990844E8BED70EE5F7C449 /* DashboardLayoutStore.swift */; };
@@ -295,11 +297,13 @@
 		6D2E9043C1AFA3F1632DB834 /* StressPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StressPoint.swift; sourceTree = "<group>"; };
 		6F005333DF0F7415D065346B /* DailyMetricKind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyMetricKind.swift; sourceTree = "<group>"; };
 		6FBC080E50EC7455EB059131 /* AnimatedProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedProgress.swift; sourceTree = "<group>"; };
+		6FEDDD84A096E72B47CE077A /* VerticalHairline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalHairline.swift; sourceTree = "<group>"; };
 		722FE760D2376E817FF6D3AF /* ReorderActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReorderActions.swift; sourceTree = "<group>"; };
 		7485B1A3AF4814D899A2526F /* GoogleTokenEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleTokenEndpoint.swift; sourceTree = "<group>"; };
 		74AFE71D040E0EB0614F9089 /* HealthManager+Metrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HealthManager+Metrics.swift"; sourceTree = "<group>"; };
 		7702867D7F35EBE7645AC042 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79DA007C314DB5658DF20F1F /* HealthManager+Sleep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HealthManager+Sleep.swift"; sourceTree = "<group>"; };
+		7A7CB1F0862BF5E9883AB39C /* RingCenterLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingCenterLabel.swift; sourceTree = "<group>"; };
 		7F917F07BA9E92101D9BC4DF /* MetricTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricTile.swift; sourceTree = "<group>"; };
 		7FCB8AA38D2B3C1DA1264DAB /* DailyStepCount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyStepCount.swift; sourceTree = "<group>"; };
 		818078A92C62440A8CE69765 /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
@@ -506,6 +510,7 @@
 				A014F3D13E160F677BD0E491 /* MetricRingView.swift */,
 				FE3F143992F7287BDEBC8580 /* MiniStat.swift */,
 				C8CAF576D9F0F2BD687993F4 /* RingCell.swift */,
+				7A7CB1F0862BF5E9883AB39C /* RingCenterLabel.swift */,
 				453CB57B30477AF0F59FE160 /* RingFlowLayout.swift */,
 				AEF6FC830F7B0C836E8BFE1E /* RingGauge.swift */,
 				1A91466D8113A4A96FF2C72E /* RingsRows.swift */,
@@ -730,6 +735,7 @@
 				B42A73CB7BDD4E598D554399 /* SheetContainer.swift */,
 				00B0293ECD188A05E65F7C7F /* SoftLift.swift */,
 				61ACFDD331729C6154705423 /* Typography.swift */,
+				6FEDDD84A096E72B47CE077A /* VerticalHairline.swift */,
 				FCC1591C4182B183B672183D /* ViewStyles.swift */,
 			);
 			path = Design;
@@ -949,6 +955,7 @@
 				03EA44F69EF12D0CD7F6949F /* ReorderHandle.swift in Sources */,
 				7EC306960405215A41BB853B /* ReorderableGrid.swift in Sources */,
 				591E9995993D74FC37A3B71A /* RingCell.swift in Sources */,
+				CD7C8C2D2988B7B20275A11D /* RingCenterLabel.swift in Sources */,
 				70E0EC6A2518B1B80C8E1008 /* RingFlowLayout.swift in Sources */,
 				C3CBD0DD0F8729180E25B3DE /* RingGauge.swift in Sources */,
 				3F445D35455E5DB20F107721 /* RingStatsRow.swift in Sources */,
@@ -982,6 +989,7 @@
 				785B00BDA88D6A7E78A2D2A5 /* TodaySheet.swift in Sources */,
 				4976EDEEDE8E805615CC31AD /* TodayView.swift in Sources */,
 				EA20616AEC36C090E8765006 /* Typography.swift in Sources */,
+				E22954CABBDD66DC7CB3B5A0 /* VerticalHairline.swift in Sources */,
 				36A375604BC4406DB4524697 /* ViewStyles.swift in Sources */,
 				CE6503F2C6662E684B8A58FC /* Vital.swift in Sources */,
 				1A6809A1A25C82318B3C5BAA /* WaterSheet.swift in Sources */,

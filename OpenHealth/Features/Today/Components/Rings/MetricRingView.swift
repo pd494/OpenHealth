@@ -5,7 +5,7 @@ struct MetricRingView: View {
     let value: MetricValue
 
     private var descriptor: MetricDescriptor { value.id.descriptor }
-    private var caption: String { value.goalText ?? value.subtitle ?? "No data" }
+    private var caption: String { value.goalTextWithUnit ?? value.subtitle ?? "No data" }
 
     var body: some View {
         Group {

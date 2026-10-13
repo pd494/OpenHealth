@@ -22,3 +22,10 @@ extension Palette {
     static let sleepREM = Color(red: 0.38, green: 0.82, blue: 0.92)
     static let sleepAwake = Color(red: 1.0, green: 0.62, blue: 0.40)
 }
+
+/// Ring gradients run from a deep start to a lighter head, one pair per domain.
+extension Palette {
+    static func rgb(_ hex: UInt32) -> Color {
+        Color(red: Double((hex >> 16) & 0xFF) / 255, green: Double((hex >> 8) & 0xFF) / 255, blue: Double(hex & 0xFF) / 255)
+    }
+}

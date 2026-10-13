@@ -7,7 +7,6 @@ struct RingGauge: View {
     var centerText: String?
 
     private var descriptor: MetricDescriptor { value.id.descriptor }
-    private var isLarge: Bool { (size ?? Layout.ringSize) > 64 }
 
     var text: String {
         if let centerText { return centerText }
@@ -16,20 +15,34 @@ struct RingGauge: View {
         return value.number
     }
 
+    private var isPercent: Bool { descriptor.format == .percent && value.value != nil }
+    private var caption: String? { value.goalTextWithUnit ?? value.subtitle }
+
     var body: some View {
-        ZStack {
-            if let progress = value.progress {
-                AnimatedProgress(ratio: progress) {
-                    DepthRing(ratio: $0, lineWidth: isLarge ? Layout.ringLineWidth : 4, tint: descriptor.tint)
+        GeometryReader { proxy in
+            let diameter = min(proxy.size.width, proxy.size.height)
+            let isLarge = diameter > 64
+            let lineWidth = isLarge ? diameter * 0.085 : 4
+            ZStack {
+                if let progress = value.progress {
+                    AnimatedProgress(ratio: progress) {
+                        DepthRing(ratio: $0, lineWidth: lineWidth, tint: descriptor.domain.ringStart, softTint: descriptor.domain.ringEnd)
+                    }
+                } else {
+                    Circle().stroke(descriptor.tint.opacity(0.4), style: StrokeStyle(lineWidth: 4, dash: [3, 7])).padding(2)
                 }
-            } else {
-                Circle().stroke(descriptor.tint.opacity(0.4), lineWidth: 4).padding(2)
+                if isLarge {
+                    RingCenterLabel(number: centerText ?? value.number, suffix: isPercent && centerText == nil ? "%" : nil, caption: centerText == nil ? caption : nil, captionColor: descriptor.domain.ringLabel, diameter: diameter)
+                } else {
+                    Text(text)
+                        .font(.system(.caption2, design: .rounded, weight: .bold))
+                        .monospacedDigit()
+                        .minimumScaleFactor(0.6)
+                        .lineLimit(1)
+                        .padding(.horizontal, 8)
+                }
             }
-            Text(text)
-                .metricNumber(isLarge ? (text.count > 5 ? .subheadline : .headline) : .caption2, weight: .semibold)
-                .minimumScaleFactor(0.6)
-                .lineLimit(1)
-                .padding(.horizontal, isLarge ? 18 : 8)
+            .frame(width: diameter, height: diameter)
         }
         .frame(maxWidth: size ?? Layout.ringSize, maxHeight: size ?? Layout.ringSize)
         .aspectRatio(1, contentMode: .fit)

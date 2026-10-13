@@ -9,11 +9,13 @@ struct RingsRows: View {
     let showsDetails: Bool
     var onSelect: (MetricID) -> Void = { _ in }
 
+    private var perRow: Int { typeSize.isAccessibilitySize ? 1 : 3 }
+
     var body: some View {
         VStack(alignment: .leading, spacing: 24) {
-            RingFlowLayout(maxPerRow: typeSize.isAccessibilitySize ? 1 : 3, spacing: 4) {
+            RingFlowLayout(maxPerRow: perRow, spacing: 4) {
                 ForEach(Array(rings.enumerated()), id: \.element.id) { index, item in
-                    RingCell(metric: item.metric, isEditing: isEditing, onSelect: onSelect)
+                    RingCell(metric: item.metric, isEditing: isEditing, showsDivider: index % perRow != 0, onSelect: onSelect)
                         .environment(\.fillDelay, Double(index) * RingsSection.ringStagger)
                 }
             }

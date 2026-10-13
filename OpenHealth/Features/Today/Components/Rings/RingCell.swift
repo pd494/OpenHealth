@@ -6,6 +6,7 @@ struct RingCell: View {
 
     let metric: MetricID
     let isEditing: Bool
+    var showsDivider = false
     var onSelect: (MetricID) -> Void = { _ in }
 
     var body: some View {
@@ -15,6 +16,9 @@ struct RingCell: View {
                 .contentShape(.rect)
         }
         .buttonStyle(.pressable)
+        .overlay(alignment: .leading) {
+            if showsDivider { VerticalHairline().padding(.vertical, 18).offset(x: -2) }
+        }
         .overlay(alignment: .topLeading) {
             if isEditing { HideBadge(metric: metric).scaleEffect(0.8).offset(x: -4, y: -4) }
         }

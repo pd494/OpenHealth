@@ -45,10 +45,7 @@ struct TodayView: View {
                     }
                     RingsSection(isEditing: isEditing, onSelect: select)
                         .padding(Layout.overviewInset)
-                        .overlay {
-                            RoundedRectangle(cornerRadius: Layout.cardRadius, style: .continuous)
-                                .strokeBorder(Palette.hairline, lineWidth: 1)
-                        }
+                        .surface()
                     if metricsExpanded {
                         TileGrid(isEditing: isEditing, fillHeight: fillHeight, onSelect: select)
                             .onGeometryChange(for: Double.self) { $0.frame(in: .named(Self.content)).minY.rounded() } action: { gridTop = $0 }

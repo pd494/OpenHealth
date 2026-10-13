@@ -12,4 +12,11 @@ struct MetricValue: Equatable, Sendable {
     var number: String { value.map(id.descriptor.format.number) ?? "—" }
     var unit: String { value == nil ? "" : id.descriptor.format.unit }
     var goalText: String? { goal.map { "of \(id.descriptor.format.number($0))" } }
+    var goalTextWithUnit: String? {
+        guard let goal else { return nil }
+        let format = id.descriptor.format
+        let unit = format.unit
+        let suffix = unit == "%" ? unit : (unit.isEmpty ? "" : " \(unit)")
+        return "of \(format.number(goal))\(suffix)"
+    }
 }

@@ -17,7 +17,7 @@ struct RingStatsRow: View {
                 HStack(alignment: .firstTextBaseline) {
                     Text(metric.descriptor.title).font(.rounded(.headline))
                     Spacer()
-                    Text(value.goalText ?? "").font(.footnote).foregroundStyle(.secondary)
+                    Text(value.goalTextWithUnit ?? "").font(.footnote).foregroundStyle(.secondary)
                 }
                 .padding(.bottom, 6)
                 ForEach(Array(health.stats(for: metric, hiding: store.layout.rings.map(\.metric)).enumerated()), id: \.element.id) { index, stat in

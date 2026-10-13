@@ -40,7 +40,7 @@ struct MetricPill: View {
         ZStack {
             Circle().fill(descriptor.tint.opacity(0.22))
             if let progress = value.progress {
-                AnimatedProgress(ratio: progress) { DepthRing(ratio: $0, lineWidth: 3, tint: descriptor.tint) }
+                AnimatedProgress(ratio: progress) { DepthRing(ratio: $0, lineWidth: 3, tint: descriptor.domain.ringStart, softTint: descriptor.domain.ringEnd) }
             }
             Image(systemName: descriptor.symbol)
                 .font(.footnote.weight(.semibold))
