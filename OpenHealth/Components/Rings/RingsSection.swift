@@ -10,6 +10,9 @@ struct RingsSection: View {
     let isEditing: Bool
     /// Expanded when a ring is held over the metrics, so there's somewhere to see it land.
     @Binding var showsMetrics: Bool
+    /// Where a held ring is while over the metrics, for the pills to turn into `ringSlot`.
+    @Binding var pointOverMetrics: CGPoint?
+    let ringSlot: Int
 
     /// Spans the rings and the metrics below, so a drag can leave this section.
     static let cardSpace = "card"
@@ -80,6 +83,7 @@ struct RingsSection: View {
         drag?.location = point
         let overMetrics = point.y > gridFrame.maxY
         isOverMetrics = overMetrics
+        pointOverMetrics = overMetrics ? point : nil
         if overMetrics {
             showsMetrics = true
             return
@@ -97,7 +101,8 @@ struct RingsSection: View {
         guard let held = drag, !held.isSettling else { return }
         if isOverMetrics {
             isOverMetrics = false
-            withMotion(reduceMotion: reduceMotion) { store.layout.hide(held.metric) }
+            pointOverMetrics = nil
+            withMotion(reduceMotion: reduceMotion) { store.layout.hide(held.metric, at: ringSlot) }
             drag = nil
             return
         }

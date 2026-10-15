@@ -8,11 +8,15 @@ struct PillsSection: View {
     @Environment(DashboardLayoutStore.self) private var store
 
     var isExpanded = true
+    /// Where a ring held over the metrics is, in the rings' card space; nil when none is.
+    var ringPoint: CGPoint?
+    /// The slot that ring would land in, kept current while `ringPoint` moves.
+    @Binding var ringSlot: Int
 
     /// The pills' natural height. An explicit number animates smoothly where `nil` to `0` would jump.
     @State private var contentHeight = 0.0
     @State private var page: Int? = 0
-    @State private var viewportWidth = 0.0
+    @State private var viewportFrame = CGRect.zero
     @State private var rowHeight = 0.0
     @State private var drag: ReorderDrag?
     /// Which side edge the held pill rests at (-1, 0 or 1); the task below turns pages while it's non-zero.
@@ -42,7 +46,7 @@ struct PillsSection: View {
     private var currentPage: Int { page ?? 0 }
 
     private var cellWidth: Double {
-        (viewportWidth - Self.spacing * Double(columnCount - 1)) / Double(columnCount)
+        (viewportFrame.width - Self.spacing * Double(columnCount - 1)) / Double(columnCount)
     }
 
     var body: some View {
@@ -57,6 +61,10 @@ struct PillsSection: View {
             .accessibilityHidden(!isExpanded)
             .onChange(of: pages.count) { _, count in
                 if currentPage >= count { page = max(count - 1, 0) }
+            }
+            .onChange(of: ringPoint) { _, point in
+                guard let point else { return }
+                ringSlot = slot(at: CGPoint(x: point.x - viewportFrame.minX, y: point.y - viewportFrame.minY)) ?? store.layout.hidden.count
             }
             .task(id: edge) {
                 if edge != 0 { try? await flipPages(toward: edge) }
@@ -98,7 +106,7 @@ struct PillsSection: View {
             .scrollPosition(id: $page)
             .scrollDisabled(drag != nil)
             .coordinateSpace(.named(Self.space))
-            .onGeometryChange(for: Double.self) { $0.size.width } action: { viewportWidth = $0 }
+            .onGeometryChange(for: CGRect.self) { $0.frame(in: .named(RingsSection.cardSpace)) } action: { viewportFrame = $0 }
             .overlay(alignment: .topLeading) { floatingPill }
             // On the viewport rather than each pill, so the gesture survives its pill moving to another page.
             .reorderDrag($drag, in: Self.space, isEnabled: !typeSize.isAccessibilitySize, simultaneous: true, pickUp: pickUp(at:), move: move(to:), end: drop)
@@ -153,7 +161,7 @@ struct PillsSection: View {
         drag?.location = point
         if drag?.arm(at: point) == true { reorder(under: point) }
         let hasTravelled = hypot(point.x - current.origin.x, point.y - current.origin.y) > Self.armDistance
-        edge = !hasTravelled ? 0 : point.x < Self.edgeZone ? -1 : point.x > viewportWidth - Self.edgeZone ? 1 : 0
+        edge = !hasTravelled ? 0 : point.x < Self.edgeZone ? -1 : point.x > viewportFrame.width - Self.edgeZone ? 1 : 0
     }
 
     /// Keeps turning pages while the pill rests at an edge, with a pause first so passing near the edge doesn't flip.
@@ -239,7 +247,7 @@ private struct PageDots: View {
 }
 
 #Preview {
-    ScrollView { PillsSection().padding() }
+    ScrollView { PillsSection(ringSlot: .constant(0)).padding() }
         .background(Palette.background)
         .environment(DashboardLayoutStore(layout: .default))
 }
