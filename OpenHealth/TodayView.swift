@@ -8,6 +8,8 @@ struct TodayView: View {
     @State private var showsMetricPicker = false
     @State private var isEditing = DebugLaunch.flag("editMode")
     @AppStorage("showsMetrics") private var showsMetrics = false
+    @State private var ringPoint: CGPoint?
+    @State private var ringSlot = 0
 
     var body: some View {
         ScrollView {
@@ -24,11 +26,12 @@ struct TodayView: View {
                         .padding(.vertical, -10)
                     }
                     VStack(spacing: 0) {
-                        RingsSection(isEditing: isEditing)
+                        RingsSection(isEditing: isEditing, showsMetrics: $showsMetrics, pointOverMetrics: $ringPoint, ringSlot: ringSlot)
                         if !store.layout.hidden.isEmpty {
-                            PillsSection(isExpanded: showsMetrics)
+                            PillsSection(isExpanded: showsMetrics, ringPoint: ringPoint, ringSlot: $ringSlot)
                         }
                     }
+                    .coordinateSpace(.named(RingsSection.cardSpace))
                     .padding(Layout.overviewInset)
                     .surface()
                     // Bound to the value rather than wrapped around the tap, so the open/close plays in full however it's triggered.
