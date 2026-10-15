@@ -6,6 +6,7 @@ struct DepthRing: View {
     let lineWidth: Double
     let tint: Color
     let softTint: Color
+    let deepTint: Color
 
     private var clamped: Double { min(max(ratio, 0), 1) }
 
@@ -20,7 +21,7 @@ struct DepthRing: View {
                 .trim(from: 0, to: clamped)
                 .stroke(
                     AngularGradient(
-                        colors: [softTint.opacity(0.7), tint],
+                        colors: [softTint, tint, deepTint],
                         center: .center, startAngle: .zero, endAngle: .degrees(360 * max(clamped, 0.01))
                     ),
                     style: StrokeStyle(lineWidth: lineWidth * 1.4, lineCap: .round)
