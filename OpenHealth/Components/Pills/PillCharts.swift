@@ -1,6 +1,5 @@
 import SwiftUI
 
-/// The top half of a ring: a tinted track and a gradient that ends darkest, like the full rings.
 struct HalfDial: View {
     private static let lineWidth = 5.0
 
@@ -35,7 +34,6 @@ struct HalfDial: View {
     }
 }
 
-/// A week of bars from a shared baseline; today's is darkest so it reads as "now".
 struct MiniBars: View {
     private static let height = 26.0
 
@@ -64,7 +62,6 @@ struct MiniBars: View {
     }
 }
 
-/// A smoothed line through the week's readings with a soft fill beneath, ending on a dot for today.
 struct MiniWave: View {
     let values: [Double]
     let tint: Color

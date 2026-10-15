@@ -1,6 +1,5 @@
 import SwiftUI
 
-/// A metric that isn't a ring, icon and name, then the number beside a half dial toward the goal.
 struct MetricPill: View {
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.dynamicTypeSize) private var typeSize
@@ -43,7 +42,6 @@ struct MetricPill: View {
         .accessibilityValue(metric.hasGoal ? "\(Int((metric.progress * 100).rounded())) percent of goal" : "")
     }
 
-    /// Placeholder weeks of history until real data is wired in.
     @ViewBuilder private var chart: some View {
         let tint = metric.domain.ringStart, soft = metric.domain.ringEnd, deep = metric.domain.ringDeep
         switch metric.id {

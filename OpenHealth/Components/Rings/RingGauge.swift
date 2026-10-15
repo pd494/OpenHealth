@@ -32,7 +32,6 @@ struct RingGauge: View {
     }
 }
 
-/// Big bold number sized from the ring's diameter so it always fits the inner circle.
 private struct CenterLabel: View {
     let number: String
     let suffix: String
