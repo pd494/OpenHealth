@@ -8,7 +8,7 @@ struct HideBadge: View {
 
     var body: some View {
         Button("Hide \(metric.descriptor.title)", systemImage: "minus.circle.fill") {
-            withMotion(reduceMotion: reduceMotion) { store.setVisible(metric, false) }
+            withMotion(reduceMotion: reduceMotion) { store.layout.setVisible(metric, false) }
         }
         .labelStyle(.iconOnly)
         .font(.title2)

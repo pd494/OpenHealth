@@ -5,7 +5,7 @@ import Observation
 final class DashboardLayoutStore {
     private static let key = "ringLayout"
 
-    private(set) var layout: DashboardLayout {
+    var layout: DashboardLayout {
         didSet { save() }
     }
 
@@ -15,9 +15,6 @@ final class DashboardLayoutStore {
         self.layout = initial
     }
 
-    func setVisible(_ id: MetricID, _ visible: Bool) { layout.setVisible(id, visible) }
-    func shiftRing(_ id: MetricID, by offset: Int) { layout.shift(id, by: offset) }
-
     private func save() {
         UserDefaults.standard.set(try? JSONEncoder().encode(layout), forKey: Self.key)
     }
@@ -25,6 +22,6 @@ final class DashboardLayoutStore {
     private static func load() -> DashboardLayout {
         guard let data = UserDefaults.standard.data(forKey: key),
               let stored = try? JSONDecoder().decode(DashboardLayout.self, from: data) else { return .default }
-        return stored
+        return stored.filledOut()
     }
 }
