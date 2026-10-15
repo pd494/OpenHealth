@@ -1,0 +1,22 @@
+name: PR description
+
+on:
+  pull_request:
+    types: [opened, edited, reopened, synchronize]
+
+jobs:
+  pr-description:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Context, Changes, Checks headings and no semicolons
+        env:
+          BODY: ${{ github.event.pull_request.body }}
+        run: |
+          fail=0
+          for h in "## Context" "## Changes" "## Checks"; do
+            printf "%s\n" "$BODY" | tr -d "\r" | grep -qx "$h" || { echo "::error::PR description is missing '$h'"; fail=1; }
+          done
+          if printf '%s\n' "$BODY" | grep -n ';'; then
+            echo "::error::PR description contains a semicolon"; fail=1
+          fi
+          exit $fail
