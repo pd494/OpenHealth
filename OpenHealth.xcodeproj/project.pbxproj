@@ -10,6 +10,7 @@
 		069882070FAACE34F67F5B95 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7316417550249548190F4A4 /* Layout.swift */; };
 		093BB50945F8B2B1158A7757 /* ViewStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B758F4408E6CC3C824C1730 /* ViewStyles.swift */; };
 		3840C92ECAC7FE24BC1AFAFC /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6CE8DC0722FA510F2AB31A /* Palette.swift */; };
+		A1C0FFEE0000000000000001 /* PillCharts.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C0FFEE0000000000000002 /* PillCharts.swift */; };
 		4AB91A05E8F825996D5BAAE3 /* AnimatedProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D95A76E83DC8473C903359 /* AnimatedProgress.swift */; };
 		4C6A3D4F713CAE5A9EBDAF95 /* HideBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CFD7E68B8B9AF08B1C2F89 /* HideBadge.swift */; };
 		4E18C9FBA1C514F610D10770 /* MetricFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF79CACD28FEBE5BBB308D61 /* MetricFormat.swift */; };
@@ -30,12 +31,13 @@
 		B98416FCE4F8607D0981C283 /* DebugLaunch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03411A08AB718D530E367B4D /* DebugLaunch.swift */; };
 		BEF077744FDF2397E5B3CAD4 /* HotReload.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52631B6CA0E55AD7AC1366D /* HotReload.swift */; };
 		CC564C3E76E1EBB4A694DD4D /* MetricDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1921C38C57A9A08A8D6B4B86 /* MetricDomain.swift */; };
-		CF5127F7C7B6F7B54D64F85A /* RingCenterLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CC7F9CAF7FF575F64A0EAE /* RingCenterLabel.swift */; };
 		D1EBAFEA0D1D1D7D6158AA05 /* RingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2621BDC9F6DD8D179E1038 /* RingsSection.swift */; };
 		D40B8DD2F481F930BA2E81D7 /* DashboardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F038B2529589BCE0F3ED50 /* DashboardLayout.swift */; };
 		D49E2CB8967C7658E1F57039 /* Motion.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A74276E9EE6AD5947C6BCF /* Motion.swift */; };
+		D9736FA7E584407912AE6494 /* MetricPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7959B63FD179E7853889B29A /* MetricPill.swift */; };
 		D9ED0454BBDBAF88B812F06C /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9B26E551F0F6FCC0785EBE /* TodayView.swift */; };
 		E940FE76B50C0D6E76F0EC0F /* MetricRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1613936A3AD52781F1AF22C6 /* MetricRegistry.swift */; };
+		F6F4FF360DE3E65266D7C2AB /* PillsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B3880AEB5F844E001AFBAB /* PillsSection.swift */; };
 		FD0B2379FE1681C2B4DE701C /* MetricRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B301038DF5BA6D112B736879 /* MetricRingView.swift */; };
 /* End PBXBuildFile section */
 
@@ -51,9 +53,10 @@
 		3893C23228838C13B0DEC753 /* MetricDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricDescriptor.swift; sourceTree = "<group>"; };
 		4A9B26E551F0F6FCC0785EBE /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
 		4B758F4408E6CC3C824C1730 /* ViewStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewStyles.swift; sourceTree = "<group>"; };
+		57B3880AEB5F844E001AFBAB /* PillsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillsSection.swift; sourceTree = "<group>"; };
 		5C7947D5C7A1B178DBAF53D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5D6CE8DC0722FA510F2AB31A /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
-		64CC7F9CAF7FF575F64A0EAE /* RingCenterLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingCenterLabel.swift; sourceTree = "<group>"; };
+		7959B63FD179E7853889B29A /* MetricPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricPill.swift; sourceTree = "<group>"; };
 		7C7D34258AF76E6F7306E5AE /* RingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingCell.swift; sourceTree = "<group>"; };
 		83CFD7E68B8B9AF08B1C2F89 /* HideBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideBadge.swift; sourceTree = "<group>"; };
 		887D1651D6F32D2DC291F71D /* OpenHealth.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = OpenHealth.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -68,6 +71,7 @@
 		E6470F7E960AFDF514A3154E /* TodayHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayHeader.swift; sourceTree = "<group>"; };
 		EE2621BDC9F6DD8D179E1038 /* RingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingsSection.swift; sourceTree = "<group>"; };
 		F2F038B2529589BCE0F3ED50 /* DashboardLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardLayout.swift; sourceTree = "<group>"; };
+		A1C0FFEE0000000000000002 /* PillCharts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillCharts.swift; sourceTree = "<group>"; };
 		F7316417550249548190F4A4 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		FD479F973767B60647C48CA7 /* DepthRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepthRing.swift; sourceTree = "<group>"; };
 		FD96DDCEE08F8B6F752ADA3F /* RingFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingFlowLayout.swift; sourceTree = "<group>"; };
@@ -106,7 +110,6 @@
 				83CFD7E68B8B9AF08B1C2F89 /* HideBadge.swift */,
 				B301038DF5BA6D112B736879 /* MetricRingView.swift */,
 				7C7D34258AF76E6F7306E5AE /* RingCell.swift */,
-				64CC7F9CAF7FF575F64A0EAE /* RingCenterLabel.swift */,
 				FD96DDCEE08F8B6F752ADA3F /* RingFlowLayout.swift */,
 				8C62B4415D24821ACAB1EE7D /* RingGauge.swift */,
 				EE2621BDC9F6DD8D179E1038 /* RingsSection.swift */,
@@ -181,9 +184,20 @@
 			isa = PBXGroup;
 			children = (
 				E6470F7E960AFDF514A3154E /* TodayHeader.swift */,
+				D9B7428F7671C8778765566B /* Pills */,
 				1822D2661474688C423C1913 /* Rings */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		D9B7428F7671C8778765566B /* Pills */ = {
+			isa = PBXGroup;
+			children = (
+				A1C0FFEE0000000000000002 /* PillCharts.swift */,
+				7959B63FD179E7853889B29A /* MetricPill.swift */,
+				57B3880AEB5F844E001AFBAB /* PillsSection.swift */,
+			);
+			path = Pills;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,6 +270,7 @@
 				B98416FCE4F8607D0981C283 /* DebugLaunch.swift in Sources */,
 				AD733FF908A0841B24CE6252 /* DepthRing.swift in Sources */,
 				67BE50410203CB86A43CF9FB /* EditTray.swift in Sources */,
+				A1C0FFEE0000000000000001 /* PillCharts.swift in Sources */,
 				4C6A3D4F713CAE5A9EBDAF95 /* HideBadge.swift in Sources */,
 				BEF077744FDF2397E5B3CAD4 /* HotReload.swift in Sources */,
 				069882070FAACE34F67F5B95 /* Layout.swift in Sources */,
@@ -263,13 +278,14 @@
 				CC564C3E76E1EBB4A694DD4D /* MetricDomain.swift in Sources */,
 				4E18C9FBA1C514F610D10770 /* MetricFormat.swift in Sources */,
 				5B9D6A874AE1FEC02AFCD588 /* MetricID.swift in Sources */,
+				D9736FA7E584407912AE6494 /* MetricPill.swift in Sources */,
 				E940FE76B50C0D6E76F0EC0F /* MetricRegistry.swift in Sources */,
 				FD0B2379FE1681C2B4DE701C /* MetricRingView.swift in Sources */,
 				D49E2CB8967C7658E1F57039 /* Motion.swift in Sources */,
 				AC1B1B640235C16EB0A52284 /* OpenHealthApp.swift in Sources */,
 				3840C92ECAC7FE24BC1AFAFC /* Palette.swift in Sources */,
+				F6F4FF360DE3E65266D7C2AB /* PillsSection.swift in Sources */,
 				961141259F0EB159BB0BF387 /* RingCell.swift in Sources */,
-				CF5127F7C7B6F7B54D64F85A /* RingCenterLabel.swift in Sources */,
 				A64ACB98C524F85EDEAC5B82 /* RingFlowLayout.swift in Sources */,
 				8ED67AD231A43266930BECF6 /* RingGauge.swift in Sources */,
 				D1EBAFEA0D1D1D7D6158AA05 /* RingsSection.swift in Sources */,

@@ -3,8 +3,11 @@ import SwiftUI
 
 struct TodayView: View {
     @ObserveInjection private var inject
+    @Environment(DashboardLayoutStore.self) private var store
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var showsMetricPicker = false
     @State private var isEditing = DebugLaunch.flag("editMode")
+    @AppStorage("showsMetrics") private var showsMetrics = false
 
     var body: some View {
         ScrollView {
@@ -20,9 +23,19 @@ struct TodayView: View {
                         .frame(minHeight: Layout.minTapTarget)
                         .padding(.vertical, -10)
                     }
-                    RingsSection(isEditing: isEditing)
-                        .padding(Layout.overviewInset)
-                        .surface()
+                    VStack(spacing: 0) {
+                        RingsSection(isEditing: isEditing)
+                        if !store.layout.hidden.isEmpty {
+                            PillsSection(isExpanded: showsMetrics)
+                        }
+                    }
+                    .padding(Layout.overviewInset)
+                    .surface()
+                    // Bound to the value rather than wrapped around the tap, so the open/close plays in full however it's triggered.
+                    .animation(Motion.resolve(.smooth(duration: 0.4), reduceMotion: reduceMotion), value: showsMetrics)
+                    .overlay(alignment: .topTrailing) {
+                        if !store.layout.hidden.isEmpty { metricsToggle }
+                    }
                 }
                 .todayEntrance(1)
             }
@@ -38,6 +51,24 @@ struct TodayView: View {
             }
             .presentationDetents([.medium, .large])
         }
+    }
+
+    private var metricsToggle: some View {
+        Button {
+            showsMetrics.toggle()
+        } label: {
+            Image(systemName: "chevron.down")
+                .font(.footnote.weight(.semibold))
+                .foregroundStyle(.secondary)
+                .rotationEffect(.degrees(showsMetrics ? 180 : 0))
+                .animation(reduceMotion ? nil : .spring(duration: 0.45, bounce: 0.3), value: showsMetrics)
+                .frame(width: Layout.minTapTarget, height: Layout.minTapTarget)
+                .contentShape(.rect)
+        }
+        .buttonStyle(PressableButtonStyle(scale: 0.85))
+        .offset(x: 6, y: -8)
+        .accessibilityLabel("Metrics")
+        .accessibilityValue(showsMetrics ? "Expanded" : "Collapsed")
     }
 }
 

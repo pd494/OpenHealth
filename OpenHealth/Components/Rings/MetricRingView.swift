@@ -4,13 +4,15 @@ struct MetricRingView: View {
     @Environment(\.dynamicTypeSize) private var typeSize
     let metric: MetricDescriptor
 
+    private var goal: String? { metric.hasGoal ? "Goal \(metric.goalText)" : nil }
+
     var body: some View {
         Group {
             if typeSize.isAccessibilitySize {
                 VStack(alignment: .leading, spacing: 8) {
                     Text(metric.title).font(.headline)
-                    Text(RingGauge(metric: metric).text).font(.title2).monospacedDigit()
-                    Text(metric.goalText).font(.caption).foregroundStyle(.secondary)
+                    Text(metric.valueText).font(.title2).monospacedDigit()
+                    if let goal { Text(goal).font(.caption).foregroundStyle(.secondary) }
                     ProgressView(value: min(max(metric.progress, 0), 1))
                         .tint(metric.domain.ringStart)
                         .accessibilityHidden(true)
@@ -28,7 +30,7 @@ struct MetricRingView: View {
         }
         .frame(maxWidth: .infinity)
         .accessibilityElement(children: .ignore)
-        .accessibilityLabel("\(metric.title), \(RingGauge(metric: metric).text), \(metric.goalText)")
+        .accessibilityLabel([metric.title, metric.valueText, goal].compactMap { $0 }.joined(separator: ", "))
     }
 }
 
