@@ -1,4 +1,4 @@
-/// Everything a ring or pill needs to know about a metric. The values are hard-coded placeholders until real data is wired in.
+/// Values are hard-coded placeholders until HealthKit is wired in.
 struct MetricDescriptor {
     let id: MetricID
     let title: String
@@ -19,7 +19,6 @@ struct MetricDescriptor {
     /// The suffix on the ring, which drops "steps" because the title already says it.
     var ringSuffix: String { unit == "steps" ? "" : unitSuffix }
 
-    /// Number and unit as one string, such as "412 kcal" or "71%".
     var valueText: String { number + ringSuffix }
     var goalText: String { format.number(goal) + unitSuffix }
 }

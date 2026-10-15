@@ -47,7 +47,6 @@ enum MetricDomain {
         }
     }
 
-    /// The deep end of a progress gradient: the ring's hue, a touch more saturated and 30% darker.
     var ringDeep: Color {
         var h: CGFloat = 0, s: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
         UIColor(ringStart).getHue(&h, saturation: &s, brightness: &b, alpha: &a)

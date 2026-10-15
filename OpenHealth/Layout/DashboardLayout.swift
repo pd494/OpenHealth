@@ -1,4 +1,3 @@
-/// Which metrics are rings and which are pills below them, each in the user's order.
 struct DashboardLayout: Codable, Equatable {
     var items: [DashboardItem]
 
@@ -46,13 +45,11 @@ struct DashboardLayout: Codable, Equatable {
         items[index].isVisible = visible
     }
 
-    /// Turns a ring into a metric pill, landing at `position` among the pills.
     mutating func hide(_ id: MetricID, at position: Int = 0) {
         setVisible(id, false)
         move(id, to: position)
     }
 
-    /// Moves a metric so it lands at `position` among the others of its kind (rings or hidden), the rest shifting to make room.
     mutating func move(_ id: MetricID, to position: Int) {
         guard let from = items.firstIndex(where: { $0.metric == id }) else { return }
         let item = items.remove(at: from)
@@ -61,7 +58,6 @@ struct DashboardLayout: Codable, Equatable {
         items.insert(item, at: insertAt)
     }
 
-    /// Swaps a metric with its neighbour among those of its kind (rings or hidden).
     mutating func shift(_ id: MetricID, by offset: Int) {
         guard let visible = items.first(where: { $0.metric == id })?.isVisible else { return }
         let peers = items.filter { $0.isVisible == visible }.map(\.metric)

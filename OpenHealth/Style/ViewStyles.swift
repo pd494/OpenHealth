@@ -34,7 +34,6 @@ private struct Surface: ViewModifier {
     }
 }
 
-/// The thin rule between cells, shared by the rings and the pills so the two read as one grid.
 struct Hairline: View {
     let axis: Axis
 
