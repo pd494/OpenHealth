@@ -24,11 +24,12 @@ struct TodayView: View {
                         .padding(.vertical, -10)
                     }
                     VStack(spacing: 0) {
-                        RingsSection(isEditing: isEditing)
+                        RingsSection(isEditing: isEditing, showsMetrics: $showsMetrics)
                         if !store.layout.hidden.isEmpty {
                             PillsSection(isExpanded: showsMetrics)
                         }
                     }
+                    .coordinateSpace(.named(RingsSection.cardSpace))
                     .padding(Layout.overviewInset)
                     .surface()
                     // Bound to the value rather than wrapped around the tap, so the open/close plays in full however it's triggered.

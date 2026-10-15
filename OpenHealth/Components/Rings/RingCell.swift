@@ -13,30 +13,18 @@ struct RingCell: View {
             .padding(4)
             .contentShape(.rect)
             .overlay(alignment: .leading) {
-                if showsDivider { VerticalHairline().padding(.vertical, 18).offset(x: -2) }
+                if showsDivider { Hairline(axis: .vertical).padding(.vertical, 18).offset(x: -2) }
             }
             .overlay(alignment: .topLeading) {
                 if isEditing { HideBadge(metric: metric).scaleEffect(0.8).offset(x: -4, y: -4) }
             }
-            .contextMenu {
-                Button("Move earlier", systemImage: "arrow.left") { shift(-1) }
-                Button("Move later", systemImage: "arrow.right") { shift(1) }
-                Button("Hide", systemImage: "eye.slash") {
-                    withMotion(reduceMotion: reduceMotion) { store.layout.setVisible(metric, false) }
-                }
-            }
+            // Dragging is touch-only; VoiceOver users reorder from the actions rotor instead.
+            .accessibilityAction(named: "Move earlier") { shift(-1) }
+            .accessibilityAction(named: "Move later") { shift(1) }
+            .accessibilityAction(named: "Move to metrics") { withMotion(reduceMotion: reduceMotion) { store.layout.hide(metric) } }
     }
 
     private func shift(_ offset: Int) {
         withMotion(reduceMotion: reduceMotion) { store.layout.shift(metric, by: offset) }
-    }
-}
-
-private struct VerticalHairline: View {
-    var body: some View {
-        Rectangle()
-            .fill(Palette.separator)
-            .frame(width: 1)
-            .accessibilityHidden(true)
     }
 }

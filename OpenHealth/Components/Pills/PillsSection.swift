@@ -1,6 +1,7 @@
 import SwiftUI
 
-/// Every metric that isn't a ring, six pills to a page. Collapsing closes from the bottom, so the card slides up over the pills.
+/// Every metric that isn't a ring, six pills to a page. Hold a pill to drag it to another slot;
+/// rest it at a side edge to flip pages. Collapsing closes from the bottom, so the card slides up over the pills.
 struct PillsSection: View {
     @Environment(\.dynamicTypeSize) private var typeSize
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
@@ -11,9 +12,19 @@ struct PillsSection: View {
     /// The pills' natural height. An explicit number animates smoothly where `nil` to `0` would jump.
     @State private var contentHeight = 0.0
     @State private var page: Int? = 0
+    @State private var viewportWidth = 0.0
+    @State private var rowHeight = 0.0
+    @State private var drag: ReorderDrag?
+    /// Which side edge the held pill rests at (-1, 0 or 1); the task below turns pages while it's non-zero.
+    @State private var edge = 0
+    @AccessibilityFocusState private var focusedPill: MetricID?
 
+    private static let space = "pills"
     private static let pageSize = 6
     private static let spacing = 8.0
+    private static let edgeZone = 28.0
+    /// How far the finger travels from pick-up before edge paging arms, so lifting a pill near a side doesn't flip.
+    private static let armDistance = 8.0
 
     private var columnCount: Int { typeSize.isAccessibilitySize ? 1 : 2 }
 
@@ -30,6 +41,10 @@ struct PillsSection: View {
 
     private var currentPage: Int { page ?? 0 }
 
+    private var cellWidth: Double {
+        (viewportWidth - Self.spacing * Double(columnCount - 1)) / Double(columnCount)
+    }
+
     var body: some View {
         let pages = pages
         pager(pages)
@@ -43,6 +58,9 @@ struct PillsSection: View {
             .onChange(of: pages.count) { _, count in
                 if currentPage >= count { page = max(count - 1, 0) }
             }
+            .task(id: edge) {
+                if edge != 0 { try? await flipPages(toward: edge) }
+            }
     }
 
     private func pager(_ pages: [[DashboardItem]]) -> some View {
@@ -53,6 +71,7 @@ struct PillsSection: View {
                         LazyVGrid(columns: columns, spacing: Self.spacing) {
                             ForEach(Array(items.enumerated()), id: \.element.id) { position, item in
                                 MetricPill(metric: item.metric.descriptor)
+                                    .opacity(drag?.metric == item.metric ? 0 : 1)
                                     .overlay(alignment: .leading) {
                                         if position % columnCount == 1 { Hairline(axis: .vertical).padding(.vertical, 6).offset(x: -4) }
                                     }
@@ -61,6 +80,11 @@ struct PillsSection: View {
                                             Hairline(axis: .horizontal).padding(.horizontal, 12).offset(y: 4)
                                         }
                                     }
+                                    .onGeometryChange(for: Double.self) { $0.size.height } action: { rowHeight = $0 }
+                                    // Dragging is touch-only; VoiceOver users reorder from the actions rotor instead.
+                                    .accessibilityAction(named: "Move earlier") { shift(item.metric, by: -1) }
+                                    .accessibilityAction(named: "Move later") { shift(item.metric, by: 1) }
+                                    .accessibilityFocused($focusedPill, equals: item.metric)
                             }
                         }
                         .containerRelativeFrame(.horizontal)
@@ -72,10 +96,115 @@ struct PillsSection: View {
             .scrollIndicators(.hidden)
             .scrollTargetBehavior(.paging)
             .scrollPosition(id: $page)
+            .scrollDisabled(drag != nil)
+            .coordinateSpace(.named(Self.space))
+            .onGeometryChange(for: Double.self) { $0.size.width } action: { viewportWidth = $0 }
+            .overlay(alignment: .topLeading) { floatingPill }
+            // On the viewport rather than each pill, so the gesture survives its pill moving to another page.
+            .reorderDrag($drag, in: Self.space, isEnabled: !typeSize.isAccessibilitySize, simultaneous: true, pickUp: pickUp(at:), move: move(to:), end: drop)
             if pages.count > 1 {
                 PageDots(count: pages.count, current: min(currentPage, pages.count - 1), page: $page)
             }
         }
+    }
+
+    @ViewBuilder private var floatingPill: some View {
+        if let drag {
+            MetricPill(metric: drag.metric.descriptor)
+                .environment(\.fillsOnAppear, false)
+                .frame(width: cellWidth, height: rowHeight)
+                .background(Palette.card, in: .rect(cornerRadius: Layout.pillRadius))
+                .shadow(color: .black.opacity(0.14), radius: 12, y: 6)
+                .scaleEffect(reduceMotion || drag.isSettling ? 1 : 1.04)
+                .offset(x: drag.location.x - drag.grab.width, y: drag.location.y - drag.grab.height)
+                // Only a settling drop animates the position; otherwise the swap's spring would make the pill trail the finger.
+                .animation(drag.isSettling ? Motion.resolve(Motion.state, reduceMotion: reduceMotion) : nil, value: drag.location)
+                .allowsHitTesting(false)
+        }
+    }
+
+    // MARK: - Reordering
+
+    /// The slot, counted across all pages, under a point in the visible page; nil over an empty cell.
+    private func slot(at point: CGPoint) -> Int? {
+        let column = min(max(Int(point.x / (cellWidth + Self.spacing)), 0), columnCount - 1)
+        let row = min(max(Int(point.y / (rowHeight + Self.spacing)), 0), Self.pageSize / columnCount - 1)
+        let slot = currentPage * Self.pageSize + row * columnCount + column
+        return slot < store.layout.hidden.count ? slot : nil
+    }
+
+    private func origin(ofSlot slot: Int) -> CGPoint {
+        let local = slot - currentPage * Self.pageSize
+        return CGPoint(
+            x: Double(local % columnCount) * (cellWidth + Self.spacing),
+            y: Double(local / columnCount) * (rowHeight + Self.spacing)
+        )
+    }
+
+    private func pickUp(at point: CGPoint) {
+        guard rowHeight > 0, let slot = slot(at: point) else { return }
+        withAnimation(Motion.press) {
+            drag = ReorderDrag(metric: store.layout.hidden[slot].metric, slot: slot, at: point, cellOrigin: origin(ofSlot: slot))
+        }
+    }
+
+    private func move(to point: CGPoint) {
+        guard let current = drag, !current.isSettling else { return }
+        drag?.location = point
+        if drag?.arm(at: point) == true { reorder(under: point) }
+        let hasTravelled = hypot(point.x - current.origin.x, point.y - current.origin.y) > Self.armDistance
+        edge = !hasTravelled ? 0 : point.x < Self.edgeZone ? -1 : point.x > viewportWidth - Self.edgeZone ? 1 : 0
+    }
+
+    /// Keeps turning pages while the pill rests at an edge, with a pause first so passing near the edge doesn't flip.
+    private func flipPages(toward direction: Int) async throws {
+        while true {
+            try await Task.sleep(for: .milliseconds(550))
+            // `drop()` zeroes `edge` but keeps `drag` alive while settling, and the sleep can resume before the task's cancellation lands.
+            guard edge == direction else { return }
+            let target = currentPage + direction
+            guard pages.indices.contains(target) else { return }
+            withMotion(reduceMotion: reduceMotion) { page = target }
+            try await Task.sleep(for: .milliseconds(350))
+            guard let location = drag?.location else { return }
+            reorder(under: location)
+        }
+    }
+
+    private func reorder(under point: CGPoint) {
+        guard let drag, drag.isArmed, !drag.isSettling else { return }
+        let target = slot(at: point) ?? store.layout.hidden.count - 1
+        guard target != drag.slot else { return }
+        withMotion(reduceMotion: reduceMotion) {
+            store.layout.move(drag.metric, to: target)
+            self.drag?.slot = target
+        }
+    }
+
+    private func drop() {
+        edge = 0
+        guard let current = drag, !current.isSettling else { return }
+        // A release during the pause after a page flip hasn't been reordered yet.
+        reorder(under: current.location)
+        guard let held = drag else { return }
+        withAnimation(Motion.resolve(Motion.state, reduceMotion: reduceMotion)) {
+            drag?.settle(at: origin(ofSlot: held.slot))
+        } completion: {
+            drag = nil
+        }
+    }
+
+    // MARK: - Accessibility
+
+    private func shift(_ metric: MetricID, by offset: Int) {
+        withMotion(reduceMotion: reduceMotion) { store.layout.shift(metric, by: offset) }
+        let hidden = store.layout.hidden
+        guard let slot = hidden.firstIndex(where: { $0.metric == metric }) else { return }
+        if slot / Self.pageSize != currentPage {
+            withMotion(reduceMotion: reduceMotion) { page = slot / Self.pageSize }
+        }
+        focusedPill = metric
+        AccessibilityNotification.Announcement("Position \(slot + 1) of \(hidden.count)").post()
     }
 }
 
