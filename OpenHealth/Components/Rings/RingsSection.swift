@@ -1,7 +1,5 @@
 import SwiftUI
 
-/// The rings, in the user's order. Hold a ring to pick it up and drag it over another to swap places,
-/// or down below the rings to turn it into a metric.
 struct RingsSection: View {
     @Environment(\.dynamicTypeSize) private var typeSize
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
@@ -10,7 +8,6 @@ struct RingsSection: View {
     let isEditing: Bool
     /// Expanded when a ring is held over the metrics, so there's somewhere to see it land.
     @Binding var showsMetrics: Bool
-    /// Where a held ring is while over the metrics, for the pills to turn into `ringSlot`.
     @Binding var pointOverMetrics: CGPoint?
     let ringSlot: Int
 
@@ -62,7 +59,6 @@ struct RingsSection: View {
         }
     }
 
-    /// The ring whose cell is closest to a point, so the gaps between rings still count as a target.
     private func nearestRing(to point: CGPoint) -> MetricID? {
         frames
             .filter { id, _ in store.layout.rings.contains { $0.metric == id } }

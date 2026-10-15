@@ -1,16 +1,12 @@
 import SwiftUI
 
-/// Every metric that isn't a ring, six pills to a page. Hold a pill to drag it to another slot;
-/// rest it at a side edge to flip pages. Collapsing closes from the bottom, so the card slides up over the pills.
 struct PillsSection: View {
     @Environment(\.dynamicTypeSize) private var typeSize
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(DashboardLayoutStore.self) private var store
 
     var isExpanded = true
-    /// Where a ring held over the metrics is, in the rings' card space; nil when none is.
     var ringPoint: CGPoint?
-    /// The slot that ring would land in, kept current while `ringPoint` moves.
     @Binding var ringSlot: Int
 
     /// The pills' natural height. An explicit number animates smoothly where `nil` to `0` would jump.
@@ -27,7 +23,6 @@ struct PillsSection: View {
     private static let pageSize = 6
     private static let spacing = 8.0
     private static let edgeZone = 28.0
-    /// How far the finger travels from pick-up before edge paging arms, so lifting a pill near a side doesn't flip.
     private static let armDistance = 8.0
 
     private var columnCount: Int { typeSize.isAccessibilitySize ? 1 : 2 }
@@ -89,7 +84,6 @@ struct PillsSection: View {
                                         }
                                     }
                                     .onGeometryChange(for: Double.self) { $0.size.height } action: { rowHeight = $0 }
-                                    // Dragging is touch-only; VoiceOver users reorder from the actions rotor instead.
                                     .accessibilityAction(named: "Move earlier") { shift(item.metric, by: -1) }
                                     .accessibilityAction(named: "Move later") { shift(item.metric, by: 1) }
                                     .accessibilityFocused($focusedPill, equals: item.metric)
@@ -131,9 +125,6 @@ struct PillsSection: View {
         }
     }
 
-    // MARK: - Reordering
-
-    /// The slot, counted across all pages, under a point in the visible page; nil over an empty cell.
     private func slot(at point: CGPoint) -> Int? {
         let column = min(max(Int(point.x / (cellWidth + Self.spacing)), 0), columnCount - 1)
         let row = min(max(Int(point.y / (rowHeight + Self.spacing)), 0), Self.pageSize / columnCount - 1)
@@ -164,7 +155,6 @@ struct PillsSection: View {
         edge = !hasTravelled ? 0 : point.x < Self.edgeZone ? -1 : point.x > viewportFrame.width - Self.edgeZone ? 1 : 0
     }
 
-    /// Keeps turning pages while the pill rests at an edge, with a pause first so passing near the edge doesn't flip.
     private func flipPages(toward direction: Int) async throws {
         while true {
             try await Task.sleep(for: .milliseconds(550))
@@ -201,8 +191,6 @@ struct PillsSection: View {
             drag = nil
         }
     }
-
-    // MARK: - Accessibility
 
     private func shift(_ metric: MetricID, by offset: Int) {
         withMotion(reduceMotion: reduceMotion) { store.layout.shift(metric, by: offset) }

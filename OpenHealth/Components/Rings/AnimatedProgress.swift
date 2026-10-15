@@ -6,7 +6,6 @@ extension EnvironmentValues {
 }
 
 /// Feeds `content` a ratio that eases up from zero on appear and toward each new value.
-/// Kept out of `DepthRing` so the ring itself stays a plain drawing of a ratio.
 struct AnimatedProgress<Content: View>: View {
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.fillsOnAppear) private var fillsOnAppear

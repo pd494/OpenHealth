@@ -18,7 +18,6 @@ struct RingCell: View {
             .overlay(alignment: .topLeading) {
                 if isEditing { HideBadge(metric: metric).scaleEffect(0.8).offset(x: -4, y: -4) }
             }
-            // Dragging is touch-only; VoiceOver users reorder from the actions rotor instead.
             .accessibilityAction(named: "Move earlier") { shift(-1) }
             .accessibilityAction(named: "Move later") { shift(1) }
             .accessibilityAction(named: "Move to metrics") { withMotion(reduceMotion: reduceMotion) { store.layout.hide(metric) } }

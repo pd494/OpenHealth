@@ -1,9 +1,7 @@
 import SwiftUI
 
-/// A ring or pill that has been picked up and is following the finger.
 struct ReorderDrag {
     let metric: MetricID
-    /// Where the metric currently sits among the others of its kind.
     var slot: Int
     var location: CGPoint
     /// Finger offset from the item's top-left corner, so it doesn't jump to centre under the finger.
@@ -38,7 +36,6 @@ struct ReorderDrag {
 
 extension View {
     /// Hold to pick up, drag to reorder, lift to drop. Points are in the named space; `end` must be safe to call twice.
-    /// Pass `simultaneous` when the view also scrolls, so the pager keeps working until the hold succeeds.
     func reorderDrag(
         _ drag: Binding<ReorderDrag?>,
         in space: String,
@@ -94,7 +91,6 @@ private struct ReorderDragModifier: ViewModifier {
             .onEnded { _ in finish() }
     }
 
-    /// Pick-up gets an impact and each slot change a tick; the drop itself is silent.
     private func pickUpFeedback(from old: MetricID?, to new: MetricID?) -> SensoryFeedback? {
         old == nil && new != nil ? .impact(weight: .medium) : nil
     }
