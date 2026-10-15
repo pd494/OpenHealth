@@ -22,20 +22,20 @@ struct RingCell: View {
                 Button("Move earlier", systemImage: "arrow.left") { shift(-1) }
                 Button("Move later", systemImage: "arrow.right") { shift(1) }
                 Button("Hide", systemImage: "eye.slash") {
-                    withMotion(reduceMotion: reduceMotion) { store.setVisible(metric, false) }
+                    withMotion(reduceMotion: reduceMotion) { store.layout.setVisible(metric, false) }
                 }
             }
     }
 
     private func shift(_ offset: Int) {
-        withMotion(reduceMotion: reduceMotion) { store.shiftRing(metric, by: offset) }
+        withMotion(reduceMotion: reduceMotion) { store.layout.shift(metric, by: offset) }
     }
 }
 
 private struct VerticalHairline: View {
     var body: some View {
         Rectangle()
-            .fill(Palette.hairline)
+            .fill(Palette.separator)
             .frame(width: 1)
             .accessibilityHidden(true)
     }

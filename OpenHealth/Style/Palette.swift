@@ -15,8 +15,7 @@ enum Palette {
 }
 
 extension Palette {
-    static let hairline = Color(.separator)
-    static let stitch = Color(.separator)
+    static let separator = Color(.separator)
 
     /// Light on the top edge fading to nothing by the bottom — reads as a bevel without a visible outline.
     static let bevel = LinearGradient(

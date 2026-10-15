@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		069882070FAACE34F67F5B95 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7316417550249548190F4A4 /* Layout.swift */; };
 		093BB50945F8B2B1158A7757 /* ViewStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B758F4408E6CC3C824C1730 /* ViewStyles.swift */; };
-		0A6C9A6DD49D8CB6F12291BB /* Font+Rounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466A033FB7B08B553EB6AA59 /* Font+Rounded.swift */; };
 		3840C92ECAC7FE24BC1AFAFC /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6CE8DC0722FA510F2AB31A /* Palette.swift */; };
 		4AB91A05E8F825996D5BAAE3 /* AnimatedProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D95A76E83DC8473C903359 /* AnimatedProgress.swift */; };
 		4C6A3D4F713CAE5A9EBDAF95 /* HideBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CFD7E68B8B9AF08B1C2F89 /* HideBadge.swift */; };
@@ -37,7 +36,6 @@
 		D49E2CB8967C7658E1F57039 /* Motion.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A74276E9EE6AD5947C6BCF /* Motion.swift */; };
 		D9ED0454BBDBAF88B812F06C /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9B26E551F0F6FCC0785EBE /* TodayView.swift */; };
 		E940FE76B50C0D6E76F0EC0F /* MetricRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1613936A3AD52781F1AF22C6 /* MetricRegistry.swift */; };
-		FAB2CEB34A00F45E5F66F354 /* PressableButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC01783E67FAEE1F0C8E4CD /* PressableButtonStyle.swift */; };
 		FD0B2379FE1681C2B4DE701C /* MetricRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B301038DF5BA6D112B736879 /* MetricRingView.swift */; };
 /* End PBXBuildFile section */
 
@@ -51,14 +49,12 @@
 		328DFCF90864BF289FF9EDA7 /* OpenHealthApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenHealthApp.swift; sourceTree = "<group>"; };
 		35D142AD6FACDC89B81DDA2D /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		3893C23228838C13B0DEC753 /* MetricDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricDescriptor.swift; sourceTree = "<group>"; };
-		466A033FB7B08B553EB6AA59 /* Font+Rounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Rounded.swift"; sourceTree = "<group>"; };
 		4A9B26E551F0F6FCC0785EBE /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
 		4B758F4408E6CC3C824C1730 /* ViewStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewStyles.swift; sourceTree = "<group>"; };
 		5C7947D5C7A1B178DBAF53D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5D6CE8DC0722FA510F2AB31A /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		64CC7F9CAF7FF575F64A0EAE /* RingCenterLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingCenterLabel.swift; sourceTree = "<group>"; };
 		7C7D34258AF76E6F7306E5AE /* RingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingCell.swift; sourceTree = "<group>"; };
-		7FC01783E67FAEE1F0C8E4CD /* PressableButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressableButtonStyle.swift; sourceTree = "<group>"; };
 		83CFD7E68B8B9AF08B1C2F89 /* HideBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideBadge.swift; sourceTree = "<group>"; };
 		887D1651D6F32D2DC291F71D /* OpenHealth.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = OpenHealth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C62B4415D24821ACAB1EE7D /* RingGauge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingGauge.swift; sourceTree = "<group>"; };
@@ -92,11 +88,9 @@
 		12C12E114231218E6CAE7680 /* Style */ = {
 			isa = PBXGroup;
 			children = (
-				466A033FB7B08B553EB6AA59 /* Font+Rounded.swift */,
 				F7316417550249548190F4A4 /* Layout.swift */,
 				C9A74276E9EE6AD5947C6BCF /* Motion.swift */,
 				5D6CE8DC0722FA510F2AB31A /* Palette.swift */,
-				7FC01783E67FAEE1F0C8E4CD /* PressableButtonStyle.swift */,
 				2FD69EB7E67BB584264126C4 /* SheetContainer.swift */,
 				4B758F4408E6CC3C824C1730 /* ViewStyles.swift */,
 			);
@@ -262,7 +256,6 @@
 				B98416FCE4F8607D0981C283 /* DebugLaunch.swift in Sources */,
 				AD733FF908A0841B24CE6252 /* DepthRing.swift in Sources */,
 				67BE50410203CB86A43CF9FB /* EditTray.swift in Sources */,
-				0A6C9A6DD49D8CB6F12291BB /* Font+Rounded.swift in Sources */,
 				4C6A3D4F713CAE5A9EBDAF95 /* HideBadge.swift in Sources */,
 				BEF077744FDF2397E5B3CAD4 /* HotReload.swift in Sources */,
 				069882070FAACE34F67F5B95 /* Layout.swift in Sources */,
@@ -275,7 +268,6 @@
 				D49E2CB8967C7658E1F57039 /* Motion.swift in Sources */,
 				AC1B1B640235C16EB0A52284 /* OpenHealthApp.swift in Sources */,
 				3840C92ECAC7FE24BC1AFAFC /* Palette.swift in Sources */,
-				FAB2CEB34A00F45E5F66F354 /* PressableButtonStyle.swift in Sources */,
 				961141259F0EB159BB0BF387 /* RingCell.swift in Sources */,
 				CF5127F7C7B6F7B54D64F85A /* RingCenterLabel.swift in Sources */,
 				A64ACB98C524F85EDEAC5B82 /* RingFlowLayout.swift in Sources */,
