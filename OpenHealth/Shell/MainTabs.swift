@@ -23,7 +23,9 @@ struct MainTabs: View {
             TodayView().toolbar(.hidden, for: .navigationBar)
         case .nutrition:
             NutritionView()
-        case .sleep, .fitness:
+        case .sleep:
+            SleepView()
+        case .fitness:
             ComingSoonView(title: tab.title, symbol: tab.symbol)
         }
     }
