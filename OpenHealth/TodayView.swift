@@ -6,6 +6,7 @@ struct TodayView: View {
     @Environment(DashboardLayoutStore.self) private var store
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var showsMetricPicker = false
+    @State private var showsSettings = DebugLaunch.string("settings") != nil
     @State private var isEditing = DebugLaunch.flag("editMode")
     @AppStorage("showsMetrics") private var showsMetrics = false
     @State private var ringPoint: CGPoint?
@@ -14,7 +15,7 @@ struct TodayView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 8) {
-                TodayHeader(isEditing: $isEditing)
+                TodayHeader(isEditing: $isEditing, openSettings: { showsSettings = true })
                     .todayEntrance(0)
                 VStack(alignment: .leading, spacing: 12) {
                     SectionHeader(title: "Daily overview") {
@@ -50,6 +51,7 @@ struct TodayView: View {
         .pageBackground()
         .enableInjection()
         .tint(.blue)
+        .sheet(isPresented: $showsSettings) { SettingsSheet() }
         .sheet(isPresented: $showsMetricPicker) {
             SheetContainer(title: "Add metrics") {
                 ScrollView { EditTray().padding(Layout.screenPadding) }
