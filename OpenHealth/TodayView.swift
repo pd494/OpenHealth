@@ -44,10 +44,13 @@ struct TodayView: View {
                 .todayEntrance(1)
                 SleepCard(night: .demo)
                     .todayEntrance(2)
+                DayCalendarCard(entries: DayEntry.today)
+                    .todayEntrance(3)
             }
             .padding(.horizontal, Layout.screenPadding)
             .padding(.bottom, Layout.screenPadding)
         }
+        .debugScrollAnchor()
         .pageBackground()
         .enableInjection()
         .tint(.blue)
