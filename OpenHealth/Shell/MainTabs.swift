@@ -37,7 +37,7 @@ struct MainTabs: View {
         case .sleep:
             SleepView()
         case .fitness:
-            ComingSoonView(title: tab.title, symbol: tab.symbol)
+            FitnessView()
         }
     }
 }
