@@ -2,6 +2,7 @@ import SwiftUI
 
 struct TodayHeader: View {
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.presentLog) private var presentLog
     @Binding var isEditing: Bool
 
     var body: some View {
@@ -16,6 +17,11 @@ struct TodayHeader: View {
             .font(.subheadline.weight(.semibold))
             .frame(minWidth: Layout.minTapTarget, minHeight: Layout.minTapTarget)
             .sensoryFeedback(.selection, trigger: isEditing)
+            Button("Log") { presentLog(.menu) }
+                .font(.subheadline.weight(.semibold))
+                .buttonStyle(.borderedProminent)
+                .buttonBorderShape(.capsule)
+                .controlSize(.small)
         }
         .padding(.vertical, -8)
     }
