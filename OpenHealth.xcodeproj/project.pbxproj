@@ -26,8 +26,11 @@
 		3840C92ECAC7FE24BC1AFAFC /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6CE8DC0722FA510F2AB31A /* Palette.swift */; };
 		38663B3B5A1FE65CAE06D141 /* BedtimeWindowCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7457AF67B5FBE26F8F583303 /* BedtimeWindowCard.swift */; };
 		3CA4C98D60447B4EAF04D6EC /* RecentValuesCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174C706F406333EA181FF6E1 /* RecentValuesCard.swift */; };
+		3DD8BF5F7754EDFA72685C65 /* LogValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290914889A035B3A7134107E /* LogValueView.swift */; };
 		3FDA437609F2E35444B70A58 /* SleepTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB5AF3195EC5DB2BE2CC897 /* SleepTab.swift */; };
 		41FA3B848D69E88ECB4D967F /* SleepTimelineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC4DD96BD3BDDEF1D98028A /* SleepTimelineChart.swift */; };
+		43886A16531B4F2C382A970F /* LogValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4437B9A6B0F381A498A08CC /* LogValue.swift */; };
+		4416F973DE2D785044657D61 /* ActivityKindPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3847898EFDA99F85E28DE51 /* ActivityKindPicker.swift */; };
 		460934A076B31F0D6BF089B3 /* MetricSeries.swift in Sources */ = {isa = PBXBuildFile; fileRef = D027764CA27319B46A112D98 /* MetricSeries.swift */; };
 		4AB91A05E8F825996D5BAAE3 /* AnimatedProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D95A76E83DC8473C903359 /* AnimatedProgress.swift */; };
 		4C6A3D4F713CAE5A9EBDAF95 /* HideBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CFD7E68B8B9AF08B1C2F89 /* HideBadge.swift */; };
@@ -78,11 +81,14 @@
 		AC1B1B640235C16EB0A52284 /* OpenHealthApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328DFCF90864BF289FF9EDA7 /* OpenHealthApp.swift */; };
 		AD733FF908A0841B24CE6252 /* DepthRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD479F973767B60647C48CA7 /* DepthRing.swift */; };
 		ADEE7211BDD35D97E2BD4CAC /* MetricDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3893C23228838C13B0DEC753 /* MetricDescriptor.swift */; };
+		AE1D53AD0F3A172A14E38E23 /* LogActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9AF57D0FFC58DE20EBB38E /* LogActivityView.swift */; };
+		AF6B5ABE7865CA91D277E3C4 /* ActivityDetailsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2C9228C92A0783709DBCFB /* ActivityDetailsCard.swift */; };
 		B12AC2C029E8EA899310A4D3 /* AppTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9392AEB9FE0B5A4FD010E0C0 /* AppTab.swift */; };
 		B42AE192BC26BA5F6DF735D1 /* LogDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3EE818E44634047395A47E /* LogDestination.swift */; };
 		B65F514B94C3E54ABF8DAC8D /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E288377024C82F87AFC6070E /* Workout.swift */; };
 		B91F94F5FD7E6E516B465491 /* MealKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09E339099B63C40D278CDCD /* MealKind.swift */; };
 		B98416FCE4F8607D0981C283 /* DebugLaunch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03411A08AB718D530E367B4D /* DebugLaunch.swift */; };
+		B9E10356568979572923E488 /* IntensityCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774348CBC1FCABCF5C6646C7 /* IntensityCard.swift */; };
 		BBE7D01336EAAA7DABFE5420 /* SettingsRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D79FB4DFB2DCDCBAFE998C4 /* SettingsRoute.swift */; };
 		BD494C08367669212BF7CF85 /* ReorderDrag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4E0916D9C282EA710AABAE /* ReorderDrag.swift */; };
 		BDBCF70138DCDDC4D6ECB5A2 /* GoalsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4F55DABEB733580D422F6D /* GoalsView.swift */; };
@@ -99,7 +105,9 @@
 		D9736FA7E584407912AE6494 /* MetricPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7959B63FD179E7853889B29A /* MetricPill.swift */; };
 		D9B5B310FF4FBEFCA6EE832C /* SleepStatPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAA0D2F8F70E740B8E329DF /* SleepStatPair.swift */; };
 		D9ED0454BBDBAF88B812F06C /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9B26E551F0F6FCC0785EBE /* TodayView.swift */; };
+		DB01493502DBD866C1FB6EAA /* IntensityLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29635FD3A7E2B25B8C597F5 /* IntensityLevel.swift */; };
 		DF97367BE635194C4D3DA880 /* NutritionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8059A9976696316400FAF0B2 /* NutritionView.swift */; };
+		E05DE363BB70E925CB51EFB4 /* LogConfirmButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66941A9C369D11485BE6756D /* LogConfirmButton.swift */; };
 		E401D7AA382FD4FDDF78CBF0 /* SleepHero.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5279D73CB2A81AAD65337D4 /* SleepHero.swift */; };
 		E940FE76B50C0D6E76F0EC0F /* MetricRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1613936A3AD52781F1AF22C6 /* MetricRegistry.swift */; };
 		EB9983B1D172C725789D6E1F /* SleepHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068C2CA100BDBAED732B05CE /* SleepHeader.swift */; };
@@ -127,6 +135,7 @@
 		1DFA0F7B96372C9764C89D7D /* SettingsSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSheet.swift; sourceTree = "<group>"; };
 		204083EE62A516E14DD8EFB2 /* DashboardLayoutStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardLayoutStore.swift; sourceTree = "<group>"; };
 		25D95A76E83DC8473C903359 /* AnimatedProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedProgress.swift; sourceTree = "<group>"; };
+		290914889A035B3A7134107E /* LogValueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogValueView.swift; sourceTree = "<group>"; };
 		2B00282BDBCBDD2A03B4D99B /* SleepTimelinePanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepTimelinePanel.swift; sourceTree = "<group>"; };
 		2C7A2BB5A98B0A82C552A64C /* FitnessStatPair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitnessStatPair.swift; sourceTree = "<group>"; };
 		2F3EE818E44634047395A47E /* LogDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogDestination.swift; sourceTree = "<group>"; };
@@ -135,6 +144,7 @@
 		35D142AD6FACDC89B81DDA2D /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		3893C23228838C13B0DEC753 /* MetricDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricDescriptor.swift; sourceTree = "<group>"; };
 		3BB5AF3195EC5DB2BE2CC897 /* SleepTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepTab.swift; sourceTree = "<group>"; };
+		3F2C9228C92A0783709DBCFB /* ActivityDetailsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDetailsCard.swift; sourceTree = "<group>"; };
 		42F0E4D5A26104A554777DA7 /* SleepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepView.swift; sourceTree = "<group>"; };
 		43288BA457882CAA81C97752 /* MetricSummaryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricSummaryCard.swift; sourceTree = "<group>"; };
 		4A9B26E551F0F6FCC0785EBE /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
@@ -149,6 +159,7 @@
 		60AC8F165C3D23ACCB91CE3B /* ActivityTargetsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTargetsSection.swift; sourceTree = "<group>"; };
 		610B1AC5BD43E568B88085FD /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		615C5D897171A129BAAD37E9 /* MetricExplainerCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricExplainerCard.swift; sourceTree = "<group>"; };
+		66941A9C369D11485BE6756D /* LogConfirmButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogConfirmButton.swift; sourceTree = "<group>"; };
 		68A7C9162E27B1EC9DE7C291 /* ActivityKind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityKind.swift; sourceTree = "<group>"; };
 		6B92DB62A9EC9BDA0DF7C058 /* ActivityHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityHistory.swift; sourceTree = "<group>"; };
 		6BE8D8319535B4D95607CD54 /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
@@ -156,6 +167,7 @@
 		72E0A4B3CC9D958F050CD5B7 /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		74291A25EEDB87D96FA2919E /* SourceCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceCard.swift; sourceTree = "<group>"; };
 		7457AF67B5FBE26F8F583303 /* BedtimeWindowCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BedtimeWindowCard.swift; sourceTree = "<group>"; };
+		774348CBC1FCABCF5C6646C7 /* IntensityCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntensityCard.swift; sourceTree = "<group>"; };
 		7959B63FD179E7853889B29A /* MetricPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricPill.swift; sourceTree = "<group>"; };
 		7C7D34258AF76E6F7306E5AE /* RingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingCell.swift; sourceTree = "<group>"; };
 		7EDD088363611631B86E87DE /* ActivityGridCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityGridCard.swift; sourceTree = "<group>"; };
@@ -176,6 +188,7 @@
 		A03DC6EE13F5C717D931C073 /* EditTray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTray.swift; sourceTree = "<group>"; };
 		A07D9A908BDE89CB2B40765A /* CalorieSummaryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieSummaryCard.swift; sourceTree = "<group>"; };
 		A09E339099B63C40D278CDCD /* MealKind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealKind.swift; sourceTree = "<group>"; };
+		A3847898EFDA99F85E28DE51 /* ActivityKindPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityKindPicker.swift; sourceTree = "<group>"; };
 		A3C34E0FF7143E6C3181FB42 /* LogMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogMenu.swift; sourceTree = "<group>"; };
 		A83A7FDA559F0919198AE846 /* Macro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Macro.swift; sourceTree = "<group>"; };
 		AD7942B3732A29DEB6F10907 /* MetricID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricID.swift; sourceTree = "<group>"; };
@@ -188,6 +201,7 @@
 		BE54941F2C0F43F1820B3418 /* FoodItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodItem.swift; sourceTree = "<group>"; };
 		BFD9382C5056A2C711B51E7B /* SleepWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepWeek.swift; sourceTree = "<group>"; };
 		C01552BC5A889C023E28FE35 /* PresentLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentLog.swift; sourceTree = "<group>"; };
+		C4437B9A6B0F381A498A08CC /* LogValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogValue.swift; sourceTree = "<group>"; };
 		C52631B6CA0E55AD7AC1366D /* HotReload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotReload.swift; sourceTree = "<group>"; };
 		C5DA46247C15EE223AC7469F /* ProgressRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressRing.swift; sourceTree = "<group>"; };
 		C9A74276E9EE6AD5947C6BCF /* Motion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Motion.swift; sourceTree = "<group>"; };
@@ -207,7 +221,9 @@
 		E7443C0ADD480F4F801D2F08 /* SleepCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepCard.swift; sourceTree = "<group>"; };
 		EA5D805ACB59F4E14FD259AE /* MetricDomain+Explanation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MetricDomain+Explanation.swift"; sourceTree = "<group>"; };
 		EC4F55DABEB733580D422F6D /* GoalsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsView.swift; sourceTree = "<group>"; };
+		EC9AF57D0FFC58DE20EBB38E /* LogActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogActivityView.swift; sourceTree = "<group>"; };
 		EE2621BDC9F6DD8D179E1038 /* RingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingsSection.swift; sourceTree = "<group>"; };
+		F29635FD3A7E2B25B8C597F5 /* IntensityLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntensityLevel.swift; sourceTree = "<group>"; };
 		F2F038B2529589BCE0F3ED50 /* DashboardLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardLayout.swift; sourceTree = "<group>"; };
 		F58B44B44E7CE0BFD8240D0F /* StageTiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageTiles.swift; sourceTree = "<group>"; };
 		F7316417550249548190F4A4 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
@@ -375,6 +391,21 @@
 			path = Debug;
 			sourceTree = "<group>";
 		};
+		9D1CE87BA571EE5B710AB96E /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				3F2C9228C92A0783709DBCFB /* ActivityDetailsCard.swift */,
+				A3847898EFDA99F85E28DE51 /* ActivityKindPicker.swift */,
+				774348CBC1FCABCF5C6646C7 /* IntensityCard.swift */,
+				F29635FD3A7E2B25B8C597F5 /* IntensityLevel.swift */,
+				EC9AF57D0FFC58DE20EBB38E /* LogActivityView.swift */,
+				66941A9C369D11485BE6756D /* LogConfirmButton.swift */,
+				C4437B9A6B0F381A498A08CC /* LogValue.swift */,
+				290914889A035B3A7134107E /* LogValueView.swift */,
+			);
+			path = Activity;
+			sourceTree = "<group>";
+		};
 		9D2FAF63D566638948DE9591 /* Nutrition */ = {
 			isa = PBXGroup;
 			children = (
@@ -468,6 +499,7 @@
 		FBCB52A418431197E7CEF14C /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				9D1CE87BA571EE5B710AB96E /* Activity */,
 				F4D01794054EA8BA360BEADF /* Fitness */,
 				84CB88C6FCFD7431314BB472 /* Metric */,
 				9D2FAF63D566638948DE9591 /* Nutrition */,
@@ -555,9 +587,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				62A4D4E704B35635E81FC2AD /* AboutYouSection.swift in Sources */,
+				AF6B5ABE7865CA91D277E3C4 /* ActivityDetailsCard.swift in Sources */,
 				9A320FF68947FC71B6D98EFA /* ActivityGridCard.swift in Sources */,
 				32F7FA4BF0164C0AD2833B1F /* ActivityHistory.swift in Sources */,
 				90238C67DF4E665E94735456 /* ActivityKind.swift in Sources */,
+				4416F973DE2D785044657D61 /* ActivityKindPicker.swift in Sources */,
 				2306728BFBD9982326A6C80B /* ActivitySummaryCard.swift in Sources */,
 				02C1BCF4F63CCDFB88224473 /* ActivityTargetsSection.swift in Sources */,
 				4AB91A05E8F825996D5BAAE3 /* AnimatedProgress.swift in Sources */,
@@ -581,11 +615,17 @@
 				BDBCF70138DCDDC4D6ECB5A2 /* GoalsView.swift in Sources */,
 				4C6A3D4F713CAE5A9EBDAF95 /* HideBadge.swift in Sources */,
 				BEF077744FDF2397E5B3CAD4 /* HotReload.swift in Sources */,
+				B9E10356568979572923E488 /* IntensityCard.swift in Sources */,
+				DB01493502DBD866C1FB6EAA /* IntensityLevel.swift in Sources */,
 				069882070FAACE34F67F5B95 /* Layout.swift in Sources */,
+				AE1D53AD0F3A172A14E38E23 /* LogActivityView.swift in Sources */,
+				E05DE363BB70E925CB51EFB4 /* LogConfirmButton.swift in Sources */,
 				B42AE192BC26BA5F6DF735D1 /* LogDestination.swift in Sources */,
 				92D2E9E5B610A02F16D8F813 /* LogDestinationView.swift in Sources */,
 				9BDED22EBC57F55452B64915 /* LogMenu.swift in Sources */,
 				C236D48D32D6112288F7644D /* LogSheet.swift in Sources */,
+				43886A16531B4F2C382A970F /* LogValue.swift in Sources */,
+				3DD8BF5F7754EDFA72685C65 /* LogValueView.swift in Sources */,
 				67983655B4FADD34E646BDEA /* Macro.swift in Sources */,
 				7F2E5D7F35B07B4F35945DD7 /* MacroProgress.swift in Sources */,
 				8F691371F130DFD2B35015C8 /* MainTabs.swift in Sources */,
