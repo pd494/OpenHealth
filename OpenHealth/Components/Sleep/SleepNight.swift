@@ -5,6 +5,8 @@ struct SleepNight {
     let bedtime: Date
     let segments: [SleepSegment]
     let score: Int
+    /// Hours asleep on each of the last seven nights, oldest first, ending with this one.
+    let weekHours: [Double]
 
     var inBedMinutes: Int { segments.last?.end ?? 0 }
     var wake: Date { date(atMinute: inBedMinutes) }
@@ -14,6 +16,10 @@ struct SleepNight {
 
     func minutes(in stage: SleepStage) -> Int {
         segments.lazy.filter { $0.stage == stage }.reduce(0) { $0 + $1.minutes }
+    }
+
+    func share(of stage: SleepStage) -> Double {
+        Double(minutes(in: stage)) / Double(asleepMinutes)
     }
 
     func segment(atMinute minute: Double) -> SleepSegment? {
@@ -49,6 +55,6 @@ extension SleepNight {
         }
         let calendar = Calendar.current
         let bedtime = calendar.date(byAdding: .minute, value: -18, to: calendar.startOfDay(for: .now))!
-        return SleepNight(bedtime: bedtime, segments: segments, score: 86)
+        return SleepNight(bedtime: bedtime, segments: segments, score: 86, weekHours: [6.8, 7.4, 6.1, 7.9, 7.0, 6.5, 7.2])
     }()
 }
