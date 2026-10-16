@@ -15,6 +15,22 @@ enum Palette {
 }
 
 extension Palette {
+    /// The faint lavender behind the sleep chart's lanes, the steps between its blocks, and its lane names.
+    static let sleepGuide = MetricDomain.sleep.ringStart.opacity(0.13)
+    static let sleepConnector = MetricDomain.sleep.ringStart.opacity(0.2)
+    static let sleepGuideLabel = MetricDomain.sleep.ringStart.opacity(0.55)
+    /// The wash behind the sleep card's tiles and tab tray.
+    static let sleepWash = MetricDomain.sleep.ringStart.opacity(0.09)
+}
+
+extension MetricDomain {
+    /// Readable on a card: the deep label shade in light mode, the bright ring colour in dark.
+    var adaptiveLabel: Color {
+        Color(uiColor: UIColor { traits in UIColor(traits.userInterfaceStyle == .dark ? ringStart : ringLabel) })
+    }
+}
+
+extension Palette {
     static let separator = Color(.separator)
 
     /// Light on the top edge fading to nothing by the bottom — reads as a bevel without a visible outline.
