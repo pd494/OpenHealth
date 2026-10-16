@@ -7,10 +7,15 @@ struct LogDestinationView: View {
     var body: some View {
         switch destination {
         case .menu: LogMenu()
-        case .food, .activity, .water, .weight:
+        case .activity: LogActivityView()
+        case .water: LogValueView(value: .water)
+        case .weight: LogValueView(value: .weight)
+        case .food:
             ComingSoonView(title: destination.title, symbol: destination.symbol)
                 .navigationTitle(destination.title)
                 .navigationBarTitleDisplayMode(.inline)
         }
     }
 }
+
+#Preview { NavigationStack { LogDestinationView(destination: .activity) } }
