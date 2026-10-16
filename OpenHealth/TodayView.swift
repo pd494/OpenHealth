@@ -41,6 +41,8 @@ struct TodayView: View {
                     }
                 }
                 .todayEntrance(1)
+                SleepCard(night: .demo)
+                    .todayEntrance(2)
             }
             .padding(.horizontal, Layout.screenPadding)
             .padding(.bottom, Layout.screenPadding)
