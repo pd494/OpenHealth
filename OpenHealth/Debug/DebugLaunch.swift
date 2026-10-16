@@ -4,10 +4,14 @@ import Foundation
 /// Release builds ignore all of them.
 enum DebugLaunch {
     static func flag(_ key: String) -> Bool {
+        string(key) != nil
+    }
+
+    static func string(_ key: String) -> String? {
         #if DEBUG
-        UserDefaults.standard.string(forKey: key) != nil
+        UserDefaults.standard.string(forKey: key)
         #else
-        false
+        nil
         #endif
     }
 }

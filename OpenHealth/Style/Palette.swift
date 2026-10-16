@@ -19,7 +19,8 @@ extension Palette {
     static let sleepGuide = MetricDomain.sleep.ringStart.opacity(0.13)
     static let sleepConnector = MetricDomain.sleep.ringStart.opacity(0.2)
     static let sleepGuideLabel = MetricDomain.sleep.ringStart.opacity(0.55)
-    /// The wash behind the sleep card's tiles and tab tray.
+    /// The tray behind the sleep card's tabs, a step stronger than the wash behind its tiles.
+    static let sleepTray = MetricDomain.sleep.ringStart.opacity(0.12)
     static let sleepWash = MetricDomain.sleep.ringStart.opacity(0.09)
 }
 

@@ -35,4 +35,14 @@ enum SleepStage: CaseIterable {
         case .deep: scheme == .dark ? Color(red: 0.7, green: 0.64, blue: 0.94) : Color(red: 0.18, green: 0.122, blue: 0.451)
         }
     }
+
+    /// A typical share of time asleep, for the Benchmarks tab. Awake time isn't part of the sleep total.
+    var typicalShare: ClosedRange<Double>? {
+        switch self {
+        case .awake: nil
+        case .rem: 0.20...0.25
+        case .core: 0.45...0.55
+        case .deep: 0.13...0.23
+        }
+    }
 }

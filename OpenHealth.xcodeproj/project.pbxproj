@@ -12,17 +12,21 @@
 		093BB50945F8B2B1158A7757 /* ViewStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B758F4408E6CC3C824C1730 /* ViewStyles.swift */; };
 		14DCE72E52283B609F535D78 /* SleepCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7443C0ADD480F4F801D2F08 /* SleepCard.swift */; };
 		3840C92ECAC7FE24BC1AFAFC /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6CE8DC0722FA510F2AB31A /* Palette.swift */; };
+		3FDA437609F2E35444B70A58 /* SleepTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB5AF3195EC5DB2BE2CC897 /* SleepTab.swift */; };
 		41FA3B848D69E88ECB4D967F /* SleepTimelineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC4DD96BD3BDDEF1D98028A /* SleepTimelineChart.swift */; };
 		4AB91A05E8F825996D5BAAE3 /* AnimatedProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D95A76E83DC8473C903359 /* AnimatedProgress.swift */; };
 		4C6A3D4F713CAE5A9EBDAF95 /* HideBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CFD7E68B8B9AF08B1C2F89 /* HideBadge.swift */; };
 		4E18C9FBA1C514F610D10770 /* MetricFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF79CACD28FEBE5BBB308D61 /* MetricFormat.swift */; };
 		5B9D6A874AE1FEC02AFCD588 /* MetricID.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7942B3732A29DEB6F10907 /* MetricID.swift */; };
 		67BE50410203CB86A43CF9FB /* EditTray.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03DC6EE13F5C717D931C073 /* EditTray.swift */; };
+		69111A8A56190761C636B224 /* SleepBenchmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2075F9B02F15B7ABA8B7F66 /* SleepBenchmarks.swift */; };
+		69B6CE19E5DDAB9B21B08766 /* SleepWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD9382C5056A2C711B51E7B /* SleepWeek.swift */; };
 		6AB35F753B97FE6F63E6AB58 /* SheetContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD69EB7E67BB584264126C4 /* SheetContainer.swift */; };
 		6DC11E4E6DF0DF0709C2D30A /* TodayHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6470F7E960AFDF514A3154E /* TodayHeader.swift */; };
 		7654542DA90A841F75750227 /* SleepScrubReadout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E444F3DDE669765AED493F94 /* SleepScrubReadout.swift */; };
 		79499DA9E373144A16654A95 /* Inject in Frameworks */ = {isa = PBXBuildFile; productRef = CC86B415703033DAF18F679C /* Inject */; };
 		8341704C654B1B20BC561DF6 /* SleepNight.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59760CAE2C8F4AF32D5BF74 /* SleepNight.swift */; };
+		8EC6BCD2422C19CFF251E9B2 /* SleepTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2D98463F5833185CBFD4F6 /* SleepTabs.swift */; };
 		8ED67AD231A43266930BECF6 /* RingGauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C62B4415D24821ACAB1EE7D /* RingGauge.swift */; };
 		9023223847817E4BC8FFFEC3 /* DashboardLayoutStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204083EE62A516E14DD8EFB2 /* DashboardLayoutStore.swift */; };
 		961141259F0EB159BB0BF387 /* RingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7D34258AF76E6F7306E5AE /* RingCell.swift */; };
@@ -56,6 +60,7 @@
 /* Begin PBXFileReference section */
 		03411A08AB718D530E367B4D /* DebugLaunch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugLaunch.swift; sourceTree = "<group>"; };
 		068C2CA100BDBAED732B05CE /* SleepHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepHeader.swift; sourceTree = "<group>"; };
+		0C2D98463F5833185CBFD4F6 /* SleepTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepTabs.swift; sourceTree = "<group>"; };
 		1613936A3AD52781F1AF22C6 /* MetricRegistry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricRegistry.swift; sourceTree = "<group>"; };
 		1921C38C57A9A08A8D6B4B86 /* MetricDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricDomain.swift; sourceTree = "<group>"; };
 		1B4E0916D9C282EA710AABAE /* ReorderDrag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReorderDrag.swift; sourceTree = "<group>"; };
@@ -66,6 +71,7 @@
 		328DFCF90864BF289FF9EDA7 /* OpenHealthApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenHealthApp.swift; sourceTree = "<group>"; };
 		35D142AD6FACDC89B81DDA2D /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		3893C23228838C13B0DEC753 /* MetricDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricDescriptor.swift; sourceTree = "<group>"; };
+		3BB5AF3195EC5DB2BE2CC897 /* SleepTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepTab.swift; sourceTree = "<group>"; };
 		4A9B26E551F0F6FCC0785EBE /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
 		4B758F4408E6CC3C824C1730 /* ViewStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewStyles.swift; sourceTree = "<group>"; };
 		57B3880AEB5F844E001AFBAB /* PillsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillsSection.swift; sourceTree = "<group>"; };
@@ -82,8 +88,10 @@
 		A03DC6EE13F5C717D931C073 /* EditTray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTray.swift; sourceTree = "<group>"; };
 		AD7942B3732A29DEB6F10907 /* MetricID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricID.swift; sourceTree = "<group>"; };
 		AFB496E89D108B78D4838BF0 /* PillCharts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillCharts.swift; sourceTree = "<group>"; };
+		B2075F9B02F15B7ABA8B7F66 /* SleepBenchmarks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepBenchmarks.swift; sourceTree = "<group>"; };
 		B301038DF5BA6D112B736879 /* MetricRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricRingView.swift; sourceTree = "<group>"; };
 		BBC4DD96BD3BDDEF1D98028A /* SleepTimelineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepTimelineChart.swift; sourceTree = "<group>"; };
+		BFD9382C5056A2C711B51E7B /* SleepWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepWeek.swift; sourceTree = "<group>"; };
 		C52631B6CA0E55AD7AC1366D /* HotReload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotReload.swift; sourceTree = "<group>"; };
 		C5DA46247C15EE223AC7469F /* ProgressRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressRing.swift; sourceTree = "<group>"; };
 		C9A74276E9EE6AD5947C6BCF /* Motion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Motion.swift; sourceTree = "<group>"; };
@@ -172,6 +180,7 @@
 		6D0F846DCA7B6814EC10376A /* Sleep */ = {
 			isa = PBXGroup;
 			children = (
+				B2075F9B02F15B7ABA8B7F66 /* SleepBenchmarks.swift */,
 				E7443C0ADD480F4F801D2F08 /* SleepCard.swift */,
 				068C2CA100BDBAED732B05CE /* SleepHeader.swift */,
 				8FA2726BA97B48E05D70519B /* SleepLegend.swift */,
@@ -179,8 +188,11 @@
 				E444F3DDE669765AED493F94 /* SleepScrubReadout.swift */,
 				9A9647C3269D077112C2DEFF /* SleepSegment.swift */,
 				D355F41C3118F44ECED44805 /* SleepStage.swift */,
+				3BB5AF3195EC5DB2BE2CC897 /* SleepTab.swift */,
+				0C2D98463F5833185CBFD4F6 /* SleepTabs.swift */,
 				BBC4DD96BD3BDDEF1D98028A /* SleepTimelineChart.swift */,
 				2B00282BDBCBDD2A03B4D99B /* SleepTimelinePanel.swift */,
+				BFD9382C5056A2C711B51E7B /* SleepWeek.swift */,
 				F58B44B44E7CE0BFD8240D0F /* StageTiles.swift */,
 			);
 			path = Sleep;
@@ -337,6 +349,7 @@
 				D1EBAFEA0D1D1D7D6158AA05 /* RingsSection.swift in Sources */,
 				98DEADA99560BAB15DA26739 /* RootView.swift in Sources */,
 				6AB35F753B97FE6F63E6AB58 /* SheetContainer.swift in Sources */,
+				69111A8A56190761C636B224 /* SleepBenchmarks.swift in Sources */,
 				14DCE72E52283B609F535D78 /* SleepCard.swift in Sources */,
 				EB9983B1D172C725789D6E1F /* SleepHeader.swift in Sources */,
 				EC2BAD9953D1BEE17A9D6E08 /* SleepLegend.swift in Sources */,
@@ -344,8 +357,11 @@
 				7654542DA90A841F75750227 /* SleepScrubReadout.swift in Sources */,
 				A1586E11CBBA3B819E0E4CBF /* SleepSegment.swift in Sources */,
 				D0E82AB9F84E1DE00FBF7D7C /* SleepStage.swift in Sources */,
+				3FDA437609F2E35444B70A58 /* SleepTab.swift in Sources */,
+				8EC6BCD2422C19CFF251E9B2 /* SleepTabs.swift in Sources */,
 				41FA3B848D69E88ECB4D967F /* SleepTimelineChart.swift in Sources */,
 				FFAA878163D13EF6EB4DDB15 /* SleepTimelinePanel.swift in Sources */,
+				69B6CE19E5DDAB9B21B08766 /* SleepWeek.swift in Sources */,
 				C44147CE406D56BF55160BEC /* StageTiles.swift in Sources */,
 				9A175ACC07608E2BD531E293 /* TodayEntrance.swift in Sources */,
 				6DC11E4E6DF0DF0709C2D30A /* TodayHeader.swift in Sources */,
