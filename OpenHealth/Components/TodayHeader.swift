@@ -4,6 +4,7 @@ struct TodayHeader: View {
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.presentLog) private var presentLog
     @Binding var isEditing: Bool
+    let openSettings: () -> Void
 
     var body: some View {
         HStack(spacing: 12) {
@@ -22,7 +23,16 @@ struct TodayHeader: View {
                 .buttonStyle(.borderedProminent)
                 .buttonBorderShape(.capsule)
                 .controlSize(.small)
+            Button("Settings", systemImage: "person.crop.circle") { openSettings() }
+                .labelStyle(.iconOnly)
+                .font(.title3)
+                .frame(minWidth: Layout.minTapTarget, minHeight: Layout.minTapTarget)
         }
         .padding(.vertical, -8)
     }
+}
+
+#Preview {
+    TodayHeader(isEditing: .constant(false)) {}
+        .padding()
 }
